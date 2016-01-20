@@ -10,16 +10,21 @@ import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+import org.junit.Test;
+
 /**
  * 
  * @author Matthias Browarski
  *
  */
-public class EmailServiceTest {
+public class EmailSaveBidTest {
 
 	
-	public void send(String email, String user) {
-		//TODO Testfall erstellen
-
-}
+	/**
+	 * Testklasse: Versenden der 
+	 */
+	@Test
+	public void sendTest() {
+		EmailSaveBid.send("matthibrow@googlemail.com", "name des Benutzers", null, null);
+	}
 }

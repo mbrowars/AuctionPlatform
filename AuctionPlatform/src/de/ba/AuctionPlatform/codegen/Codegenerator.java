@@ -7,6 +7,7 @@
 package de.ba.AuctionPlatform.codegen;
 
 import java.math.BigInteger;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 /**
@@ -15,14 +16,27 @@ import java.security.SecureRandom;
  *
  */
 public class Codegenerator {
+	private int sec;
 
-	public final class SessionIdentifierGenerator {
-		private SecureRandom random = new SecureRandom();
+	private SecureRandom random = new SecureRandom();
 
-		public String nextSessionId() {
-			String sec = new BigInteger(130, random).toString();
-			// TODO sec in DB speichern mit zugehöriger emailadresse
-			return sec;
+	/**
+	 * @return
+	 */
+	public int auctionSecurity() {
+
+		SecureRandom number;
+		try {
+			number = SecureRandom.getInstance("SHA1PRNG");
+
+			sec = number.nextInt(89999999 + 10000000);
+
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
+		// TODO sec in DB speichern mit zugehöriger emailadresse
+		return sec;
 	}
 }

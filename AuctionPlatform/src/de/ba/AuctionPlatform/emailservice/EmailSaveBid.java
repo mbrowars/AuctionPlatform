@@ -15,15 +15,23 @@ import javax.mail.internet.*;
  * @author Matthias Browarski
  *
  */
-public class EmailService {
+public class EmailSaveBid {
 
-	public void send(String email, String user) {
+	/**
+	 * @param email
+	 *            Empfänger der Sicherheitsemail
+	 * @param user
+	 *            Angegebene Emailadresse
+	 * @param item
+	 *            Auktionsgegenstand auf den geboten wurde
+	 */
+	public static void send(String email, String user, String item, String code) {
 
 		// Recipient's email ID needs to be mentioned.
-		String to = "abcd@gmail.com";
+		String to = email;
 
 		// Sender's email ID needs to be mentioned
-		String from = "web@gmail.com";
+		String from = "blazeIt@420.com";
 
 		// Assuming you are sending email from localhost
 		String host = "localhost";
@@ -48,10 +56,15 @@ public class EmailService {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
 			// Set Subject: header field
-			message.setSubject("This is the Subject Line!");
+			message.setSubject("Sicherheitsmail für ihr Gebot für das Produkt :" + item);
 
 			// Send the actual HTML message, as big as you like
-			message.setContent("<h1>This is actual message</h1>", "text/html");
+			message.setContent(
+					"<h1>Sehr geehrter BlazeIt-Nutzer, das von Ihnen abgeschickte Gebot wurde akzeptiert.<br>"
+							+ "Um Ihr Gebot zu speichern nutzen Sie den folgenden Code :" + code + "<br>"
+							+ "Falls Sie überboten werden Sie automatisch von uns per Email informiert.<br><br><br>"
+							+ "Ihr BlazeIt Team" + "</h1>",
+					"text/html");
 
 			// Send message
 			Transport.send(message);
