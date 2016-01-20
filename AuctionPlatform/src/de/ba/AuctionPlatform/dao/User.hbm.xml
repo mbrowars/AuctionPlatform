@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+ 
+    <class name="irgendwas.User" table="User">
+ 
+        <id name="id" column="ID">
+            <generator class="native" />
+        </id>
+ 
+        <property name="email">
+            <column name="EMAIL" length="32" not-null="true" />
+        </property>
+ 
+        <property name="code">
+            <column name="CODE" length="8" not-null="true" />
+        </property>
+ 
+        <property name="ip">
+            <column name="IP" length="11" not-null="true" />
+        </property>
+ 
+    </class>
+</hibernate-mapping>

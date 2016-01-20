@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+ 
+    <class name="irgendwas.Auction" table="Auction">
+ 
+        <id name="id" column="ID">
+            <generator class="native" />
+        </id>
+ 
+        <property name="titel">
+            <column name="TITEL" length="32" not-null="true" />
+        </property>
+ 
+        <property name="gebot">
+            <column name="GEBOT" length="16" not-null="true" />
+        </property>
+ 
+        <property name="enddatum">
+            <column name="ENDDATUM" length="16" not-null="true" />
+        </property>
+ 	
+	<property name="beschreibung">
+            <column name="BESCHREIBUNG" length="256" not-null="true" />
+        </property>
+
+	<property name="hoechstbietenderid">
+            <column name="HOECHSTBIETENDERID" length="32" not-null="true" />
+        </property>
+
+    </class>
+</hibernate-mapping>
