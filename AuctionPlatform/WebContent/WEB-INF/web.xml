@@ -7,6 +7,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Auction-Platform</servlet-name>
-    <url-pattern>/</url-pattern>
+    <url-pattern></url-pattern>
   </servlet-mapping>
 </web-app>
