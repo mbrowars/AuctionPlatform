@@ -11,7 +11,7 @@
 </head>
 <body>
 	<ul>
-		<a class="navlink" href="index.jsp"><li id="logo"><img src="../img/logo2.png"></li></a>
+		<a class="navlink" href="index.jsp"><li id="logo"><img src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
 		<a class="navlink" href="index.jsp"><li id="slog">Buy my gramp's stuff</li></a>
 		<li id="login">+Neue Auktion</li>
 	</ul>
