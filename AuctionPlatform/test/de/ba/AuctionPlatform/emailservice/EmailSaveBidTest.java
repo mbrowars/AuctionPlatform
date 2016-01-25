@@ -22,9 +22,11 @@ public class EmailSaveBidTest {
 	
 	/**
 	 * Testklasse: Versenden der 
+	 * @throws MessagingException 
+	 * @throws AddressException 
 	 */
 	@Test
-	public void sendTest() {
-		EmailSaveBid.send("matthibrow@googlemail.com", "name des Benutzers", null, null);
+	public void sendTest() throws AddressException, MessagingException {
+		EmailSaveBid.send("browarski@gmx.de", "name des Benutzers", "testnachricht");
 	}
 }

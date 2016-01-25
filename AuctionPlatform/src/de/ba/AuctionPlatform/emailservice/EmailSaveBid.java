@@ -15,62 +15,60 @@ import javax.mail.internet.*;
  * @author Matthias Browarski
  *
  */
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 public class EmailSaveBid {
+	public static void send(String recipient, String subject, String text) throws AddressException, MessagingException {
 
-	/**
-	 * @param email
-	 *            Empfänger der Sicherheitsemail
-	 * @param user
-	 *            Angegebene Emailadresse
-	 * @param item
-	 *            Auktionsgegenstand auf den geboten wurde
-	 */
-	public static void send(String email, String user, String item, String code) {
+		MailAuthenticator auth = new MailAuthenticator("browarski@gmx.de", "Pandorum1");
 
-		// Recipient's email ID needs to be mentioned.
-		String to = email;
+		Properties properties = new Properties();
 
-		// Sender's email ID needs to be mentioned
-		String from = "blazeIt@420.com";
+		// Den Properties wird die ServerAdresse hinzugefügt
+		properties.put("mail.smtp.host", "smtp.gmx.net");
 
-		// Assuming you are sending email from localhost
-		String host = "localhost";
+		// !!Wichtig!! Falls der SMTP-Server eine Authentifizierung
+		// verlangt
+		// muss an dieser Stelle die Property auf "true" gesetzt
+		// werden
+		properties.put("mail.smtp.auth", "true");
+		 properties.put("mail.smtp.port", "587");
+		 properties.put("mail.smtp.starttls.enable", "true"); //enable STARTTLS
 
-		// Get system properties
-		Properties properties = System.getProperties();
-
-		// Setup mail server
-		properties.setProperty("mail.smtp.host", host);
-
-		// Get the default Session object.
-		Session session = Session.getDefaultInstance(properties);
+		// Hier wird mit den Properties und dem implements Contructor
+		// erzeugten
+		// MailAuthenticator eine Session erzeugt
+		Session session = Session.getDefaultInstance(properties, auth);
 
 		try {
-			// Create a default MimeMessage object.
-			MimeMessage message = new MimeMessage(session);
+			// Eine neue Message erzeugen
+			Message msg = new MimeMessage(session);
 
-			// Set From: header field of the header.
-			message.setFrom(new InternetAddress(from));
+			// Hier werden die Absender- und Empfängeradressen gesetzt
+			msg.setFrom(new InternetAddress("browarski@gmx.de"));
+			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("browarski@gmx.de", false));
 
-			// Set To: header field of the header.
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			// Der Betreff und Body der Message werden gesetzt
+			msg.setSubject(subject);
+			msg.setText(text);
 
-			// Set Subject: header field
-			message.setSubject("Sicherheitsmail für ihr Gebot für das Produkt :" + item);
+			// Hier lassen sich HEADER-Informationen hinzufügen
+			msg.setHeader("Test", "Test");
+			msg.setSentDate(new Date());
 
-			// Send the actual HTML message, as big as you like
-			message.setContent(
-					"<h1>Sehr geehrter BlazeIt-Nutzer, das von Ihnen abgeschickte Gebot wurde akzeptiert.<br>"
-							+ "Um Ihr Gebot zu speichern nutzen Sie den folgenden Code :" + code + "<br>"
-							+ "Falls Sie überboten werden Sie automatisch von uns per Email informiert.<br><br><br>"
-							+ "Ihr BlazeIt Team" + "</h1>",
-					"text/html");
+			// Zum Schluss wird die Mail natürlich noch verschickt
+			Transport.send(msg);
 
-			// Send message
-			Transport.send(message);
-			System.out.println("Sent message successfully....");
-		} catch (MessagingException mex) {
-			mex.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
