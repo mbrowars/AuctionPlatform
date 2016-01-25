@@ -1,7 +1,7 @@
 /**
  *  SE-PROJEKT_AuctionPlatform
  * 
- *  team:	Markus Fröhlich, Max Göppert, Matthias Browarski
+ *  team:	Markus Frï¿½hlich, Max Gï¿½ppert, Matthias Browarski
  *
  */
 package de.ba.AuctionPlatform.controller;
@@ -21,7 +21,7 @@ public class AuctionPlatformServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
 
-		requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
+		requ.getRequestDispatcher("/view/index.jsp").forward(requ, resp);
 
 	}
 }
