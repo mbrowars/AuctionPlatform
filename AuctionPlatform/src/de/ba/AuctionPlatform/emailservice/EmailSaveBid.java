@@ -28,7 +28,7 @@ import javax.mail.internet.MimeMessage;
 public class EmailSaveBid {
 	public static void send(String recipient, String subject, String text) throws AddressException, MessagingException {
 
-		MailAuthenticator auth = new MailAuthenticator("browarski@gmx.de", "auctionplatform1");
+		MailAuthenticator auth = new MailAuthenticator("kauft-mein-erbe@gmx.de", "auctionplatform1");
 
 		Properties properties = new Properties();
 
@@ -53,8 +53,8 @@ public class EmailSaveBid {
 			Message msg = new MimeMessage(session);
 
 			// Hier werden die Absender- und Empfängeradressen gesetzt
-			msg.setFrom(new InternetAddress("browarski@gmx.de"));
-			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("browarski@gmx.de", false));
+			msg.setFrom(new InternetAddress("kauft-mein-erbe@gmx.de"));
+			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("kauft-mein-erbe@gmx.de", false));
 
 			// Der Betreff und Body der Message werden gesetzt
 			msg.setSubject(subject);
