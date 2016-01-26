@@ -83,7 +83,7 @@ a.listlink, a.listlink:visited, a.listlink:active, a.listlink:hover {
 	flex: 1 0 60%;
 }
 
-#sort {
+#sortdiv {
 	flex: 1 0 40%;
 }
 

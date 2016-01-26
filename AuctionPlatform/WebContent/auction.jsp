@@ -1,3 +1,7 @@
+<!-- Hier brauche ich:
+Name, Gebot und Ende der ausgewählten Auktion
+ -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -63,7 +67,7 @@
 	        <h4 class="modal-title" id="myModalLabel">Bestätigung Ihres Gebots</h4>
 	      </div>
 	      <div class="modal-body">
-	        Zur Abgabe Ihres Gebotes über <span id="bidtext"></span> müssen sie Ihre E-Mail verifizieren.
+	        <span>Zur Abgabe Ihres Gebotes über <span id="bidtext"></span> müssen sie Ihre E-Mail verifizieren.</span>
 	        <br><br>
 	        <p>
 	        	<!-- mail -> E-Mail zu der der Code gesendet werden soll -->

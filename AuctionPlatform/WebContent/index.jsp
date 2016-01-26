@@ -1,3 +1,7 @@
+<!-- Hier brauche ich:
+Session -> Als Admin eingeloggt?
+Arraylist mit den Auktionen
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,18 +23,17 @@
 	
 	<form action="/">
 		<div id="actionbar">
-			<div id="search">
-				<input name="titel" placeholder="Name">
-				<input name="Preis" placeholder="Preis">
-			</div>
-			<div id="sort">
-				<select>
-				  <option value="none">Sortierung</option>
-				  <option value="price">Preis</option>
-				  <option value="age">Datum</option>
-				  <option value="name">Name</option>
-				</select>
-			</div>
+			<form action="/">
+					<input name="titel" id="title" placeholder="Name">
+					<input type="number" name="price" id="price" placeholder="Maximalpreis">
+					<select id="sort" name="sort" >
+					  <option value="none">Sortierung</option>
+					  <option value="price">Preis</option>
+					  <option value="age">Datum</option>
+					  <option value="name">Name</option>
+					</select>
+					<button type="submit">Suchen</button>
+			</form>
 		</div>
 	</form>
 	<div id="sep"></div>
