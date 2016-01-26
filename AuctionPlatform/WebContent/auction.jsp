@@ -5,12 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <title>My inheritance</title>
 </head>
 <body>
-	<ul>
+	<ul id="nav">
 		<a class="navlink" href="index.jsp"><li id="logo"><img src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
 		<a class="navlink" href="index.jsp"><li id="slog">Buy my gramp's stuff</li></a>
 		<li id="login">+Neue Auktion</li>
@@ -24,9 +25,10 @@
 			<p>Name</p>
 			<p>Gebot</p>
 			<p>Restdauer</p>
-			<form action="/">
-				<input name="bid" placeholder="Gebot">
-			</form>
+			<div>
+				<input name="bid" id="bid" placeholder="Gebot">
+				<button type="button" id="showModal" class="ourButton">Bieten</button>
+			</div>
 		</div>
 	</div>
 	
@@ -51,5 +53,30 @@
 		tincidunt erat. Sed fermentum ex a pellentesque lacinia. 
 		Fusce quis tincidunt velit.
 	</p>
+	
+	
+	
+	<div class="modal fade" id="BidModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title" id="myModalLabel">Bestätigung Ihres Gebots</h4>
+	      </div>
+	      <div class="modal-body">
+	        Zur Abgabe Ihres Gebotes über <span id="bidtext"></span> müssen sie Ihre E-Mail verifizieren.
+	        <br><br>
+	        <p>
+	        	<!-- mail -> E-Mail zu der der Code gesendet werden soll -->
+		        <label>E-Mail</label>
+		        <input placeholder="E-Mail Adresse" id="mail">
+		        <button id="sendCode" class="ourButton">Senden</button>
+	        </p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<script src="${pageContext.request.contextPath}/js/auction.js"></script>
+	
 </body>
 </html>

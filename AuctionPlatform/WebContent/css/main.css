@@ -3,7 +3,7 @@ body {
 	margin:0;
 }
 
-ul {
+ul#nav {
 	list-style-type: none;
     margin: 0;
     padding: 30px;
@@ -19,7 +19,12 @@ span {
 	font-size:24px;
 }
 
-input {
+labell {
+	margin-right: 15px;
+	margin-bottom: -3px;
+}
+
+inputl {
 	border: none;
 	font: 28px Arial;
 	border-bottom: 3px solid #333;
@@ -47,16 +52,19 @@ a.listlink, a.listlink:visited, a.listlink:active, a.listlink:hover {
 .listing {
 	height:350px;
 	width:300px;
-	border:3px outset #777;
+	border:3px outset #888;
 	border-radius:10px;
 	text-align:center;
 	margin:15px;
 	transition:margin-top 0.2s;
 }
 
-.listing:hover {
+.listing:hover{
 	margin-top:-5px;
-	
+}
+
+.container {
+	margin-top: 15px;
 }
 
 .title {
@@ -136,16 +144,61 @@ a.listlink, a.listlink:visited, a.listlink:active, a.listlink:hover {
 	flex: 1 1 60%;
 }
 
-#auctionbid form {
+#auctionbid div {
 	margin-top: 8%;
 }
 
+#bid {
+	width: 20%;
+	margin-left: 20px;
+	font: 18px Arial;
+	text-align: center;
+}
+
+.ourButton {
+	height: 35px;
+	width: 85px;
+	margin-left: 10px;
+	background-color: white;
+	border: 2px solid black;
+	font: 18px Arial;
+	text-align: center;
+}
+
+.ourButton:hover {
+	background-color: black;
+	color: white;
+	cursor: pointer;
+}
+
 #auctionbid p {
-	font: 18px Arial-Black;
+	font: 18px ''Arial Black;
 	margin-left: 3%;
 }
 
 #desc {
 	margin:3%;
 	font: 16px Arial;
+}
+
+
+
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
 }

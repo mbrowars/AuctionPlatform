@@ -21,7 +21,7 @@ public class AuctionPlatformServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
 
-		requ.getRequestDispatcher("/view/index.jsp").forward(requ, resp);
+		requ.getRequestDispatcher("index.jsp").forward(requ, resp);
 
 	}
 }
