@@ -79,6 +79,10 @@ a.listlink, a.listlink:visited, a.listlink:active, a.listlink:hover {
     margin:10px 0 10px 0;
 }
 
+#code, #mail {
+	margin-left: 10px;
+}
+
 #search {
 	flex: 1 0 60%;
 }
@@ -160,19 +164,20 @@ a.listlink, a.listlink:visited, a.listlink:active, a.listlink:hover {
 	width: 85px;
 	margin-left: 10px;
 	background-color: white;
-	border: 2px solid black;
+	border: 2px outset #333;
+	border-radius: 5px;
 	font: 18px Arial;
 	text-align: center;
 }
 
 .ourButton:hover {
-	background-color: black;
+	background-color: #333;
 	color: white;
 	cursor: pointer;
 }
 
 #auctionbid p {
-	font: 18px ''Arial Black;
+	font: 18px 'Arial Black'';
 	margin-left: 3%;
 }
 

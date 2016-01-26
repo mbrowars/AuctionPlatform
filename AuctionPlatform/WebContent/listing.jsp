@@ -5,9 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/component.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/demo.css" type="text/css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/normalize.css" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -16,7 +13,6 @@
 <body>
 	<ul id="nav">
 		<a class="navlink" href="index.jsp"><li id="logo"><img src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
-		<a class="navlink" href="index.jsp"><li id="slog">Buy my gramp's stuff</li></a>
 		<li id="login">+Neue Auktion</li>
 	</ul>
 	
