@@ -5,9 +5,9 @@
  
 <hibernate-mapping>
  
-    <class name="irgendwas.User" table="User">
+    <class name="de.ba.AuctionPlatform.dao.User" table="User">
  
-        <id name="id" column="ID">
+        <id name="userid" column="USERID">
             <generator class="native" />
         </id>
  

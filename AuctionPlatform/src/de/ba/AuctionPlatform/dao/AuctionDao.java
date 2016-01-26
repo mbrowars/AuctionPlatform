@@ -9,7 +9,7 @@ package de.ba.AuctionPlatform.dao;
 import java.sql.Date;
 
 public class AuctionDao {
-	Long id;
+	Long auctionid;
 	String titel;
 	Double gebot;
 	Date enddatum;
@@ -17,11 +17,11 @@ public class AuctionDao {
 	Long hoechstbietenderid;
 
 	public Long getId() {
-		return id;
+		return auctionid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long auctionid) {
+		this.auctionid = auctionid;
 	}
 
 	public String getTitel() {

@@ -7,17 +7,17 @@
 package de.ba.AuctionPlatform.dao;
 
 public class UserDao {
-	Long id;
+	Long userid;
 	String email;
 	String code;
 	String ip;
 
 	public Long getId() {
-		return id;
+		return userid;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Long userid) {
+		this.userid = userid;
 	}
 
 	public String getEmail() {
