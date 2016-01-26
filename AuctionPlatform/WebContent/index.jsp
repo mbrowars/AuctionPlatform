@@ -23,8 +23,12 @@ Arraylist mit den Auktionen
 	
 	<form action="/">
 		<div id="actionbar">
+			<!-- title -> Suchstring für Name
+				 price -> Maximalgebot
+				 sort  -> Sortierung für die ResultList
+			 -->
 			<form action="/">
-					<input name="titel" id="title" placeholder="Name">
+					<input name="title" id="title" placeholder="Name">
 					<input type="number" name="price" id="price" placeholder="Maximalpreis">
 					<select id="sort" name="sort" >
 					  <option value="none">Sortierung</option>
