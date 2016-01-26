@@ -37,7 +37,8 @@ public class AuctionMock {
 	}
 
 	public Date getEnddatum() {
-		return (1997,02,12);
+		Date date = new Date(1997,02, 12);
+		return date;
 	}
 
 	public void setEnddatum(Date enddatum) {

@@ -8,6 +8,7 @@ package de.ba.AuctionPlatform.controller;
 
 import java.io.*;
 import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 /**
@@ -15,6 +16,7 @@ import javax.servlet.http.*;
  * @author Matthias Browarski
  *
  */
+@WebServlet("/home")
 public class AuctionPlatformServlet extends HttpServlet {
 	static final long serialVersionUID = 1L;
 
