@@ -6,6 +6,12 @@
  */
 package de.ba.AuctionPlatform.dbInterface;
 
+/**
+ * 
+ * @author Max Göppert
+ *
+ */
+
 import java.sql.Date;
 
 public interface IAuctionDao {

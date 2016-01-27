@@ -6,6 +6,12 @@
  */
 package de.ba.AuctionPlatform.dbInterface;
 
+/**
+ * 
+ * @author Max Göppert
+ *
+ */
+
 public interface IUserDao {
 	
 	public Long getUserId();
