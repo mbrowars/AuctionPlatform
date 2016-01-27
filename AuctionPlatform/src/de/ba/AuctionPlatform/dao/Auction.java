@@ -6,6 +6,7 @@
  */
 package de.ba.AuctionPlatform.dao;
 
+import java.sql.Blob;
 import java.sql.Date;
 
 public class Auction {
@@ -15,7 +16,22 @@ public class Auction {
 	String enddatum;
 	String beschreibung;
 	Long hoechstbietenderid;
+	Blob picture;
 
+	public Auction() {
+		
+	}
+	
+	public Auction(Long auctionid, String titel, Double gebot, String enddatum, String beschreibung, Long hoechstbietenderid, Blob picture) {
+		this.auctionid = auctionid;
+		this.titel = titel;
+		this.gebot = gebot;
+		this.enddatum = enddatum;
+		this.beschreibung = beschreibung;
+		this.hoechstbietenderid = hoechstbietenderid;
+		this.picture = picture;
+	}
+	
 	public Long getId() {
 		return auctionid;
 	}
@@ -63,4 +79,13 @@ public class Auction {
 	public void setHoechstbietenderid(Long hoechstbietenderid) {
 		this.hoechstbietenderid = hoechstbietenderid;
 	}
+	
+	public Blob getPicture() {
+		return picture;
+	}
+	
+	public void setPicture(Blob picture) {
+		this.picture = picture;
+	}
+	
 }

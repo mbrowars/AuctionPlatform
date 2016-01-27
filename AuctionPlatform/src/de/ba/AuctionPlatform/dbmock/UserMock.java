@@ -14,11 +14,17 @@ package de.ba.AuctionPlatform.dbmock;
  */
 public class UserMock {
 
+	private Long userid;
+	private String email;
+	private String code;
+	private String ip;
+
 	public Long getUserId() {
 		return (long) 23;
 	}
 
 	public void setUserId(Long userid) {
+		this.userid = userid;
 	}
 
 	public String getEmail() {
@@ -26,6 +32,7 @@ public class UserMock {
 	}
 
 	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getCode() {
@@ -33,6 +40,7 @@ public class UserMock {
 	}
 
 	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getIp() {
@@ -40,5 +48,6 @@ public class UserMock {
 	}
 
 	public void setIp(String ip) {
+		this.ip = ip;
 	}
 }

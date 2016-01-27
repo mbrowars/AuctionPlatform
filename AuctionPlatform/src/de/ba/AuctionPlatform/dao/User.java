@@ -12,6 +12,17 @@ public class User {
 	String code;
 	String ip;
 
+	public User() {
+		
+	}
+	
+	public User(Long userid, String email, String code, String ip) {
+		this.userid = userid;
+		this.email = email;
+		this.code = code;
+		this.ip = ip;
+	}
+	
 	public Long getId() {
 		return userid;
 	}
