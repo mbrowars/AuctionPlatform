@@ -2,8 +2,8 @@ package de.ba.AuctionPlatform.dao;
 
 public class Admin {
 
-	private String username;
-	private String password;
+	private String username = "admin";
+	private String password= "admin123";
 
 	public String getUsername() {
 		return username;

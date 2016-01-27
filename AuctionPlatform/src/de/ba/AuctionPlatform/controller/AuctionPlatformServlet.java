@@ -16,14 +16,14 @@ import javax.servlet.http.*;
  * @author Matthias Browarski
  *
  */
-@WebServlet("/home")
+
 public class AuctionPlatformServlet extends HttpServlet {
 	static final long serialVersionUID = 1L;
 
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
 
-		requ.getRequestDispatcher("index.jsp").forward(requ, resp);
+		requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
 
 	}
 }

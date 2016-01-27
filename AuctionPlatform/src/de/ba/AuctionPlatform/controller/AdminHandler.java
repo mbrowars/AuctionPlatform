@@ -2,6 +2,10 @@ package de.ba.AuctionPlatform.controller;
 
 import de.ba.AuctionPlatform.dao.Admin;
 
+/**
+ * @author mbrowars
+ *
+ */
 public class AdminHandler {
 
 	Admin ad = new Admin();

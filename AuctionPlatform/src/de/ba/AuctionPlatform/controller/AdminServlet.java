@@ -3,7 +3,6 @@ package de.ba.AuctionPlatform.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +10,11 @@ import javax.servlet.http.HttpSession;
 
 import de.ba.AuctionPlatform.dao.Admin;
 
-@WebServlet("/admin")
+
+/**
+ * @author mbrowars
+ *
+ */
 public class AdminServlet extends HttpServlet {
 
 	/**
@@ -29,7 +32,7 @@ public class AdminServlet extends HttpServlet {
 		if (ad.validUser(admin.getUsername(), admin.getPassword()) == true) {
 			session.setAttribute("user",admin);
 			requ.setAttribute("user", admin);
-			requ.getRequestDispatcher("index.jsp").forward(requ, resp);
+			requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
 		} else {
 			resp.sendRedirect("goadmin.jsp");
 		}
