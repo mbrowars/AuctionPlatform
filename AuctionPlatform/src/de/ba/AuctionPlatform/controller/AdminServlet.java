@@ -30,8 +30,8 @@ public class AdminServlet extends HttpServlet {
 		admin.setPassword(requ.getParameter("password"));
 		HttpSession session = requ.getSession(true);
 		if (ad.validUser(admin.getUsername(), admin.getPassword()) == true) {
-			session.setAttribute("user",admin);
-			requ.setAttribute("user", admin);
+			session.setAttribute("admin",admin);
+			requ.setAttribute("admin", admin);
 			requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
 		} else {
 			resp.sendRedirect("goadmin.jsp");

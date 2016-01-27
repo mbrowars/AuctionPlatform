@@ -27,12 +27,12 @@
 	 -->
 	
 	<div class="container">
-		<form action="/">
+		<form action="createAuction">
 			<input type="file" name="picture" />
 			<input placeholder="Titel" name="title" />
 			<input placeholder="Startgebot" name="bid" />
 			<input placeholder="Auktionsende" name="end" />
-			<textare placeholder="Beschreibung" name="desc" />
+			<input placeholder="Beschreibung" name="desc" />
 			<input placeholder="AuktionsID" name="id" />
 			<button type="submit">Bestätigen</button>
 		</form>

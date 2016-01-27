@@ -6,7 +6,7 @@
  */
 package de.ba.AuctionPlatform.dao;
 
-public class UserDao {
+public class User {
 	Long userid;
 	String email;
 	String code;

@@ -6,6 +6,7 @@
  */
 package de.ba.AuctionPlatform.dbInterface;
 
+
 public interface IUserDao {
 	
 	public Long getUserId();

@@ -8,11 +8,11 @@ package de.ba.AuctionPlatform.dao;
 
 import java.sql.Date;
 
-public class AuctionDao {
+public class Auction {
 	Long auctionid;
 	String titel;
 	Double gebot;
-	Date enddatum;
+	String enddatum;
 	String beschreibung;
 	Long hoechstbietenderid;
 
@@ -40,11 +40,11 @@ public class AuctionDao {
 		this.gebot = gebot;
 	}
 
-	public Date getEnddatum() {
+	public String getEnddatum() {
 		return enddatum;
 	}
 
-	public void setEnddatum(Date enddatum) {
+	public void setEnddatum(String enddatum) {
 		this.enddatum = enddatum;
 	}
 
