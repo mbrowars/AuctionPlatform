@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import org.junit.Test;
 
 import de.ba.AuctionPlatform.dao.User;
 
@@ -17,26 +18,8 @@ public class TestUser {
 	private static SessionFactory factory;
 	private static ServiceRegistry serviceRegistry;
 	
-	public static void main(String[] args) {
-		Configuration configuration = new Configuration();
-		configuration.configure();
-		configuration.addAnnotatedClass(User.class);
-		serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-		
-		factory = configuration.buildSessionFactory(serviceRegistry);
-		TestUser testPerson = new TestUser();
-		testPerson.addUser(3, "testmensch@test.com", "1337", "192.168.0.4" );
-		
-		List allUsers = testPerson.getallUsers();
-		for(User emp : allUsers){
-			System.out.print(emp.getId() + " ");
-			System.out.print(emp.getEmail() + " ");
-			System.out.print(emp.getCode() + " ");
-			System.out.print(emp.getIp() + " ");
-		}
 	
-	}
-	
+	@Test
 	private Long addUser(Long userid, String email, String code, String ip) {
 		Session session = factory.openSession();
 		Transaction tx = null;
@@ -55,6 +38,7 @@ public class TestUser {
 		return useridSaved;
 	}
 	
+	@Test
 	@SuppressWarnings("unchecked")
 	private List getAllUsers() {
 		Session session = factory.openSession();
