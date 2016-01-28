@@ -13,7 +13,8 @@
 <body>
 	<ul id="nav">
 		<a class="navlink" href="index.jsp"><li id="logo"><img src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
-		<li id="login">+Neue Auktion</li>
+		<a class="navlink" href="index.jsp"><li id="slog">Buy my gramp's stuff</li></a>
+		<li id="login">Neue Auktion erstellen</li>
 	</ul>
 	
 	<!-- 
