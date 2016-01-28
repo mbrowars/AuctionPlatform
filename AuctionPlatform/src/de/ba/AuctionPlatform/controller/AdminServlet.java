@@ -37,4 +37,8 @@ public class AdminServlet extends HttpServlet {
 			resp.sendRedirect("goadmin.jsp");
 		}
 	}
+	
+	public void doPost(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(requ, resp);
+	}
 }

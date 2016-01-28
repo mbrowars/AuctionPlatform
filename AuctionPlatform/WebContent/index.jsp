@@ -31,17 +31,17 @@ Arraylist mit den Auktionen
 				 price -> Maximalgebot
 				 sort  -> Sortierung für die ResultList
 			 -->
-			<form action="/">
-				<input name="title" id="title" placeholder="Name"> <input
-					type="number" name="price" id="price" placeholder="Maximalpreis">
-				<select id="sort" name="sort">
-					<option value="none">Sortierung</option>
-					<option value="price">Preis</option>
-					<option value="age">Datum</option>
-					<option value="name">Name</option>
-				</select>
-				<button type="submit">Suchen</button>
-			</form>
+			
+			<input name="title" id="title" placeholder="Name"> <input
+				type="number" name="price" id="price" placeholder="Maximalpreis">
+			<select id="sort" name="sort">
+				<option value="none">Sortierung</option>
+				<option value="price">Preis</option>
+				<option value="age">Datum</option>
+				<option value="name">Name</option>
+			</select>
+			<button type="submit">Suchen</button>
+			
 		</div>
 	</form>
 	<div id="sep"></div>

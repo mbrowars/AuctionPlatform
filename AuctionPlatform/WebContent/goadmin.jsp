@@ -22,7 +22,7 @@
 		<div class="logo"></div>
 		<div class="login-block">
 		    <h1>Login</h1>
-		    <form action="goadmin">
+		    <form action="goadmin" method="post">
 			    <input type="text" value="" placeholder="Username" id="username" name="username" />
 			    <input type="password" value="" placeholder="Password" id="password" name="password" />
 			    <button>Submit</button>

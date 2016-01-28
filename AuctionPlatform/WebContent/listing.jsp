@@ -28,7 +28,7 @@
 	 -->
 	
 	<div class="container">
-		<form action="createAuction">
+		<form action="createAuction" method="post">
 			<input type="file" name="picture" />
 			<input placeholder="Titel" name="title" />
 			<input placeholder="Startgebot" name="bid" />
