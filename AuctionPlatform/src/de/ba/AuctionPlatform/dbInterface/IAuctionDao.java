@@ -6,6 +6,7 @@
  */
 package de.ba.AuctionPlatform.dbInterface;
 
+import java.sql.Blob;
 import java.sql.Date;
 
 public interface IAuctionDao {
@@ -33,4 +34,8 @@ public interface IAuctionDao {
 	public Long getHoechstbietenderid();
 
 	public void setHoechstbietenderid(Long hoechstbietenderid);
+	
+	public Blob getPicture();
+	
+	public void setPicture(Blob picture);
 }

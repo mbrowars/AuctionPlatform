@@ -1,27 +1,21 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC
-"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
- 
+<!-- Generated 27.01.2016 17:55:20 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
- 
-    <class name="de.ba.AuctionPlatform.dao.User" table="User">
- 
-        <id name="userid" column="USERID">
-            <generator class="native" />
+    <class name="de.ba.AuctionPlatform.dao.User" table="USER">
+        <id name="userid" type="java.lang.Long" access="field">
+            <column name="USERID" />
+            <generator class="assigned" />
         </id>
- 
-        <property name="email">
-            <column name="EMAIL" length="32" not-null="true" />
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
         </property>
- 
-        <property name="code">
-            <column name="CODE" length="8" not-null="true" />
+        <property name="code" type="java.lang.String">
+            <column name="CODE" />
         </property>
- 
-        <property name="ip">
-            <column name="IP" length="11" not-null="true" />
+        <property name="ip" type="java.lang.String">
+            <column name="IP" />
         </property>
- 
     </class>
 </hibernate-mapping>

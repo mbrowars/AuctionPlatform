@@ -8,6 +8,7 @@ package de.ba.AuctionPlatform.controller;
 
 import java.io.*;
 import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 /**
@@ -15,13 +16,14 @@ import javax.servlet.http.*;
  * @author Matthias Browarski
  *
  */
+
 public class AuctionPlatformServlet extends HttpServlet {
 	static final long serialVersionUID = 1L;
 
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
 
-		requ.getRequestDispatcher("index.jsp").forward(requ, resp);
+		requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
 
 	}
 }
