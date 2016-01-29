@@ -36,12 +36,15 @@ public class BidAuctionServlet extends HttpServlet {
 		int code = gen.auctionSecurity();
 		Codevalidator valid = new Codevalidator();
 
+		// Angebot mit der Datenbank vergleichen / Email senden /
+		// Sicherkeitscode testen
 		if (bi.checkBid(new Long(1234), bid, mail) == true) {
 
 			try {
 
 				em.send(mail, "Auktionsbestätigung für Artikel (plus id)",
 						"Bitte geben Sie diesen Code auf der Webside ein: " + code);
+				requ.setAttribute("error", "NULL");
 
 			} catch (MessagingException e) {
 
@@ -50,16 +53,18 @@ public class BidAuctionServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			String usercode = requ.getParameter("code");
-		boolean rightcode=	valid.validate(usercode, code);
+			boolean rightcode = valid.validate(usercode, code);
 
 		}
-
+		// Angebot speichern und status und code an view übergeben
 		if (bi.saveBid(new Long(1234), bid, mail) == true) {
 
 			requ.setAttribute("bidSaved", true);
 			requ.setAttribute("code", code);
 			requ.getRequestDispatcher("/auction.jsp").forward(requ, resp);
 
+			// Fehler beim speichern status zurückliefern und auf seite der
+			// auktion zurückleiten
 		} else {
 
 			requ.setAttribute("bidSaved", false);
