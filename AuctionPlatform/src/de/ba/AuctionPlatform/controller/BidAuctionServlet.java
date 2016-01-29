@@ -43,7 +43,7 @@ public class BidAuctionServlet extends HttpServlet {
 			try {
 
 				em.send(mail, "Auktionsbestätigung für Artikel (plus id)",
-						"Bitte geben Sie diesen Code auf der Webside ein: " + code);
+						"Bitte geben Sie diesen Code auf der Website ein: " + code);
 				requ.setAttribute("error", "NULL");
 
 			} catch (MessagingException e) {
@@ -53,6 +53,9 @@ public class BidAuctionServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			String usercode = requ.getParameter("code");
+			while (usercode == null) {
+				usercode = requ.getParameter("code");
+			}
 			boolean rightcode = valid.validate(usercode, code);
 
 		}
