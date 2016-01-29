@@ -14,12 +14,18 @@ package de.ba.AuctionPlatform.codegen;
 public class Codevalidator {
 
 	// Überprüfung des Übergeben Codes (mit Email oder zugeordnet)
-	public Boolean validate(String sec, String email) {
+	/**
+	 * @param sec
+	 *            Code
+	 * @param code
+	 * @return richtiger code = true
+	 */
+	public Boolean validate(String sec, int code) {
 
 		// TODO Code aus DB auslesen mihilfe der übergebenen email
 		String db = null;
 
-		if (db == sec) {
+		if (code == Integer.parseInt(sec)) {
 			// AuctionLogger.log.info( "Codevalidator "+email+" code validated"
 			// );
 			System.out.println("code validated");

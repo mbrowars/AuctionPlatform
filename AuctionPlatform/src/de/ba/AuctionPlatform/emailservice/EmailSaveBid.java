@@ -26,7 +26,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EmailSaveBid {
-	public static void send(String recipient, String subject, String text) throws AddressException, MessagingException {
+	public void send(String recipient, String subject, String text) throws AddressException, MessagingException {
 
 		MailAuthenticator auth = new MailAuthenticator("kauft-mein-erbe@gmx.de", "auctionplatform1");
 

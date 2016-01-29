@@ -12,6 +12,8 @@ import javax.mail.internet.*;
 
 import org.junit.Test;
 
+import com.sun.xml.internal.ws.api.config.management.policy.ManagementAssertion.Setting;
+
 /**
  * 
  * @author Matthias Browarski
@@ -19,6 +21,9 @@ import org.junit.Test;
  */
 public class EmailSaveBidTest {
 
+	private String testnachricht;
+	private String email;
+	private String anliegen;
 	
 	/**
 	 * Testklasse: Versenden der 
@@ -27,6 +32,6 @@ public class EmailSaveBidTest {
 	 */
 	@Test
 	public void sendTest() throws AddressException, MessagingException {
-		EmailSaveBid.send("browarski@gmx.de", "name des Benutzers", "testnachricht");
+		//EmailSaveBid.send(email, anliegen, testnachricht);
 	}
 }

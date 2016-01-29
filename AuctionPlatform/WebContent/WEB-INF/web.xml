@@ -31,6 +31,12 @@
 		</servlet-class>
 	</servlet>
 
+	<servlet>
+		<servlet-name>BidAuction</servlet-name>
+		<servlet-class>de.ba.AuctionPlatform.controller.BidAuctionServlet
+		</servlet-class>
+	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>Auction-Platform</servlet-name>
 		<url-pattern>/home</url-pattern>
@@ -41,10 +47,14 @@
 		<servlet-name>Admin-Login</servlet-name>
 		<url-pattern>/goadmin</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet-mapping>
-	<servlet-name>CreateAuction</servlet-name>
-	<url-pattern>/createAuction</url-pattern>
+		<servlet-name>CreateAuction</servlet-name>
+		<url-pattern>/createAuction</url-pattern>
 	</servlet-mapping>
 
+	<servlet-mapping>
+		<servlet-name>BidAuction</servlet-name>
+		<url-pattern>/auction</url-pattern>
+	</servlet-mapping>
 </web-app>

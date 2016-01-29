@@ -32,7 +32,7 @@ public class Auction {
 		this.picture = picture;
 	}
 	
-	public Long getId() {
+	public Long getId(Long id) {
 		return auctionid;
 	}
 

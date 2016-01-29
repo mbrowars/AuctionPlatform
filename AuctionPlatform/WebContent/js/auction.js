@@ -3,7 +3,7 @@ $(function() {
 		
 		$.ajax({
 			  method: "POST",
-			  url: "Controller",
+			  url: "auction",
 			  data: { mail: $("#mail").val() }
 			})
 			  /*.success(function() {
@@ -25,7 +25,7 @@ $(function() {
 $('body').on('click','#testCode',function(){
 	$.ajax({
 		  method: "POST",
-		  url: "Controller",
+		  url: "auction",
 		  data: { code: $("#code").val() }
 		})
 		  /*.success(function() {
