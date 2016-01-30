@@ -1,10 +1,11 @@
 $(function() {
 	$("#sendCode").click(function(){
+
 		$.ajax({
-			  method: "POST",
+			  type: "POST",
 			  url: "/AuctionPlatform/auction",
-			  data: { mail: $("#mail").val(),
-				  	  bid : $("#bid").val()}
+			  data: { 'mail': $("#mail").val(),
+				  	  'bid' : $("#bid").val()}
 			})
 			  .success(function() {
 				$(".modal-body span").html("<span style='color: green;'> E-Mail wurde erfolgreich versendet!</span>")

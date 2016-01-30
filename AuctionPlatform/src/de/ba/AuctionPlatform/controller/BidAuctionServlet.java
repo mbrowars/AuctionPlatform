@@ -27,7 +27,7 @@ public class BidAuctionServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
-		Double bid = 12.32; //Double.parseDouble(requ.getParameter("bid"));
+		Double bid = Double.parseDouble(requ.getParameter("bid"));
 		String mail = requ.getParameter("mail");
 		EmailSaveBid em = new EmailSaveBid();
 		BidHandler bi = new BidHandler();
@@ -52,10 +52,10 @@ public class BidAuctionServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			String usercode = requ.getParameter("code");
-			while (usercode == null) {
+			/*while (usercode == null) {
 				usercode = requ.getParameter("code");
 			}
-			boolean rightcode = valid.validate(usercode, code);
+			boolean rightcode = valid.validate(usercode, code);*/ //auskommentiert weil KOT
 
 		}
 		// Angebot speichern und status und code an view �bergeben
