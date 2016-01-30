@@ -1,17 +1,19 @@
 $(function() {
 	$("#sendCode").click(function(){
-		
 		$.ajax({
 			  method: "POST",
-			  url: "auction",
-			  data: { mail: $("#mail").val() }
+			  url: "/AuctionPlatform/auction",
+			  data: { mail: $("#mail").val(),
+				  	  bid : $("#bid").val()}
 			})
-			  /*.success(function() {
-			    $(".modal-body p").html("<span style='color: green;' E-Mail wurde erfolgreich versendet!</span>")
-			  });*/
+			  .success(function() {
+				$(".modal-body span").html("<span style='color: green;'> E-Mail wurde erfolgreich versendet!</span>")
+				$(".modal-body p").html('<label>Code</label><input placeholder="Bestätigungscode" id="code"><button id="testCode" class="ourButton">Senden</button>')
+			})
+			  .error(function(a,b,c) {
+				$(".modal-body span").html("<span style='color: red;'> E-Mail konnte nicht versendet werden!" + a + b + c +"</span>")
+			});
 		
-		$(".modal-body span").html("<span style='color: green;'> E-Mail wurde erfolgreich versendet!</span>")
-		$(".modal-body p").html('<label>Code</label><input placeholder="Bestätigungscode" id="code"><button id="testCode" class="ourButton">Senden</button>')
 		
 		$("#bid").val("");
 	});

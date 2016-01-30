@@ -27,9 +27,8 @@ public class BidAuctionServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
-		// Double.parseDouble(requ.getParameter("bid"))
-		Double bid = 12.05;
-		String mail = requ.getParameter("email");
+		Double bid = 12.32; //Double.parseDouble(requ.getParameter("bid"));
+		String mail = requ.getParameter("mail");
 		EmailSaveBid em = new EmailSaveBid();
 		BidHandler bi = new BidHandler();
 		Codegenerator gen = new Codegenerator();
@@ -42,14 +41,14 @@ public class BidAuctionServlet extends HttpServlet {
 
 			try {
 
-				em.send(mail, "Auktionsbestätigung für Artikel (plus id)",
+				em.send(mail, "Auktionsbestï¿½tigung fï¿½r Artikel (plus id)",
 						"Bitte geben Sie diesen Code auf der Website ein: " + code);
 				requ.setAttribute("error", "NULL");
 
 			} catch (MessagingException e) {
 
 				// TODO Auto-generated catch block
-				requ.setAttribute("error", "Fehler bei Emailübertragung");
+				requ.setAttribute("error", "Fehler bei Emailï¿½bertragung");
 				e.printStackTrace();
 			}
 			String usercode = requ.getParameter("code");
@@ -59,15 +58,15 @@ public class BidAuctionServlet extends HttpServlet {
 			boolean rightcode = valid.validate(usercode, code);
 
 		}
-		// Angebot speichern und status und code an view übergeben
+		// Angebot speichern und status und code an view ï¿½bergeben
 		if (bi.saveBid(new Long(1234), bid, mail) == true) {
 
 			requ.setAttribute("bidSaved", true);
 			requ.setAttribute("code", code);
 			requ.getRequestDispatcher("/auction.jsp").forward(requ, resp);
 
-			// Fehler beim speichern status zurückliefern und auf seite der
-			// auktion zurückleiten
+			// Fehler beim speichern status zurï¿½ckliefern und auf seite der
+			// auktion zurï¿½ckleiten
 		} else {
 
 			requ.setAttribute("bidSaved", false);
