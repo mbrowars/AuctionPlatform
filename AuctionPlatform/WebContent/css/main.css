@@ -49,6 +49,13 @@ a.listlink, a.listlink:visited, a.listlink:active, a.listlink:hover {
     outline: none;
 }
 
+#listings {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
 .listing {
 	height:350px;
 	width:300px;
