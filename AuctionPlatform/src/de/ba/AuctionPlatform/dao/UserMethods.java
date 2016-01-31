@@ -1,6 +1,7 @@
 package de.ba.AuctionPlatform.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -13,13 +14,11 @@ import org.junit.Test;
 
 import de.ba.AuctionPlatform.dao.User;
 
-public class TestUser {
-	
+public class UserMethods {
+
 	private static SessionFactory factory;
 	private static ServiceRegistry serviceRegistry;
 	
-	
-	@Test
 	public Long addUser(Long userid, String email, String code, String ip) {
 		Session session = factory.openSession();
 		Transaction tx = null;
@@ -38,8 +37,30 @@ public class TestUser {
 		return useridSaved;
 	}
 	
-	@Test
-	@SuppressWarnings("unchecked")
+	public void removeUser(Long userid) {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		
+		try {
+			tx = session.beginTransaction();
+			
+												//hier überall noch Methoden einfügen, grad zu doof und zu müde dazu
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+		} finally {
+			session.close();
+		}
+	}
+	
+	public void alterEmail(Long userid) {
+		
+	}
+	
+	public void alterIp() {
+		
+	}
+	
 	public List getAllUsers() {
 		Session session = factory.openSession();
 		Transaction tx = null;
