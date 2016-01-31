@@ -12,7 +12,7 @@ Arraylist mit den Auktionen
 		href="${pageContext.request.contextPath}/css/main.css" type="text/css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
 	<script src="js/controller.js" ></script>
 	<script src="js/index.js"></script>
 	<title>My inheritance</title>
@@ -49,7 +49,7 @@ Arraylist mit den Auktionen
 	<div id="sep"></div>
 	<div id="listings">
 		<div class="listing" ng-repeat="auction in auctions | filter: query | filter: lessThan('price', (price) || maxPrice) | orderBy:sort"">
-			<p class="title">{{auction.name}}</p>
+			<p class="title">{{ auction.name | limitTo:16}}{{auction.name.length > 16 ? '&hellip;' : ''}}</p>
 			<a class="listlink"
 				href="${pageContext.request.contextPath}/auction.jsp"><div
 					id="placeholder"></div></a>
