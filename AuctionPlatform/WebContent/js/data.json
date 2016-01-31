@@ -1,10 +1,13 @@
 [{
-	"name": "Auction 1",
+	"name": "abcdefghijklmnopqrs",
 	"price": 32
 }, {
-	"name": "Auction 2",
+	"name": "Drecksack",
 	"price": 17
 }, {
-	"name": "Auction 3",
+	"name": "Ne Wolfpfote",
+	"price": 50.75
+}, {
+	"name": "Fuchsfell",
 	"price": 3
 }]

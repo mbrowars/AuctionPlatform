@@ -57,13 +57,17 @@ a.listlink, a.listlink:visited, a.listlink:active, a.listlink:hover {
 }
 
 .listing {
-	height:350px;
+	height:360px;
 	width:300px;
 	border:3px outset #888;
 	border-radius:10px;
 	text-align:center;
-	margin:15px;
+	margin:15px 15px 65px 15px;
 	transition:margin-top 0.2s;
+}
+
+#price {
+	width: 50%;
 }
 
 .listing:hover{
