@@ -56,41 +56,31 @@ public class BidAuctionServlet extends HttpServlet {
 
 					em.send(mail, "Auktionsbestaetigung fuer Artikel (plus id)",
 							"Bitte geben Sie diesen Code auf der Website ein: " + code);
-					requ.setAttribute("error", "NULL");
+					resp.getWriter().write("null");
 
 				} catch (MessagingException e) {
 
 					// TODO Auto-generated catch block
-					requ.setAttribute("error", "Fehler bei Emailuebertragung");
+					resp.getWriter().write("Fehler bei Emailübertragung");
 					e.printStackTrace();
 				}
 			}
-
-			/*
-			 * while (usercode == null) { usercode = requ.getParameter("code");
-			 * } boolean rightcode = valid.validate(usercode, code);
-			 */ // auskommentiert weil KOT
 
 		}
 		if (requ.getParameter("code") != null) {
 			String usercode = requ.getParameter("code");
 
 			boolean rightcode = valid.validate(usercode, code);
-
-			// Angebot speichern und status und code an view uebergeben
-			if (bi.saveBid(new Long(1234), bid, mail) == true) {
-
-				requ.setAttribute("bidSaved", true);
-				requ.setAttribute("code", code);
-				requ.getRequestDispatcher("/auction.jsp").forward(requ, resp);
-
-				// Fehler beim speichern status zur�ckliefern und auf seite
-				// der
-				// auktion zur�ckleiten
+			
+			if (rightcode) {
+				// Angebot speichern und status und code an view uebergeben
+				if (bi.saveBid(new Long(1234), bid, mail) == true) {
+					resp.getWriter().write("null");
+				} else {
+					resp.getWriter().write("Gebot konnte nicht gespeichert werden!");
+				}
 			} else {
-
-				requ.setAttribute("bidSaved", false);
-				requ.getRequestDispatcher("/auction.jsp").forward(requ, resp);
+				resp.getWriter().write("Falscher Code wurde eingegeben!");
 			}
 
 		}
