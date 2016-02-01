@@ -6,12 +6,19 @@
  */
 package de.ba.AuctionPlatform.codegen;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
+import de.ba.AuctionPlatform.controller.CreateAuctionServlet;
+
 /**
  * 
  * @author Matthias Browarski
  *
  */
 public class Codevalidator {
+
+	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
 
 	// Überprüfung des Übergeben Codes (mit Email oder zugeordnet)
 	/**
@@ -26,15 +33,12 @@ public class Codevalidator {
 		String db = null;
 
 		if (code == Integer.parseInt(sec)) {
-			// AuctionLogger.log.info( "Codevalidator "+email+" code validated"
-			// );
-			System.out.println("code validated");
+
+			logger.log(Level.INFO, "code validated");
+
 			return true;
 		} else {
-			// AuctionLogger.log.warning( "Codevalidator "+email+" ERROR: WRONG
-			// CODE" );
-			System.out.println("Error: wrong code");
-			// Systemausgabe in Datei loggen
+			logger.log(Level.WARN, "Wrong Code");
 			return false;
 		}
 	}

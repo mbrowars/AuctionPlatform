@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
 import de.ba.AuctionPlatform.dao.Auction;
 
 /**
@@ -17,7 +20,7 @@ public class CreateAuctionServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = -1865643688426963594L;
-
+	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
 	/**
 	 * 
 	 */
@@ -31,6 +34,7 @@ public class CreateAuctionServlet extends HttpServlet {
 		auc.setEnddatum(requ.getParameter("end"));
 		String gebot = requ.getParameter("bid");
 		auc.setGebot(Double.parseDouble(gebot));
+		logger.log(Level.INFO, auc+ " Wurde angelegt.");
 		// TODO save Auction in db
 		requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
 

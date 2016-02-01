@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
 import de.ba.AuctionPlatform.codegen.Codegenerator;
 import de.ba.AuctionPlatform.codegen.Codevalidator;
 import de.ba.AuctionPlatform.dao.Admin;
@@ -24,6 +27,7 @@ public class BidAuctionServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = -8982518104080193013L;
+	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
 	private int code = 0;
 	private Double bid;
 	private String mail;
@@ -70,7 +74,7 @@ public class BidAuctionServlet extends HttpServlet {
 		}
 		if (requ.getParameter("code") != null) {
 			String usercode = requ.getParameter("code");
-			
+
 			boolean rightcode = valid.validate(usercode, code);
 
 			// Angebot speichern und status und code an view uebergeben
