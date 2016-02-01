@@ -10,4 +10,10 @@
 }, {
 	"name": "Fuchsfell",
 	"price": 3
+},{
+	"name":	"Sklave",
+	"price":	56
+	},{
+	"name":	"Eifon",
+	"price": 500
 }]
