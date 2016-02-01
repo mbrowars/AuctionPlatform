@@ -72,7 +72,7 @@ Name, Gebot und Ende der ausgewählten Auktion
 	        <p>
 	        	<!-- mail -> E-Mail zu der der Code gesendet werden soll -->
 		        <label>E-Mail</label>
-		        <input placeholder="E-Mail Adresse" id="mail">
+		        <input type="email" placeholder="E-Mail Adresse" id="mail">
 		        <button id="sendCode" class="ourButton">Senden</button>
 	        </p>
 	      </div>
