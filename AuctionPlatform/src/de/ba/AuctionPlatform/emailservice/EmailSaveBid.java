@@ -1,7 +1,7 @@
 /**
  *  SE-PROJEKT_AuctionPlatform
  * 
- *  team:	Markus Fröhlich, Max Göppert, Matthias Browarski
+ *  team:	Markus Frï¿½hlich, Max Gï¿½ppert, Matthias Browarski
  *
  */
 package de.ba.AuctionPlatform.emailservice;
@@ -60,7 +60,7 @@ public class EmailSaveBid {
 
 			Message msg = new MimeMessage(session);
 			msg.setFrom(new InternetAddress("kauft-mein-erbe@gmx.de"));
-			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse("kauft-mein-erbe@gmx.de", false));
+			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient, false));
 			msg.setSubject(subject);
 			msg.setText(text);
 			msg.setHeader("Test", "Test");

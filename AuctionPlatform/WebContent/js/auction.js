@@ -53,6 +53,4 @@ $('body').on('click','#testCode',function(){
 		    $(".modal-body p").html("<span style='color: red;'>Fehler: Gebot kann derzeit nicht valididert werden.</span>");
 		  }
 	});
-	
-	$("#bid").val("");
 });
