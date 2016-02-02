@@ -1,5 +1,6 @@
 package de.ba.AuctionPlatform.dao;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,22 +13,21 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.junit.Test;
 
-import de.ba.AuctionPlatform.dao.User;
+import de.ba.AuctionPlatform.dao.Auction;
 
-public class UserMethods {
-
+public class AuctionMethods {
 	private static SessionFactory factory;
 	private static ServiceRegistry serviceRegistry;
 	
-	/*User anlegen*/
-	public Long addUser(Long userid, String email, String code, String ip) {
+	/*Auktion anlegen*/
+	public Long addAuction(Long auctionid, String titel, Double gebot, String enddatum, String beschreibung, Long hoechstbietenderid, Blob picture) {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		Long useridSaved = null;
+		Long auctionidSaved = null;
 		try {
 			tx = session.beginTransaction();
-			User user = new User(userid, email, code, ip);
-			useridSaved = (Long) session.save(user);
+			Auction auction = new Auction(auctionid, titel, gebot, enddatum, beschreibung, hoechstbietenderid, picture);
+			auctionidSaved = (Long) session.save(user);
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
@@ -38,14 +38,14 @@ public class UserMethods {
 		return useridSaved;
 	}
 	
-	/* User löschen */
-	public void removeUser(User user) {
+	/* Auktion löschen */
+	public void removeAuction(Auction auction) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		
 		try {
 			tx = session.beginTransaction();
-			session.delete(user);
+			session.delete(auction);
 			tx.commit();
 												
 		} catch (HibernateException e) {
@@ -56,14 +56,14 @@ public class UserMethods {
 		}
 	}
 	
-	/*User ändern*/
-	public void updateUser(User user) {
+	/*Auktion ändern*/
+	public void updateAuction(Auction auction) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		
 		try {
 			tx = session.beginTransaction();
-			session.update(user);
+			session.update(auction);
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
@@ -72,14 +72,13 @@ public class UserMethods {
 		}
 	}
 	
-	/*alle User aufzählen*/
-	public List getAllUsers() {
+	public List getAllAuctions() {
 		Session session = factory.openSession();
 		Transaction tx = null;
-		List users = new ArrayList();
+		List auctions = new ArrayList();
 		try {
 			tx = session.beginTransaction();
-			users = (List)session.createQuery("FROM User").list();
+			auctions = (List)session.createQuery("FROM Auction").list();
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
@@ -88,6 +87,6 @@ public class UserMethods {
 		} finally {
 			session.close();
 		}
-		return users;
+		return auctions;
 	}
 }
