@@ -16,4 +16,13 @@
 },{
 	"name":	"Eifon",
 	"price": 500
+	}, {
+	"name": "Grashalm",
+	"price": 200
+	}, {
+	"name": "skinpack",
+	"price": 500
+	}, {
+	"name": "Nichts",
+	"price": 3
 }]
