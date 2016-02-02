@@ -19,10 +19,11 @@ public class Auction {
 	Blob picture;
 
 	public Auction() {
-		
+
 	}
-	
-	public Auction(Long auctionid, String titel, Double gebot, String enddatum, String beschreibung, Long hoechstbietenderid, Blob picture) {
+
+	public Auction(Long auctionid, String titel, Double gebot, String enddatum, String beschreibung,
+			Long hoechstbietenderid, Blob picture) {
 		this.auctionid = auctionid;
 		this.titel = titel;
 		this.gebot = gebot;
@@ -31,8 +32,8 @@ public class Auction {
 		this.hoechstbietenderid = hoechstbietenderid;
 		this.picture = picture;
 	}
-	
-	public Long getId(Long id) {
+
+	public Long getId() {
 		return auctionid;
 	}
 
@@ -79,13 +80,13 @@ public class Auction {
 	public void setHoechstbietenderid(Long hoechstbietenderid) {
 		this.hoechstbietenderid = hoechstbietenderid;
 	}
-	
+
 	public Blob getPicture() {
 		return picture;
 	}
-	
+
 	public void setPicture(Blob picture) {
 		this.picture = picture;
 	}
-	
+
 }

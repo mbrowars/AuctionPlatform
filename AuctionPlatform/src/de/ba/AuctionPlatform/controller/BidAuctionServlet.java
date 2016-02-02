@@ -61,7 +61,7 @@ public class BidAuctionServlet extends HttpServlet {
 				} catch (MessagingException e) {
 
 					// TODO Auto-generated catch block
-					resp.getWriter().write("Fehler bei Emailübertragung");
+					resp.getWriter().write("Fehler bei Emailuebertragung");
 					e.printStackTrace();
 				}
 			}

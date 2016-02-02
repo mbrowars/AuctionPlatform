@@ -6,7 +6,6 @@
  */
 package de.ba.AuctionPlatform.dbmock;
 
-
 /**
  * 
  * @author Matthias Browarski
@@ -35,8 +34,8 @@ public class UserMock {
 		this.email = email;
 	}
 
-	public String getCode() {
-		return "1024";
+	public Long getCode() {
+		return new Long(1024);
 	}
 
 	public void setCode(String code) {

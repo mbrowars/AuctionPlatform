@@ -21,6 +21,7 @@ public class CreateAuctionServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -1865643688426963594L;
 	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
+
 	/**
 	 * 
 	 */
@@ -34,7 +35,7 @@ public class CreateAuctionServlet extends HttpServlet {
 		auc.setEnddatum(requ.getParameter("end"));
 		String gebot = requ.getParameter("bid");
 		auc.setGebot(Double.parseDouble(gebot));
-		logger.log(Level.INFO, auc+ " Wurde angelegt.");
+		logger.log(Level.INFO, "Auktion :" + auc.getId() + "," + auc.getTitel() + " Wurde angelegt.");
 		// TODO save Auction in db
 		requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
 
