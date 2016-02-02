@@ -8,23 +8,19 @@ Arraylist mit den Auktionen
 <html ng-app="auctionApp">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet"
-		href="${pageContext.request.contextPath}/css/main.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/range.css" type="text/css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
 	<script src="js/controller.js" ></script>
-	<script src="js/index.js"></script>
 	<title>My inheritance</title>
 </head>
 <body ng-controller="auctionCtrl">
 	<ul id="nav">
-		<a class="navlink" href="index.jsp"><li id="logo"><img
-				src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
-		<a class="navlink" href="index.jsp"><li id="slog">Buy my
-				gramp's stuff</li></a>
-		<a class="navlink" href="listing.jsp"><li id="login">+Neue
-				Auktion</li></a>
+		<a class="navlink" href="index.jsp"><li id="logo"><img src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
+		<a class="navlink" href="index.jsp"><li id="slog">Buy my gramp's stuff</li></a>
+		<a class="navlink" href="listing.jsp"><li id="login">+Neue Auktion</li></a>
 	</ul>
 
 
@@ -34,10 +30,10 @@ Arraylist mit den Auktionen
 				 sort  -> Sortierung für die ResultList
 			 -->
 			
-			<input placeholder="Suche" ng-model="query">
-			<input type="range" min="1" max="{{maxPrice}}" value="{{maxPrice}}" id="price" ng-model="price" />
-			<span>{{(price) || maxPrice}}€</span>
-			<select id="sort" ng-model="sort">
+			<input class="ourText" placeholder="Suche" ng-model="query">
+			<input type="range" min="1" max="{{maxPrice}}" value="{{maxPrice}}" id="price" ng-model="price" oninput="updateRangeVal(this);"/>
+			<div id="rangeVal">{{(price) || maxPrice}}€</div>
+			<select id="sort" class="ourSelect" ng-model="sort">
 				<option value="">Sortierung</option>
 				<option value="price">Preis</option>
 				<option value="age">Datum</option>
