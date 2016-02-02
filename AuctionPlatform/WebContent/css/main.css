@@ -1,6 +1,7 @@
 body {
 	padding:0; 
 	margin:0;
+	min-width: 768px;
 }
 
 ul#nav {
@@ -46,6 +47,14 @@ span {
 	position: absolute;
 	left: 53%;
 	top: 117px;
+}
+
+@media all and (max-width: 768px) {
+    #rangeVal {
+		position: absolute;
+		left: 407px;
+		top: 117px;
+	}
 }
 
 a.navlink, a.navlink:visited, a.navlink:active, a.navlink:hover {
@@ -130,7 +139,8 @@ a.listlink, a.listlink:visited, a.listlink:active, a.listlink:hover {
 	margin-bottom:30px;
 	display:block;
 	background-color: #333;
-	height:5px;	
+	height:5px;
+	min-width: 800px;
 }
 
 #actionbar {
