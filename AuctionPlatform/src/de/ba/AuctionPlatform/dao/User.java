@@ -7,7 +7,7 @@
 package de.ba.AuctionPlatform.dao;
 
 public class User {
-	Long userid;
+	int userid;
 	String email;
 	String code;
 	String ip;
@@ -16,18 +16,18 @@ public class User {
 		
 	}
 	
-	public User(Long userid, String email, String code, String ip) {
+	public User(int userid, String email, String code, String ip) {
 		this.userid = userid;
 		this.email = email;
 		this.code = code;
 		this.ip = ip;
 	}
 	
-	public Long getId() {
+	public int getId() {
 		return userid;
 	}
 
-	public void setId(Long userid) {
+	public void setId(int userid) {
 		this.userid = userid;
 	}
 
