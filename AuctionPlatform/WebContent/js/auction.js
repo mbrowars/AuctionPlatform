@@ -1,5 +1,7 @@
 $(function() {
 	$("#sendCode").click(function(){
+		
+		if (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test($("#mail").val())) {
 
 		$.ajax({
 			  type: "POST",
@@ -23,11 +25,20 @@ $(function() {
 				$(".modal-body span").html("<span style='color: red;'> E-Mail Service ist fehlerhaft!</span>");
 			  }
 			}); //ajax end
+		} else {
+			$(".modal-body span").html("<span style='color: red;'>Bitte eine valide E-Mail Adresse eingeben!</span>");
+		}
 	}); //click end
 	
 	$("#showModal").click(function(){
-		$("span#bidtext").html($("#bid").val() + "€");
-		$("#BidModal").modal("show");
+		var zahl = parseFloat($("#bid").val());
+		if( !isNaN(zahl) ) {
+			$('#bid').val(zahl);
+			$("span#bidtext").html($("#bid").val() + "€");
+			$("#BidModal").modal("show");
+		} else {
+			$('#bid').css('border', '1px solid red');
+		}
 	});
 	
 }); //load ready end
