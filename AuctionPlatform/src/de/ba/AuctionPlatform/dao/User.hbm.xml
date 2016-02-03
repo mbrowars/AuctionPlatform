@@ -6,15 +6,15 @@
     <class name="de.ba.AuctionPlatform.dao.User" table="USER">
         <id name="userid" type="java.lang.Long" access="field">
             <column name="USERID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
-        <property name="email" type="java.lang.String">
+        <property name="email" type="text">
             <column name="EMAIL" />
         </property>
-        <property name="code" type="java.lang.String">
+        <property name="code" type="long">
             <column name="CODE" />
         </property>
-        <property name="ip" type="java.lang.String">
+        <property name="ip" type="text">
             <column name="IP" />
         </property>
     </class>
