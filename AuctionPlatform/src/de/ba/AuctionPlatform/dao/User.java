@@ -12,10 +12,19 @@ public class User {
 	String code;
 	String ip;
 
+	/**
+	 * 
+	 */
 	public User() {
 		
 	}
 	
+	/**
+	 * @param userid
+	 * @param email
+	 * @param code
+	 * @param ip
+	 */
 	public User(int userid, String email, String code, String ip) {
 		this.userid = userid;
 		this.email = email;
