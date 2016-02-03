@@ -18,7 +18,7 @@ public class UserDaoTest {
 	
 	@Test
 	public void addUser() {
-		UserMethods.addUser(1, "max.mustermann@muster.de", "1337", "192.168.0.4");
+		UserMethods.addUser(1, "max.mustermann@muster.de", (long) 1337, "192.168.0.4");
 	}
 	
 	@Test
