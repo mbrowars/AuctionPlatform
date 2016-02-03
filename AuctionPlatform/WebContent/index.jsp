@@ -48,7 +48,7 @@ Arraylist mit den Auktionen
 						<span>Sortierung</span>
 						<ul class="dropdown">
 							<li><a href="#">price</a></li>
-							<li><a href="#">date</a></li>
+							<li><a href="#">age</a></li>
 							<li><a href="#">name</a></li>
 						</ul>
 					</div>

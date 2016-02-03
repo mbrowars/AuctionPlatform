@@ -18,7 +18,8 @@ DropDown.prototype = {
 		obj.opts.on('click',function(){
 			var opt = $(this);
 			obj.val = opt.text();
-			document.getElementById('sort').value = opt.text();
+			angular.element(document.getElementById('sort')).val(opt.text());
+			angular.element(document.getElementById('sort')).triggerHandler('change');;
 			obj.index = opt.index();
 			obj.placeholder.text(obj.val);
 		});
