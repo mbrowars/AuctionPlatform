@@ -4,6 +4,10 @@ body {
 	min-width: 768px;
 }
 
+select {
+	display: none;
+}
+
 ul#nav {
 	list-style-type: none;
     margin: 0;
@@ -22,6 +26,8 @@ span {
 
 .ourText {
   display: inline-block;
+  height: 30px;
+  width: 200px;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
@@ -29,7 +35,7 @@ span {
   border: 2px solid #333;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  font: normal 16px/normal Arial Black, Gadget, sans-serif;
+  font: normal 20px/normal Arial Black, Gadget, sans-serif;
   color: rgba(0,0,0,1);
   -o-text-overflow: clip;
   text-overflow: clip;
