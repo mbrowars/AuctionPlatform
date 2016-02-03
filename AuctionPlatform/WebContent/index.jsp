@@ -16,11 +16,12 @@ Arraylist mit den Auktionen
 	<script src="js/controller.js" ></script>
 	<title>My inheritance</title>
 </head>
+<%-- session.invalidate(); --%>
 <body ng-controller="auctionCtrl">
 	<ul id="nav">
 		<a class="navlink" href="index.jsp"><li id="logo"><img src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
 		<a class="navlink" href="index.jsp"><li id="slog">Buy my gramp's stuff</li></a>
-		<a class="navlink" href="listing.jsp"><li id="login">+Neue Auktion</li></a>
+		<% if( session.getAttribute("admin") != null) { %><a class="navlink" href="listing.jsp"><li id="login">+Neue Auktion</li></a><% } %>
 	</ul>
 
 
@@ -32,7 +33,7 @@ Arraylist mit den Auktionen
 			
 			<input class="ourText" placeholder="Suche" ng-model="query">
 			<input type="range" min="1" max="{{maxPrice}}" value="{{maxPrice}}" id="price" ng-model="price" oninput="updateRangeVal(this);"/>
-			<div id="rangeVal">{{(price) || maxPrice}}€</div>
+			<div id="rangeVal">{{(price) || 52}}€</div>
 			<select id="sort" class="ourSelect" ng-model="sort">
 				<option value="">Sortierung</option>
 				<option value="price">Preis</option>
@@ -52,8 +53,10 @@ Arraylist mit den Auktionen
 			<p class="price">
 				Currently at <span>{{auction.price}}€</span>
 			</p>
+			<% if( session.getAttribute("admin") != null) { %>
 				<button class="ourButton">Ändern</button>
 				<button class="ourButton">Löschen</button>
+			<% } %>
 		</div>
 	</div>
 
