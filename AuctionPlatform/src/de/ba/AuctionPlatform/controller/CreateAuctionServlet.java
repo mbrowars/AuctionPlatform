@@ -1,6 +1,9 @@
 package de.ba.AuctionPlatform.controller;
 
 import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +33,16 @@ public class CreateAuctionServlet extends HttpServlet {
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
 
 		Auction auc = new Auction();
+		Blob blob = null;
+		try {
+			blob.getBinaryStream(new Long(requ.getParameter("picture")), 10);
+		} catch (NumberFormatException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		auc.setPicture(blob);
+		logger.log(Level.INFO, auc.getPicture());
 		auc.setTitel(requ.getParameter("title"));
 		auc.setBeschreibung(requ.getParameter("desc"));
 		auc.setEnddatum(requ.getParameter("end"));
