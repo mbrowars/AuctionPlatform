@@ -30,8 +30,10 @@ public class AdminServlet extends HttpServlet {
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
 		AdminHandler ad = new AdminHandler();
 		Admin admin = new Admin();
+
 		admin.setUsername(requ.getParameter("username"));
 		admin.setPassword(requ.getParameter("password"));
+
 		HttpSession session = requ.getSession(true);
 		if (ad.validUser(admin.getUsername(), admin.getPassword()) == true) {
 			session.setAttribute("admin", admin);

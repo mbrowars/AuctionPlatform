@@ -69,7 +69,9 @@ public class BidAuctionServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
-
+			else{
+				resp.getWriter().write("Biete mehr als den aktuellen Preis");
+			}
 		}
 		if (requ.getParameter("code") != null) {
 			String usercode = requ.getParameter("code");
