@@ -5,10 +5,12 @@ import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 
+import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import org.apache.log4j.Level;
@@ -33,32 +35,41 @@ public class CreateAuctionServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = requ.getSession(true);
 
-		Auction auc = new Auction();
-		Part filePart = requ.getPart("file");
-		String fileName = filePart.getSubmittedFileName();
-		InputStream fileContent = filePart.getInputStream();
-		System.out.println(filePart);
-		Blob blob = null;
-		try {
-			blob.getBinaryStream(new Long(requ.getParameter("picture")), 10);
-		} catch (NumberFormatException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (session.getAttribute("admin") != null) {
+
+			Auction auc = new Auction();
+
+			// Bild in Datenbank speichern. *Fehlerhaft (und gerade kein bock
+			// weiter zu machen :D)
+			
+			Blob blob = null;
+			try {
+				blob.getBinaryStream(new Long(requ.getParameter("picture")), 10);
+			} catch (NumberFormatException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			//"ausgabe" bild  
+			System.out.println(requ.getParameter("picture").getBytes());
+			
+			auc.setPicture(blob);
+			logger.log(Level.INFO, auc.getPicture());
+			auc.setTitel(requ.getParameter("title"));
+			auc.setBeschreibung(requ.getParameter("desc"));
+			auc.setEnddatum(requ.getParameter("end"));
+			String gebot = requ.getParameter("bid");
+			auc.setGebot(Double.parseDouble(gebot));
+			logger.log(Level.INFO, "Auktion :" + auc.getId() + "," + auc.getTitel() + " Wurde angelegt.");
+			// TODO save Auction in db
+			requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
+
 		}
 
-		System.out.println(requ.getParameter("picture").getBytes());
-		auc.setPicture(blob);
-		logger.log(Level.INFO, auc.getPicture());
-		auc.setTitel(requ.getParameter("title"));
-		auc.setBeschreibung(requ.getParameter("desc"));
-		auc.setEnddatum(requ.getParameter("end"));
-		String gebot = requ.getParameter("bid");
-		auc.setGebot(Double.parseDouble(gebot));
-		logger.log(Level.INFO, "Auktion :" + auc.getId() + "," + auc.getTitel() + " Wurde angelegt.");
-		// TODO save Auction in db
-		requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
-
+		else {
+			requ.getRequestDispatcher("/error.jsp").forward(requ, resp);
+		}
 	}
 
 	public void doPost(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {

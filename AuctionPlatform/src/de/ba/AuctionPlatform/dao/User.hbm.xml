@@ -8,7 +8,7 @@
             <column name="USERID" />
             <generator class="increment" />
         </id>
-        <property name="email" type="text">
+        <property name="email" type="text" not-null="true">
             <column name="EMAIL" />
         </property>
         <property name="code" type="long">

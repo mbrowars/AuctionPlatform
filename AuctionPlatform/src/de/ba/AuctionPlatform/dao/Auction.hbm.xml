@@ -8,13 +8,13 @@
 			<column name="AUCTIONID" />
 			<generator class="increment" />
 		</id>
-		<property name="titel" type="text">
+		<property name="titel" type="text" not-null="true">
 			<column name="TITEL" />
 		</property>
-		<property name="gebot" type="double">
+		<property name="gebot" type="double" not-null="true">
 			<column name="GEBOT" />
 		</property>
-		<property name="enddatum" type="text">
+		<property name="enddatum" type="text" not-null="true">
 			<column name="ENDDATUM" />
 		</property>
 		<property name="beschreibung" type="text">

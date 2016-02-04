@@ -11,6 +11,12 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 /**
  * 
  * @author Matthias Browarski
@@ -19,10 +25,21 @@ import javax.servlet.http.*;
 
 public class AuctionPlatformServlet extends HttpServlet {
 	static final long serialVersionUID = 1L;
+	private static SessionFactory factory;
+	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
 
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
+		try {
 
+			logger.log(Level.INFO, "Initializing Hibernate");
+			factory = new Configuration().configure().buildSessionFactory();
+			logger.log(Level.INFO, "Finished Initializing Hibernate");
+
+		} catch (HibernateException ex) {
+			logger.log(Level.INFO, ex);
+			System.exit(5);
+		}
 		requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
 
 	}
