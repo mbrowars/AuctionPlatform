@@ -26,7 +26,7 @@
 		id -> AuktionsID (leer wenn neue Auktion, enthält ID wenn 
 							vorhandene Auktion bearbeitet wird)
 	 -->
-	
+	<% if( session.getAttribute("admin") != null) { %>
 	<div class="container">
 		<form action="createAuction" method="post">
 			<input type="file" name="picture" />
@@ -40,6 +40,8 @@
 	</div>
 	
 	<script src="${pageContext.request.contextPath}/js/custom-file-input.js"></script>
-	
+	<% } else { %>
+	<p style="margin-top: 30px; text-align: center; color: red; font: 28px 'Arial-Black';">Sie sind nicht berechtigt diese Seite anzuzeigen!</p>
+	<% } %>
 </body>
 </html>

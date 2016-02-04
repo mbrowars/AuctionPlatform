@@ -1,6 +1,11 @@
 body {
 	padding:0; 
 	margin:0;
+	min-width: 768px;
+}
+
+select {
+	display: none;
 }
 
 ul#nav {
@@ -21,6 +26,8 @@ span {
 
 .ourText {
   display: inline-block;
+  height: 30px;
+  width: 200px;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
@@ -28,7 +35,7 @@ span {
   border: 2px solid #333;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  font: normal 16px/normal Arial Black, Gadget, sans-serif;
+  font: normal 20px/normal Arial Black, Gadget, sans-serif;
   color: rgba(0,0,0,1);
   -o-text-overflow: clip;
   text-overflow: clip;
@@ -46,6 +53,14 @@ span {
 	position: absolute;
 	left: 53%;
 	top: 117px;
+}
+
+@media all and (max-width: 768px) {
+    #rangeVal {
+		position: absolute;
+		left: 407px;
+		top: 117px;
+	}
 }
 
 a.navlink, a.navlink:visited, a.navlink:active, a.navlink:hover {
@@ -79,7 +94,7 @@ a.listlink, a.listlink:visited, a.listlink:active, a.listlink:hover {
 	border:3px outset #888;
 	border-radius:10px;
 	text-align:center;
-	margin:15px 15px 65px 15px;
+	margin:15px 15px 42px 15px;
 	transition:margin-top 0.2s;
 }
 
@@ -130,7 +145,8 @@ a.listlink, a.listlink:visited, a.listlink:active, a.listlink:hover {
 	margin-bottom:30px;
 	display:block;
 	background-color: #333;
-	height:5px;	
+	height:5px;
+	min-width: 800px;
 }
 
 #actionbar {

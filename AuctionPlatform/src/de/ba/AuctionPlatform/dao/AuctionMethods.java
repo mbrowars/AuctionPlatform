@@ -103,7 +103,7 @@ public class AuctionMethods {
 	/**
 	 * @return
 	 */
-	public List getAllAuctions() {
+	public static List getAllAuctions() {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		List auctions = new ArrayList();
