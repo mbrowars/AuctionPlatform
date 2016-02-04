@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
                                          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
-
 <hibernate-configuration>
-
-	<session-factory name="">
-		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.password">User</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306</property>
-		<property name="hibernate.connection.username">User</property>
-		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-		<mapping class="de.ba.AuctionPlatform.dao.Auction" file="de.ba.AuctionPlatform.dao.Auction"
-			package="de.ba.AuctionPlatform.dao" resource="de/ba/AuctionPlatform/dao/Auction.hbm.xml" />
-		<mapping class="de.ba.AuctionPlatform.dao.User" resource="de/ba/AuctionPlatform/dao/User.hbm.xml" />
-		<mapping class="de.ba.AuctionPlatform.dao.UserAuctionDao"
-			resource="de/ba/AuctionPlatform/dao/UserAuctionDao.hbm.xml" />
-			
-	</session-factory>
-
+ <session-factory name="HibernateSessionFactory">
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306</property>
+  <property name="hibernate.connection.username">User</property>
+  <property name="hibernate.connection.password">User</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <mapping resource="de/ba/AuctionPlatform/dao/Auction.hbm.xml"/>
+  <mapping resource="de/ba/AuctionPlatform/dao/User.hbm.xml"/>
+ </session-factory>
 </hibernate-configuration>
