@@ -22,7 +22,7 @@ import de.ba.AuctionPlatform.dao.User;
  * @author
  *
  */
-public class UserMethods {
+public class UserDAO {
 
 	private static SessionFactory factory;
 	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);

@@ -19,7 +19,7 @@ import org.junit.Test;
 import de.ba.AuctionPlatform.controller.CreateAuctionServlet;
 import de.ba.AuctionPlatform.dao.Auction;
 
-public class AuctionMethods {
+public class AuctionDAO {
 	private static SessionFactory factory;
 	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
 

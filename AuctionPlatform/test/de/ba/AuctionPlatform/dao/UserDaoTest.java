@@ -11,7 +11,7 @@ import java.util.List;
 import org.junit.Test;
 
 import de.ba.AuctionPlatform.dao.User;
-import de.ba.AuctionPlatform.dao.UserMethods;
+import de.ba.AuctionPlatform.dao.UserDAO;
 
 public class UserDaoTest {
 	// TODO Testfall erstellen
@@ -19,12 +19,12 @@ public class UserDaoTest {
 	@Test
 	public void addUser() {
 
-		UserMethods.addUser(1, "max.mustermann@muster.de", new Long(59129301), "192.168.0.4");
+		UserDAO.addUser(1, "max.mustermann@muster.de", new Long(59129301), "192.168.0.4");
 
 	}
 
 	@Test
 	public void getAllUsers() {
-		UserMethods.getAllUsers();
+		UserDAO.getAllUsers();
 	}
 }
