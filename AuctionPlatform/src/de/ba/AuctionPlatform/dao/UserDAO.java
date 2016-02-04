@@ -24,7 +24,6 @@ import de.ba.AuctionPlatform.dao.User;
  */
 public class UserDAO {
 
-	private static SessionFactory factory;
 	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
 
 	/**
@@ -36,7 +35,7 @@ public class UserDAO {
 	 */
 	/* User anlegen */
 	public static long addUser(int userid, String email, Long code, String ip) {
-		Session session = factory.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
@@ -60,7 +59,7 @@ public class UserDAO {
 	 * @param user
 	 */
 	public void removeUser(User user) {
-		Session session = factory.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
@@ -83,7 +82,7 @@ public class UserDAO {
 	 * @param user
 	 */
 	public void updateUser(User user) {
-		Session session = factory.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
@@ -105,7 +104,7 @@ public class UserDAO {
 	 * @return
 	 */
 	public static List getAllUsers() {
-		Session session = factory.openSession();
+		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction tx = null;
 		List users = new ArrayList();
 		try {

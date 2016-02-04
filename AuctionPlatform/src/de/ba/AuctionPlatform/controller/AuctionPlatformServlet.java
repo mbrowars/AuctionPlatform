@@ -17,6 +17,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import de.ba.AuctionPlatform.dao.HibernateUtil;
+
 /**
  * 
  * @author Matthias Browarski
@@ -30,11 +32,11 @@ public class AuctionPlatformServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
+
 		try {
 
+			HibernateUtil hibernate = new HibernateUtil();
 			logger.log(Level.INFO, "Initializing Hibernate");
-			factory = new Configuration().configure().buildSessionFactory();
-			logger.log(Level.INFO, "Finished Initializing Hibernate");
 
 		} catch (HibernateException ex) {
 			logger.log(Level.INFO, ex);
