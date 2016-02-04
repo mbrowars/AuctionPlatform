@@ -24,7 +24,7 @@ public class AdminServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1069535271249328988L;
-	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
+	private static final Logger logger = Logger.getLogger(AdminServlet.class);
 
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {

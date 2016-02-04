@@ -27,7 +27,7 @@ public class BidAuctionServlet extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = -8982518104080193013L;
-	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
+	private static final Logger logger = Logger.getLogger(BidAuctionServlet.class);
 	private int code = 0;
 	private Double bid;
 	private String mail;
@@ -48,6 +48,10 @@ public class BidAuctionServlet extends HttpServlet {
 			code = gen.auctionSecurity();
 			System.out.println(code);
 			bid = Double.parseDouble(requ.getParameter("bid"));
+			if(bid<0){
+				resp.getWriter().write("Bitte geben Sie ein positives Gebot ein.");
+				logger.log(Level.WARN, "Negatives Gebot wurde eingetragen.");
+			}
 			mail = requ.getParameter("mail");
 
 			if (bi.checkBid(new Long(1234), bid, mail) == true) {

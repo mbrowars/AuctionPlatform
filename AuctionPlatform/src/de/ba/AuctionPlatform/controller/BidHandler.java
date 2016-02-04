@@ -18,7 +18,7 @@ public class BidHandler {
 	private User us = new User();
 	private UserMock usm = new UserMock();
 	private AuctionMock aucm = new AuctionMock();
-	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
+	private static final Logger logger = Logger.getLogger(BidHandler.class);
 
 	/**
 	 * @param id

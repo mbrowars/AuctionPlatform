@@ -24,7 +24,7 @@ import de.ba.AuctionPlatform.dao.User;
  */
 public class UserDAO {
 
-	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
+	private static final Logger logger = Logger.getLogger(UserDAO.class);
 
 	/**
 	 * @param userid

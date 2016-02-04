@@ -28,7 +28,7 @@ import de.ba.AuctionPlatform.dao.HibernateUtil;
 public class AuctionPlatformServlet extends HttpServlet {
 	static final long serialVersionUID = 1L;
 	private static SessionFactory factory;
-	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
+	private static final Logger logger = Logger.getLogger(AuctionPlatformServlet.class);
 
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {

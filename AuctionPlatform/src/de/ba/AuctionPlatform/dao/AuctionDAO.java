@@ -21,7 +21,7 @@ import de.ba.AuctionPlatform.dao.Auction;
 
 public class AuctionDAO {
 
-	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
+	private static final Logger logger = Logger.getLogger(AuctionDAO.class);
 
 	/* Auktion anlegen */
 

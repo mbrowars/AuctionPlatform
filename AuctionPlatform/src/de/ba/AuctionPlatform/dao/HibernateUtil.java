@@ -14,7 +14,7 @@ import de.ba.AuctionPlatform.controller.CreateAuctionServlet;
 public class HibernateUtil {
 
 	private static final SessionFactory sessionFactory;
-	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
+	private static final Logger logger = Logger.getLogger(HibernateUtil.class);
 
 	static {
 		try {
