@@ -35,7 +35,7 @@ public class UserMethods {
 	 * @return
 	 */
 	/* User anlegen */
-	public static long addUser(int userid, String email, String code, String ip) {
+	public static long addUser(int userid, String email, Long code, String ip) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 
@@ -121,4 +121,5 @@ public class UserMethods {
 		}
 		return users;
 	}
+
 }

@@ -9,29 +9,32 @@ package de.ba.AuctionPlatform.dao;
 public class User {
 	int userid;
 	String email;
-	String code;
+	Long code;
 	String ip;
 
 	/**
+	 * @param ip2
+	 * @param code2
+	 * @param email2
+	 * @param userid2
 	 * 
 	 */
-	public User() {
-		
-	}
-	
+
 	/**
-	 * @param userid
-	 * @param email
 	 * @param code
 	 * @param ip
 	 */
-	public User(int userid, String email, String code, String ip) {
+	public User(int userid, String email, Long code, String ip) {
 		this.userid = userid;
 		this.email = email;
 		this.code = code;
 		this.ip = ip;
 	}
-	
+
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return userid;
 	}
@@ -48,11 +51,11 @@ public class User {
 		this.email = email;
 	}
 
-	public String getCode() {
+	public Long getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(Long code) {
 		this.code = code;
 	}
 

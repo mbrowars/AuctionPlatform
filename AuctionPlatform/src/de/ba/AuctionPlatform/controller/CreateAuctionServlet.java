@@ -1,6 +1,7 @@
 package de.ba.AuctionPlatform.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 
@@ -8,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -33,6 +35,10 @@ public class CreateAuctionServlet extends HttpServlet {
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
 
 		Auction auc = new Auction();
+		Part filePart = requ.getPart("file");
+		String fileName = filePart.getSubmittedFileName();
+		InputStream fileContent = filePart.getInputStream();
+		System.out.println(filePart);
 		Blob blob = null;
 		try {
 			blob.getBinaryStream(new Long(requ.getParameter("picture")), 10);
@@ -41,6 +47,7 @@ public class CreateAuctionServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
+		System.out.println(requ.getParameter("picture").getBytes());
 		auc.setPicture(blob);
 		logger.log(Level.INFO, auc.getPicture());
 		auc.setTitel(requ.getParameter("title"));
