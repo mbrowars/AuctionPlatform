@@ -13,13 +13,14 @@ import de.ba.AuctionPlatform.controller.CreateAuctionServlet;
  */
 public class HibernateUtil {
 
-	private static final SessionFactory sessionFactory;
+	private static final SessionFactory sessionFactory= buildSessionFactory();
 	private static final Logger logger = Logger.getLogger(HibernateUtil.class);
 
-	static {
+private	static SessionFactory buildSessionFactory() {
 		try {
 
-			sessionFactory = new Configuration().configure().buildSessionFactory();
+			return new Configuration().configure().buildSessionFactory();
+			
 		} catch (Throwable ex) {
 
 			logger.log(Level.INFO, "Initial SessionFactory creation failed." + ex);

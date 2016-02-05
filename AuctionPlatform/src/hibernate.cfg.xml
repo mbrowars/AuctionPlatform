@@ -2,12 +2,16 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
                                          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
- <session-factory name="HibernateSessionFactory">
+ <session-factory name="java:hibernate/SessionFactory" >
+ 
+ 
   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
   <property name="hibernate.connection.url">jdbc:mysql://localhost:3306</property>
   <property name="hibernate.connection.username">User</property>
   <property name="hibernate.connection.password">User</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  
+  
   <mapping resource="de/ba/AuctionPlatform/dao/Auction.hbm.xml"/>
   <mapping resource="de/ba/AuctionPlatform/dao/User.hbm.xml"/>
  </session-factory>
