@@ -21,10 +21,11 @@ private	static SessionFactory buildSessionFactory() {
 
 			return new Configuration().configure().buildSessionFactory();
 			
-		} catch (Throwable ex) {
+		} catch (Exception e) {
 
-			logger.log(Level.INFO, "Initial SessionFactory creation failed." + ex);
-			throw new ExceptionInInitializerError(ex);
+			logger.log(Level.INFO, "Initial SessionFactory creation failed." + e);
+			e.getStackTrace();
+			throw new ExceptionInInitializerError(e);
 		}
 	}
 
