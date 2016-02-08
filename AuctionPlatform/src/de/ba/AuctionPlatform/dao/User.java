@@ -7,10 +7,10 @@
 package de.ba.AuctionPlatform.dao;
 
 public class User {
-	int userid;
-	String email;
-	Long code;
-	String ip;
+	private int userid;
+	private String email;
+	private Long code;
+	private String ip;
 
 	/**
 	 * @param ip2

@@ -10,13 +10,13 @@ import java.sql.Blob;
 import java.sql.Date;
 
 public class Auction {
-	Long auctionid;
-	String titel;
-	Double gebot;
-	String enddatum;
-	String beschreibung;
-	Long hoechstbietenderid;
-	Blob picture;
+	private Long auctionid;
+	private String titel;
+	private Double gebot;
+	private String enddatum;
+	private String beschreibung;
+	private Long hoechstbietenderid;
+	private Blob picture;
 
 	public Auction() {
 
