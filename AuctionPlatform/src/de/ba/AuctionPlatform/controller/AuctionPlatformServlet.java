@@ -7,16 +7,15 @@
 package de.ba.AuctionPlatform.controller;
 
 import java.io.*;
+import java.util.List;
+
 import javax.servlet.*;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
+import de.ba.AuctionPlatform.dao.AuctionDAO;
 import de.ba.AuctionPlatform.dao.HibernateUtil;
 
 /**
@@ -27,7 +26,6 @@ import de.ba.AuctionPlatform.dao.HibernateUtil;
 
 public class AuctionPlatformServlet extends HttpServlet {
 	static final long serialVersionUID = 1L;
-	private static SessionFactory factory;
 	private static final Logger logger = Logger.getLogger(AuctionPlatformServlet.class);
 
 	@Override
@@ -37,6 +35,8 @@ public class AuctionPlatformServlet extends HttpServlet {
 
 			HibernateUtil hibernate = HibernateUtil.getInstance();
 			logger.log(Level.INFO, "Initializing Hibernate");
+			List auction = AuctionDAO.getAllAuctions();
+			requ.setAttribute("auctions", auction);
 
 		} catch (HibernateException ex) {
 			logger.log(Level.INFO, ex);
