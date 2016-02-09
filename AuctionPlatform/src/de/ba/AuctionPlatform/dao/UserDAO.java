@@ -34,7 +34,7 @@ public class UserDAO {
 	 * @return
 	 */
 	/* User anlegen */
-	public static long addUser(int userid, String email, Long code, String ip) {
+	public static long addUser(int userid, String email, int code, String ip) {
 		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 

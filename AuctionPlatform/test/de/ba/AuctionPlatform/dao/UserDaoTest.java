@@ -18,8 +18,8 @@ public class UserDaoTest {
 
 	@Test
 	public void addUser() {
-		UserDAO.addUser(0, null, null, null);
-		UserDAO.addUser(1, "max.mustermann@muster.de", new Long(59129301), "192.168.0.4");
+		UserDAO.addUser(0, null, 0, null);
+		UserDAO.addUser(1, "max.mustermann@muster.de", 59129301, "192.168.0.4");
 
 	}
 
