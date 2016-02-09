@@ -15,7 +15,7 @@ import de.ba.AuctionPlatform.controller.CreateAuctionServlet;
 public class MailAuthenticator extends Authenticator {
 
 	private final String user;
-	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
+	private static final Logger logger = Logger.getLogger(MailAuthenticator.class);
 
 	private final String password;
 

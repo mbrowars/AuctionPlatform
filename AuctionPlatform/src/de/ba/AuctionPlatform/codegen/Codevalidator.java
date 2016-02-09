@@ -18,7 +18,7 @@ import de.ba.AuctionPlatform.controller.CreateAuctionServlet;
  */
 public class Codevalidator {
 
-	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
+	private static final Logger logger = Logger.getLogger(Codevalidator.class);
 
 	// Überprüfung des Übergeben Codes (mit Email oder zugeordnet)
 	/**

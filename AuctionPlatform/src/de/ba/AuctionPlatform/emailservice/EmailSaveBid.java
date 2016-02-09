@@ -40,7 +40,7 @@ public class EmailSaveBid {
 	 * @throws MessagingException
 	 */
 
-	private static final Logger logger = Logger.getLogger(CreateAuctionServlet.class);
+	private static final Logger logger = Logger.getLogger(EmailSaveBid.class);
 
 	public void send(String recipient, String subject, String text) throws AddressException, MessagingException {
 
