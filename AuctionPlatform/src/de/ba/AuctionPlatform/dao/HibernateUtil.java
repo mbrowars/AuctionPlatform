@@ -26,6 +26,9 @@ public class HibernateUtil {
 	private HibernateUtil() {
 	}
 
+	/**
+	 * @return HibernateUtil instanz
+	 */
 	public static synchronized HibernateUtil getInstance() {
 		if (sessionFactory == null) {
 			buildSessionFactory();
@@ -51,7 +54,7 @@ public class HibernateUtil {
 	}
 
 	/**
-	 * @return
+	 * @return SessionFactory
 	 */
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
