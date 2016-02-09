@@ -29,7 +29,7 @@ public class BidHandler {
 	 *            Mail/User
 	 * @return true = bid is valid
 	 */
-	public boolean checkBid(Long id, Double bid, String mail) {
+	public synchronized boolean checkBid(Long id, Double bid, String mail) {
 
 		// TODO get gebot by Auction-ID
 		Double userBid = aucm.getGebot();
@@ -46,7 +46,7 @@ public class BidHandler {
 	 * @param mail
 	 * @return true = bid is saved
 	 */
-	public boolean saveBid(Long id, Double bid, String mail) {
+	public synchronized boolean saveBid(Long id, Double bid, String mail) {
 		if (checkBid(id, bid, mail) == true) {
 			aucm.setGebot(bid);
 			// TODO: Get Id by email!
