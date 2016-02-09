@@ -31,19 +31,19 @@ public class HibernateUtil {
 	 */
 	public static synchronized HibernateUtil getInstance() {
 		if (sessionFactory == null) {
-			buildSessionFactory();
+			INSTANCE.buildSessionFactory();
 		}
 		return INSTANCE;
 	}
 
-	private static synchronized SessionFactory buildSessionFactory() {
+	private SessionFactory buildSessionFactory() {
 		try {
 
 			Configuration config = new Configuration().configure("hibernate.cfg.xml");
 			logger.debug("Configuration: " + config);
-			SessionFactory factory = config.buildSessionFactory();
-			logger.debug("SessionFactory: " + factory);
-			return factory;
+			this.sessionFactory = config.buildSessionFactory();
+			logger.debug("SessionFactory: " + sessionFactory);
+			return sessionFactory;
 
 		} catch (Exception e) {
 
