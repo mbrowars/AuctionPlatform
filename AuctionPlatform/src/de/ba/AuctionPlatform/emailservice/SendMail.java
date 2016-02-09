@@ -28,20 +28,21 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import de.ba.AuctionPlatform.controller.CreateAuctionServlet;
 
-public class EmailSaveBid {
+/**
+ * @author mbrowars
+ *
+ */
+public class SendMail {
+
+	private static final Logger logger = Logger.getLogger(SendMail.class);
+
 	/**
 	 * @param recipient
-	 *            empfaenger
 	 * @param subject
-	 *            Titel
 	 * @param text
-	 *            Text
 	 * @throws AddressException
 	 * @throws MessagingException
 	 */
-
-	private static final Logger logger = Logger.getLogger(EmailSaveBid.class);
-
 	public void send(String recipient, String subject, String text) throws AddressException, MessagingException {
 
 		MailAuthenticator auth = new MailAuthenticator("kauft-mein-erbe@gmx.de", "auctionplatform1");
@@ -70,7 +71,7 @@ public class EmailSaveBid {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			logger.log(Level.ERROR, "Email konnte nicht an "+recipient+" versandt werden.");
+			logger.log(Level.ERROR, "Email konnte nicht an " + recipient + " versandt werden.");
 		}
 	}
 

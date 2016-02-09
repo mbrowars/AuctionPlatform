@@ -21,17 +21,19 @@ import com.sun.xml.internal.ws.api.config.management.policy.ManagementAssertion.
  */
 public class EmailSaveBidTest {
 
-	private String testnachricht;
-	private String email;
-	private String anliegen;
-	
+	private String testnachricht = "";
+	private String email = "";
+	private String anliegen = "2";
+	SendMail sm = new SendMail();
+
 	/**
-	 * Testklasse: Versenden der 
-	 * @throws MessagingException 
-	 * @throws AddressException 
+	 * Testklasse: Versenden der
+	 * 
+	 * @throws MessagingException
+	 * @throws AddressException
 	 */
 	@Test
 	public void sendTest() throws AddressException, MessagingException {
-		//EmailSaveBid.send(email, anliegen, testnachricht);
+		sm.send(email, anliegen, testnachricht);
 	}
 }

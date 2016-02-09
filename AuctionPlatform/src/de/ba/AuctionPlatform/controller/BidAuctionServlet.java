@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 import de.ba.AuctionPlatform.codegen.Codegenerator;
 import de.ba.AuctionPlatform.codegen.Codevalidator;
 import de.ba.AuctionPlatform.dao.Admin;
-import de.ba.AuctionPlatform.emailservice.EmailSaveBid;
+import de.ba.AuctionPlatform.emailservice.SendMail;
 
 /**
  * @author Matthias Browarski
@@ -35,7 +35,7 @@ public class BidAuctionServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
 
-		EmailSaveBid em = new EmailSaveBid();
+		SendMail em = new SendMail();
 		BidHandler bi = new BidHandler();
 		Codegenerator gen = new Codegenerator();
 
@@ -48,7 +48,7 @@ public class BidAuctionServlet extends HttpServlet {
 			code = gen.auctionSecurity();
 			System.out.println(code);
 			bid = Double.parseDouble(requ.getParameter("bid"));
-			if(bid<0){
+			if (bid < 0) {
 				resp.getWriter().write("Bitte geben Sie ein positives Gebot ein.");
 				logger.log(Level.WARN, "Negatives Gebot wurde eingetragen.");
 			}
@@ -68,8 +68,7 @@ public class BidAuctionServlet extends HttpServlet {
 					resp.getWriter().write("Fehler bei Emailuebertragung");
 					e.printStackTrace();
 				}
-			}
-			else{
+			} else {
 				resp.getWriter().write("Biete mehr als den aktuellen Preis");
 			}
 		}
@@ -77,7 +76,7 @@ public class BidAuctionServlet extends HttpServlet {
 			String usercode = requ.getParameter("code");
 
 			boolean rightcode = valid.validate(usercode, code);
-			
+
 			if (rightcode) {
 				// Angebot speichern und status und code an view uebergeben
 				if (bi.saveBid(new Long(1234), bid, mail) == true) {
