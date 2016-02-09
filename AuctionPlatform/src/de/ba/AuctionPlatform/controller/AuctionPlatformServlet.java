@@ -35,7 +35,7 @@ public class AuctionPlatformServlet extends HttpServlet {
 
 		try {
 
-			HibernateUtil hibernate = new HibernateUtil();
+			HibernateUtil hibernate = HibernateUtil.getInstance();
 			logger.log(Level.INFO, "Initializing Hibernate");
 
 		} catch (HibernateException ex) {

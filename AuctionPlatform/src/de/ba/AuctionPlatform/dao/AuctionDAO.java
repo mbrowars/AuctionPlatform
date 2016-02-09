@@ -37,7 +37,7 @@ public class AuctionDAO {
 	 */
 	public Long addAuction(Long auctionid, String titel, Double gebot, String enddatum, String beschreibung,
 			Long hoechstbietenderid, Blob picture) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
@@ -62,7 +62,7 @@ public class AuctionDAO {
 	 * @param auction
 	 */
 	public void removeAuction(Auction auction) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
@@ -85,7 +85,7 @@ public class AuctionDAO {
 	 * @param auction
 	 */
 	public void updateAuction(Auction auction) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
@@ -104,7 +104,7 @@ public class AuctionDAO {
 	 * @return
 	 */
 	public static List getAllAuctions() {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 		List auctions = new ArrayList();
 		try {

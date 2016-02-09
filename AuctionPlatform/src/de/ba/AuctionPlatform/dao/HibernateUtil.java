@@ -13,14 +13,35 @@ import de.ba.AuctionPlatform.controller.CreateAuctionServlet;
  */
 public class HibernateUtil {
 
-	private static final SessionFactory sessionFactory= buildSessionFactory();
+	// Singleton
+	private static final HibernateUtil INSTANCE = new HibernateUtil();
+	
+	private static SessionFactory sessionFactory;
+	
 	private static final Logger logger = Logger.getLogger(HibernateUtil.class);
 
-private	static SessionFactory buildSessionFactory() {
+	/**
+	 * private constructor
+	 */
+	private HibernateUtil() {
+	}
+
+	public static synchronized HibernateUtil getInstance() {
+		if (sessionFactory == null) {
+			buildSessionFactory();
+		}
+		return INSTANCE;
+	}
+
+	private static synchronized SessionFactory buildSessionFactory() {
 		try {
 
-			return new Configuration().configure().buildSessionFactory();
-			
+			Configuration config = new Configuration().configure("hibernate.cfg.xml");
+			logger.debug("Configuration: " + config);
+			SessionFactory factory = config.buildSessionFactory();
+			logger.debug("SessionFactory: " + factory);
+			return factory;
+
 		} catch (Exception e) {
 
 			logger.log(Level.INFO, "Initial SessionFactory creation failed." + e);
@@ -30,9 +51,9 @@ private	static SessionFactory buildSessionFactory() {
 	}
 
 	/**
-	 * @return 
+	 * @return
 	 */
-	public static SessionFactory getSessionFactory() {
+	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
 

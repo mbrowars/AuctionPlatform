@@ -35,7 +35,7 @@ public class UserDAO {
 	 */
 	/* User anlegen */
 	public static long addUser(int userid, String email, Long code, String ip) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
@@ -59,7 +59,7 @@ public class UserDAO {
 	 * @param user
 	 */
 	public void removeUser(User user) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
@@ -82,7 +82,7 @@ public class UserDAO {
 	 * @param user
 	 */
 	public void updateUser(User user) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
@@ -104,7 +104,7 @@ public class UserDAO {
 	 * @return
 	 */
 	public static List getAllUsers() {
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 		List users = new ArrayList();
 		try {
