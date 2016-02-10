@@ -1,5 +1,6 @@
 package de.ba.AuctionPlatform.dao;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -58,7 +60,7 @@ public class UserDAO {
 	/**
 	 * @param user
 	 */
-	public void removeUser(User user) {
+	public static void removeUser(User user) {
 		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
@@ -119,6 +121,27 @@ public class UserDAO {
 			session.close();
 		}
 		return users;
+	}
+	
+	public static List getUser(int userid) {
+		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
+		Transaction tx = null;
+		List list = new ArrayList();
+		
+		try {
+			tx = session.beginTransaction();
+			Query wanteduser = session.createQuery("FROM User WHERE userid= " + userid);
+			list = wanteduser.list();
+			
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+			logger.log(Level.ERROR, "User konnte nicht ausgelesen werden." + e);
+			session.close();
+		}
+		
+		return list;
 	}
 
 }

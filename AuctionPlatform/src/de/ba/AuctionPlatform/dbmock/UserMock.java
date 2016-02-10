@@ -6,6 +6,7 @@
  */
 package de.ba.AuctionPlatform.dbmock;
 
+import de.ba.AuctionPlatform.dao.User;
 /**
  * 
  * @author Matthias Browarski
@@ -17,6 +18,8 @@ public class UserMock {
 	private String email;
 	private String code;
 	private String ip;
+	
+		 
 
 	public Long getUserId() {
 		return (long) 23;

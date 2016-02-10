@@ -10,20 +10,20 @@ import java.sql.Blob;
 import java.sql.Date;
 
 public class Auction {
-	private Long auctionid;
+	private int auctionid;
 	private String titel;
 	private Double gebot;
-	private String enddatum;
+	private Date enddatum;
 	private String beschreibung;
-	private Long hoechstbietenderid;
+	private int hoechstbietenderid;
 	private Blob picture;
 
 	public Auction() {
 
 	}
 
-	public Auction(Long auctionid, String titel, Double gebot, String enddatum, String beschreibung,
-			Long hoechstbietenderid, Blob picture) {
+	public Auction(int auctionid, String titel, Double gebot, Date enddatum, String beschreibung,
+			int hoechstbietenderid, Blob picture) {
 		this.auctionid = auctionid;
 		this.titel = titel;
 		this.gebot = gebot;
@@ -33,11 +33,11 @@ public class Auction {
 		this.picture = picture;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return auctionid;
 	}
 
-	public void setId(Long auctionid) {
+	public void setId(int auctionid) {
 		this.auctionid = auctionid;
 	}
 
@@ -57,11 +57,11 @@ public class Auction {
 		this.gebot = gebot;
 	}
 
-	public String getEnddatum() {
+	public Date getEnddatum() {
 		return enddatum;
 	}
 
-	public void setEnddatum(String enddatum) {
+	public void setEnddatum(Date enddatum) {
 		this.enddatum = enddatum;
 	}
 
@@ -73,11 +73,11 @@ public class Auction {
 		this.beschreibung = beschreibung;
 	}
 
-	public Long getHoechstbietenderid() {
+	public int getHoechstbietenderid() {
 		return hoechstbietenderid;
 	}
 
-	public void setHoechstbietenderid(Long hoechstbietenderid) {
+	public void setHoechstbietenderid(int hoechstbietenderid) {
 		this.hoechstbietenderid = hoechstbietenderid;
 	}
 

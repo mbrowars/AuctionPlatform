@@ -4,7 +4,7 @@
 <!-- Generated 27.01.2016 17:55:20 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
 	<class name="de.ba.AuctionPlatform.dao.Auction" table="AUCTION">
-		<id name="auctionid" type="java.lang.Long" access="field">
+		<id name="auctionid" type="int" access="field">
 			<column name="AUCTIONID" />
 			<generator class="increment" />
 		</id>

@@ -12,19 +12,25 @@ import org.junit.Test;
 
 import de.ba.AuctionPlatform.dao.User;
 import de.ba.AuctionPlatform.dao.UserDAO;
+import de.ba.AuctionPlatform.dbmock.UserMock;
 
 public class UserDaoTest {
 	// TODO Testfall erstellen
-
-	@Test
+	User user1 = new User(10, "max.mustermann@muster.de", 59129301, "192.168.0.4");
+	
 	public void addUser() {
-		UserDAO.addUser(0, null, 0, null);
+		UserDAO.addUser(0, "test", 0, "test");
 		UserDAO.addUser(1, "max.mustermann@muster.de", 59129301, "192.168.0.4");
 
 	}
 
+	
+	public void removeUser() {
+		UserDAO.removeUser(user1);
+	}
+	
 	@Test
-	public void getAllUsers() {
-		UserDAO.getAllUsers();
+	public void getUser() {
+		UserDAO.getUser(2);
 	}
 }

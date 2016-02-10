@@ -1,6 +1,7 @@
 package de.ba.AuctionPlatform.dao;
 
 import java.sql.Blob;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -35,8 +36,8 @@ public class AuctionDAO {
 	 * @param picture
 	 * @return
 	 */
-	public Long addAuction(Long auctionid, String titel, Double gebot, String enddatum, String beschreibung,
-			Long hoechstbietenderid, Blob picture) {
+	public static int addAuction(int auctionid, String titel, Double gebot, Date enddatum, String beschreibung,
+			int hoechstbietenderid, Blob picture) {
 		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
