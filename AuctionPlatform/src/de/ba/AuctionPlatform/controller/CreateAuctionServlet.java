@@ -17,6 +17,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import de.ba.AuctionPlatform.dao.Auction;
+import de.ba.AuctionPlatform.dao.AuctionDAO;
 
 /**
  * @author mbrowars
@@ -40,6 +41,7 @@ public class CreateAuctionServlet extends HttpServlet {
 		if (session.getAttribute("admin") != null) {
 
 			Auction auc = new Auction();
+			AuctionDAO da = new AuctionDAO();
 
 			// Bild in Datenbank speichern. *Fehlerhaft (und gerade kein bock
 			// weiter zu machen :D)
@@ -62,6 +64,7 @@ public class CreateAuctionServlet extends HttpServlet {
 		//	auc.setEnddatum(requ.getParameter("end"));
 			String gebot = requ.getParameter("bid");
 			auc.setGebot(Double.parseDouble(gebot));
+			da.addAuction(auc);
 			logger.log(Level.INFO, "Auktion :" + auc.getId() + "," + auc.getTitel() + " Wurde angelegt.");
 			// TODO save Auction in db
 			requ.getRequestDispatcher("/index.jsp").forward(requ, resp);

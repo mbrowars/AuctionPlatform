@@ -34,28 +34,28 @@ public class AuctionDAO {
 	 * @param beschreibung
 	 * @param hoechstbietenderid
 	 * @param picture
-	 * @return
+	 * @return auctionid
 	 */
-	public static int addAuction(int auctionid, String titel, Double gebot, Date enddatum, String beschreibung,
-			int hoechstbietenderid, Blob picture) {
+	public int addAuction(Auction auction) {
 		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
 			tx = session.beginTransaction();
-			Auction auction = new Auction(auctionid, titel, gebot, enddatum, beschreibung, hoechstbietenderid, picture);
+
 			session.save(auction);
 			tx.commit();
-			logger.log(Level.INFO, "Auktion: " + auctionid + "," + titel + " wurde angelegt.");
+			logger.log(Level.INFO, "Auktion: " + auction.getId() + "," + auction.getTitel() + " wurde angelegt.");
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
-			logger.log(Level.ERROR, "Auktion: " + auctionid + "," + titel + " konnte nicht angelegt werden " + e);
+			logger.log(Level.ERROR,
+					"Auktion: " + auction.getId() + "," + auction.getTitel() + " konnte nicht angelegt werden " + e);
 		} finally {
 			session.close();
 
 		}
-		return auctionid;
+		return auction.getId();
 	}
 
 	/* Auktion löschen */

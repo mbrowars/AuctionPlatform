@@ -19,11 +19,12 @@ public class EndAuctionHandler {
 	User user = new User();
 	UserDAO usd = new UserDAO();
 
-	public void endAuction(Auction auction) throws AddressException, MessagingException{
-		//TODO Neue Datenbanktabelle mit alten Auktionen
-		//expiredAuction.addAuction(auction);
-		user=usd.getUser(auction.getHoechstbietenderid());
-		mail.send(user.getEmail(),"Aukion "+auction.getTitel()+" wurde beendet" ,"Sie haben die Auktion für den Artikel "+ auction.getTitel()+ " gewonnen");
+	public void endAuction(Auction auction) throws AddressException, MessagingException {
+		// TODO Neue Datenbanktabelle mit alten Auktionen
+		// expiredAuction.addAuction(auction);
+		user = usd.getUser(auction.getHoechstbietenderid());
+		mail.send(user.getEmail(), "Aukion " + auction.getTitel() + " wurde beendet",
+				"Sie haben die Auktion für den Artikel " + auction.getTitel() + " gewonnen");
 		da.removeAuction(auction);
 	}
 
