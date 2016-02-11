@@ -130,11 +130,10 @@ public class UserDAO {
 		
 		try {
 			tx = session.beginTransaction();
-			Query wanteduser = session.createQuery("FROM User WHERE userid= " + userid);
-			user.setId(Integer.parseInt((String) wanteduser.list().iterator().next()));
-			user.setEmail((String) wanteduser.list().iterator().next());
-			user.setCode(Integer.parseInt((String) wanteduser.list().iterator().next()));
-			
+			Query wanteduser = session.createQuery("FROM User WHERE userid= :userid");
+			wanteduser.setInteger("userid", userid);
+			Object queryResult = wanteduser.uniqueResult();
+			user = (User) queryResult;										//Vorgehen hab ich von hier: http://www.coderanch.com/t/217864/ORM/databases/Hibernate-retrieve-data-database
 			
 			
 		} catch (HibernateException e) {
@@ -147,5 +146,6 @@ public class UserDAO {
 		
 		return user;
 	}
+
 
 }
