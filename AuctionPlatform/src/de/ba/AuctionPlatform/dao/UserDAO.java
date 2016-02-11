@@ -123,15 +123,19 @@ public class UserDAO {
 		return users;
 	}
 	
-	public static List getUser(int userid) {
+	public static User getUser(int userid) {
 		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
-		List list = new ArrayList();
+		User user = new User();
 		
 		try {
 			tx = session.beginTransaction();
 			Query wanteduser = session.createQuery("FROM User WHERE userid= " + userid);
-			list = wanteduser.list();
+			user.setId(Integer.parseInt((String) wanteduser.list().iterator().next()));
+			user.setEmail((String) wanteduser.list().iterator().next());
+			user.setCode(Integer.parseInt((String) wanteduser.list().iterator().next()));
+			
+			
 			
 		} catch (HibernateException e) {
 			if (tx != null)
@@ -141,7 +145,7 @@ public class UserDAO {
 			session.close();
 		}
 		
-		return list;
+		return user;
 	}
 
 }

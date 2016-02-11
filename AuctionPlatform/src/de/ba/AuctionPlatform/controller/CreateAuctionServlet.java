@@ -53,12 +53,13 @@ public class CreateAuctionServlet extends HttpServlet {
 			}
 			//"ausgabe" bild  
 			System.out.println(requ.getParameter("picture").getBytes());
-			
+
 			auc.setPicture(blob);
 			logger.log(Level.INFO, auc.getPicture());
 			auc.setTitel(requ.getParameter("title"));
 			auc.setBeschreibung(requ.getParameter("desc"));
-			auc.setEnddatum(requ.getParameter("end"));
+			//TODO Ablaufdatum setzen (String Date Konvertierung)
+		//	auc.setEnddatum(requ.getParameter("end"));
 			String gebot = requ.getParameter("bid");
 			auc.setGebot(Double.parseDouble(gebot));
 			logger.log(Level.INFO, "Auktion :" + auc.getId() + "," + auc.getTitel() + " Wurde angelegt.");
