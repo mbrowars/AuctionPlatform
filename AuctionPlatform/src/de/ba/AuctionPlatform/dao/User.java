@@ -24,8 +24,8 @@ public class User {
 	 * @param code
 	 * @param ip
 	 */
-	public User(int userid, String email, int code, String ip) {
-		this.userid = userid;
+	public User(String email, int code, String ip) {
+
 		this.email = email;
 		this.code = code;
 		this.ip = ip;
