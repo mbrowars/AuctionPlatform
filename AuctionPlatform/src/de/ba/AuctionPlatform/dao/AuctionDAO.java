@@ -36,13 +36,13 @@ public class AuctionDAO {
 	 * @param picture
 	 * @return auctionid
 	 */
-	public int addAuction(Auction auction) {
+	public static int addAuction(Auction auction) {
 		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
 			tx = session.beginTransaction();
-
+			
 			session.save(auction);
 			tx.commit();
 			logger.log(Level.INFO, "Auktion: " + auction.getId() + "," + auction.getTitel() + " wurde angelegt.");

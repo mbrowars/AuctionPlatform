@@ -17,10 +17,11 @@ import de.ba.AuctionPlatform.dbmock.UserMock;
 public class UserDaoTest {
 	// TODO Testfall erstellen
 	User user1 = new User(10, "max.mustermann@muster.de", 59129301, "192.168.0.4");
+	User user2 = new User(12, "test", 12345678, "325234");
 	
 	public void addUser() {
-		UserDAO.addUser(0, "test", 0, "test");
-		UserDAO.addUser(1, "max.mustermann@muster.de", 59129301, "192.168.0.4");
+		UserDAO.addUser(user2);
+		UserDAO.addUser(user1);
 
 	}
 

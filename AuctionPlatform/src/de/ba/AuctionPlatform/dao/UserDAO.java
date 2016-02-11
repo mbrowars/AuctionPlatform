@@ -36,24 +36,24 @@ public class UserDAO {
 	 * @return
 	 */
 	/* User anlegen */
-	public static long addUser(int userid, String email, int code, String ip) {
+	public static User addUser(User user) {
 		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
 			tx = session.beginTransaction();
-			User user = new User(userid, email, code, ip);
+			
 			session.save(user);
 			tx.commit();
-			logger.log(Level.INFO, "User: " + userid + "," + email + " wurde angelegt.");
+			logger.log(Level.INFO, "User: " + user.getId() + "," + user.getEmail() + " wurde angelegt.");
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
-			logger.log(Level.ERROR, "User: " + userid + "," + email + " konnte nicht angelegt werden." + e);
+			logger.log(Level.ERROR, "User: " + user.getId() + "," + user.getEmail() + " konnte nicht angelegt werden." + e);
 		} finally {
 			session.close();
 		}
-		return userid;
+		return user;
 	}
 
 	/* User löschen */
