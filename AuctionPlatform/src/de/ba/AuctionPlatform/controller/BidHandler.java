@@ -4,7 +4,9 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import de.ba.AuctionPlatform.dao.Auction;
+import de.ba.AuctionPlatform.dao.AuctionDAO;
 import de.ba.AuctionPlatform.dao.User;
+import de.ba.AuctionPlatform.dao.UserDAO;
 import de.ba.AuctionPlatform.dbmock.AuctionMock;
 import de.ba.AuctionPlatform.dbmock.UserMock;
 
@@ -16,8 +18,8 @@ public class BidHandler {
 
 	private Auction auc = new Auction();
 	private User us = new User();
-	private UserMock usm = new UserMock();
-	private AuctionMock aucm = new AuctionMock();
+	private UserDAO usd = new UserDAO();
+	private AuctionDAO aucd = new AuctionDAO();
 	private static final Logger logger = Logger.getLogger(BidHandler.class);
 
 	/**
@@ -29,10 +31,10 @@ public class BidHandler {
 	 *            Mail/User
 	 * @return true = bid is valid
 	 */
-	public synchronized boolean checkBid(Long id, Double bid, String mail) {
+	public synchronized boolean checkBid(int id, Double bid) {
 
 		// TODO get gebot by Auction-ID
-		Double userBid = aucm.getGebot();
+		Double userBid = auc.getGebot();
 		if (userBid < bid) {
 			return true;
 		} else {
@@ -46,12 +48,11 @@ public class BidHandler {
 	 * @param mail
 	 * @return true = bid is saved
 	 */
-	public synchronized boolean saveBid(Long id, Double bid, String mail) {
-		if (checkBid(id, bid, mail) == true) {
-			aucm.setGebot(bid);
+	public synchronized boolean saveBid(int id, Double bid) {
+		if (checkBid(id, bid) == true) {
+			auc.setGebot(bid);
 			// TODO: Get Id by email!
-			usm.getUserId();
-			aucm.setHoechstbietenderid(id);
+			auc.setHoechstbietenderid(id);
 			return true;
 		} else {
 			logger.log(Level.WARN, "Gebot für " + id + " konnte nicht gespeichert werden.");

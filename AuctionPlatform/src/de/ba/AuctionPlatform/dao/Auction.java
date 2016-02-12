@@ -22,9 +22,9 @@ public class Auction {
 
 	}
 
-	public Auction(int auctionid, String titel, Double gebot, Date enddatum, String beschreibung,
+	public Auction(String titel, Double gebot, Date enddatum, String beschreibung,
 			int hoechstbietenderid, Blob picture) {
-		this.auctionid = auctionid;
+		
 		this.titel = titel;
 		this.gebot = gebot;
 		this.enddatum = enddatum;

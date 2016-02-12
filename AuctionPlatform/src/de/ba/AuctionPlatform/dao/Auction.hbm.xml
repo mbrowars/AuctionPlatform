@@ -20,7 +20,7 @@
 		<property name="beschreibung" type="text">
 			<column name="BESCHREIBUNG" />
 		</property>
-		<property name="hoechstbietenderid" type="long">
+		<property name="hoechstbietenderid" type="int">
 			<column name="HOECHSTBIETENDERID" />
 		</property>
 		<property name="picture" type="blob">

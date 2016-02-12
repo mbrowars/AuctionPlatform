@@ -15,6 +15,8 @@ import org.apache.log4j.Logger;
 import de.ba.AuctionPlatform.codegen.Codegenerator;
 import de.ba.AuctionPlatform.codegen.Codevalidator;
 import de.ba.AuctionPlatform.dao.Admin;
+import de.ba.AuctionPlatform.dao.User;
+import de.ba.AuctionPlatform.dao.UserDAO;
 import de.ba.AuctionPlatform.emailservice.SendMail;
 
 /**
@@ -31,6 +33,7 @@ public class BidAuctionServlet extends HttpServlet {
 	private int code = 0;
 	private Double bid;
 	private String mail;
+	private int saved;
 
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,6 +41,8 @@ public class BidAuctionServlet extends HttpServlet {
 		SendMail em = new SendMail();
 		BidHandler bi = new BidHandler();
 		Codegenerator gen = new Codegenerator();
+		UserDAO userd = new UserDAO();
+		User user = new User();
 
 		Codevalidator valid = new Codevalidator();
 
@@ -54,19 +59,23 @@ public class BidAuctionServlet extends HttpServlet {
 			}
 			mail = requ.getParameter("mail");
 
-			if (bi.checkBid(new Long(1234), bid, mail) == true) {
+			if (bi.checkBid(1234, bid) == true) {
 
 				try {
 
 					em.send(mail, "Auktionsbestaetigung fuer Artikel (plus id)",
 							"Bitte geben Sie diesen Code auf der Website ein: " + code);
+					user.setEmail(mail);
+					user.setCode(code);
+					userd.addUser(user);
+					int saved = user.getId();
 					resp.getWriter().write("null");
 
 				} catch (MessagingException e) {
 
 					// TODO Auto-generated catch block
 					resp.getWriter().write("Fehler bei Emailuebertragung");
-					e.printStackTrace();
+					userd.removeUser(user);
 				}
 			} else {
 				resp.getWriter().write("Biete mehr als den aktuellen Preis");
@@ -79,7 +88,7 @@ public class BidAuctionServlet extends HttpServlet {
 
 			if (rightcode) {
 				// Angebot speichern und status und code an view uebergeben
-				if (bi.saveBid(new Long(1234), bid, mail) == true) {
+				if (bi.saveBid(user.getId(), bid) == true) {
 					resp.getWriter().write("null");
 				} else {
 					resp.getWriter().write("Gebot konnte nicht gespeichert werden!");

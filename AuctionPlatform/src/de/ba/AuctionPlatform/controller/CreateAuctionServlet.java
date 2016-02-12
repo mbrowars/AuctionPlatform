@@ -41,33 +41,39 @@ public class CreateAuctionServlet extends HttpServlet {
 		if (session.getAttribute("admin") != null) {
 
 			Auction auc = new Auction();
-			AuctionDAO da = new AuctionDAO();
+			AuctionDAO aucd = new AuctionDAO();
 
 			// Bild in Datenbank speichern. *Fehlerhaft (und gerade kein bock
 			// weiter zu machen :D)
-			
+
 			Blob blob = null;
 			try {
-				blob.getBinaryStream(new Long(requ.getParameter("picture")), 10);
-			} catch (NumberFormatException | SQLException e) {
+				// blob.getBinaryStream(new Long(requ.getParameter("picture")),
+				// 10);
+			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			//"ausgabe" bild  
+			// "ausgabe" bild
 			System.out.println(requ.getParameter("picture").getBytes());
 
-			auc.setPicture(blob);
+			// auc.setPicture(blob);
 			logger.log(Level.INFO, auc.getPicture());
 			auc.setTitel(requ.getParameter("title"));
 			auc.setBeschreibung(requ.getParameter("desc"));
-			//TODO Ablaufdatum setzen (String Date Konvertierung)
-		//	auc.setEnddatum(requ.getParameter("end"));
+			// TODO Ablaufdatum setzen (String Date Konvertierung)
+			// auc.setEnddatum(requ.getParameter("end"));
 			String gebot = requ.getParameter("bid");
 			auc.setGebot(Double.parseDouble(gebot));
-			da.addAuction(auc);
-			logger.log(Level.INFO, "Auktion :" + auc.getId() + "," + auc.getTitel() + " Wurde angelegt.");
-			// TODO save Auction in db
-			requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
+			int save=aucd.addAuction(auc);
+			// Auktion in DB Speichern und Fehlerbehandlung
+			if (save!= 0) {
+				resp.getWriter().write(0);
+				logger.log(Level.INFO, "Auktion :" + auc.getId() + "," + auc.getTitel() + " Wurde angelegt.");
+				requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
+			} else {
+				resp.getWriter().write("Auktion " + auc.getTitel() + " konnte nicht angelegt werden.");
+			}
 
 		}
 

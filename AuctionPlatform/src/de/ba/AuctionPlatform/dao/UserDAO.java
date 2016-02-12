@@ -36,7 +36,7 @@ public class UserDAO {
 	 * @return
 	 */
 	/* User anlegen */
-	public static User addUser(User user) {
+	public static int addUser(User user) {
 		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
@@ -53,7 +53,7 @@ public class UserDAO {
 		} finally {
 			session.close();
 		}
-		return user;
+		return user.getId();
 	}
 
 	/* User löschen */
