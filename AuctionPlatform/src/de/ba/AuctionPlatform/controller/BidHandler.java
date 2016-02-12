@@ -32,8 +32,8 @@ public class BidHandler {
 	 * @return true = bid is valid
 	 */
 	public synchronized boolean checkBid(int id, Double bid) {
-
-		// TODO get gebot by Auction-ID
+	//	auc=aucd.getAuction();
+		// TODO GEBOT von view übergeben
 		Double userBid = auc.getGebot();
 		if (userBid < bid) {
 			return true;
