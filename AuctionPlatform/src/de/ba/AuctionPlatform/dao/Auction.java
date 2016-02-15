@@ -7,13 +7,12 @@
 package de.ba.AuctionPlatform.dao;
 
 import java.sql.Blob;
-import java.sql.Date;
 
 public class Auction {
 	private int auctionid;
 	private String titel;
 	private Double gebot;
-	private Date enddatum;
+	private Long laufzeit;
 	private String beschreibung;
 	private int hoechstbietenderid;
 	private Blob picture;
@@ -22,12 +21,12 @@ public class Auction {
 
 	}
 
-	public Auction(String titel, Double gebot, Date enddatum, String beschreibung,
+	public Auction(String titel, Double gebot, Long laufzeit, String beschreibung,
 			int hoechstbietenderid, Blob picture) {
 		
 		this.titel = titel;
 		this.gebot = gebot;
-		this.enddatum = enddatum;
+		this.laufzeit = laufzeit;
 		this.beschreibung = beschreibung;
 		this.hoechstbietenderid = hoechstbietenderid;
 		this.picture = picture;
@@ -57,12 +56,12 @@ public class Auction {
 		this.gebot = gebot;
 	}
 
-	public Date getEnddatum() {
-		return enddatum;
+	public Long getLaufzeit() {
+		return laufzeit;
 	}
 
-	public void setEnddatum(Date enddatum) {
-		this.enddatum = enddatum;
+	public void setLaufzeit(Long laufzeit) {
+		this.laufzeit = laufzeit;
 	}
 
 	public String getBeschreibung() {

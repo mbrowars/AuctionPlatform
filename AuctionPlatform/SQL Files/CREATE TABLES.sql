@@ -31,13 +31,6 @@ alter table Auction
 drop column HOECHSTBIETENDERID,
 add column HOECHSTBIETENDERID INT(8),
 add foreign key (HOECHSTBIETENDERID) REFERENCES User(USERID);
-
-create table UserAuction (
-	AUCTIONUSERID INT(8) PRIMARY KEY,
-    AUCTIONID INT(8) NOT NULL,
-    USERID INT(8) NOT NULL,
-    FOREIGN KEY (AUCTIONID) REFERENCES Auction(AUCTIONID),
-    FOREIGN KEY (USERID) REFERENCES User(USERID));
     
 use auction;
     
@@ -45,8 +38,6 @@ alter table Auction
 add column PICTURE BLOB;
 
 use auction;
-
-drop table userauction;
     
 alter table User
 drop code,
@@ -58,3 +49,7 @@ drop hoechstbietenderid;
 
 alter table auction
 add hoechstbietenderid int(8) not null;
+
+alter table auction
+drop enddatum,
+add LAUFZEIT BIGINT(20) NOT NULL AFTER GEBOT;

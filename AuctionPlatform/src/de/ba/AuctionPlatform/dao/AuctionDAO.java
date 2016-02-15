@@ -9,6 +9,7 @@ import java.util.List;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -85,7 +86,7 @@ public class AuctionDAO {
 	/**
 	 * @param auction
 	 */
-	public void updateAuction(Auction auction) {
+	public static void updateAuction(Auction auction) {
 		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
@@ -100,6 +101,29 @@ public class AuctionDAO {
 			session.close();
 		}
 	}
+	/* Auktion auslesen */
+	public static Auction getAuction(int auctionid) {
+		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
+		Transaction tx = null;
+		Auction auction = new Auction();
+		
+		try {
+			tx = session.beginTransaction();
+			Query wantedauction = session.createQuery("FROM Auction WHERE auctionid= :auctionid");
+			wantedauction.setInteger("auctionid", auctionid);
+			Object queryResult = wantedauction.uniqueResult();
+			auction = (Auction) queryResult;
+		}catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+			logger.log(Level.ERROR, "Auktion konnte nicht ausgelesen werden." + e);
+			session.close();
+		}
+		
+		return auction;
+	}
+	
 
 	/**
 	 * @return

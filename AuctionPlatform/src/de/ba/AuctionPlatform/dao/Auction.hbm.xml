@@ -14,8 +14,8 @@
 		<property name="gebot" type="double" not-null="true">
 			<column name="GEBOT" />
 		</property>
-		<property name="enddatum" type="text" not-null="true">
-			<column name="ENDDATUM" />
+		<property name="laufzeit" type="long" not-null="true">
+			<column name="LAUFZEIT" />
 		</property>
 		<property name="beschreibung" type="text">
 			<column name="BESCHREIBUNG" />
