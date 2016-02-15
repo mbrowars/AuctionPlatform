@@ -28,7 +28,7 @@
 	 -->
 	<% if( session.getAttribute("admin") != null) { %>
 	<div class="container">
-		<form action="createAuction" method="post">
+		<form action="createAuction" method="post" enctype="multipart/form-data">
 			<input type="file" name="picture" />
 			<input placeholder="Titel" name="title" />
 			<input placeholder="Startgebot" name="bid" />
