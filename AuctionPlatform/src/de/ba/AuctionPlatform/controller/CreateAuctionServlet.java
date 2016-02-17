@@ -51,10 +51,11 @@ public class CreateAuctionServlet extends HttpServlet {
 			Auction auc = new Auction();
 			AuctionDAO aucd = new AuctionDAO();
 
-			Part file = requ.getPart("picture");
-			InputStream is = file.getInputStream();
-			Blob blob = Hibernate.getLobCreator(hsession).createBlob(is, file.getSize());
-			auc.setPicture(blob);
+			// Part file = requ.getPart("picture");
+			// InputStream is = file.getInputStream();
+			// Blob blob = Hibernate.getLobCreator(hsession).createBlob(is,
+			// file.getSize());
+			// auc.setPicture(blob);
 
 			// auc.setPicture(blob);
 			logger.log(Level.INFO, auc.getPicture());

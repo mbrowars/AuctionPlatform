@@ -39,9 +39,15 @@
 
 	<servlet-mapping>
 		<servlet-name>Auction-Platform</servlet-name>
-		<url-pattern>/home</url-pattern>
+		<url-pattern>/index</url-pattern>
 
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Auction-Platform</servlet-name>
+		<url-pattern></url-pattern>
+
+	</servlet-mapping>
+
 
 	<servlet-mapping>
 		<servlet-name>Admin-Login</servlet-name>
@@ -57,4 +63,5 @@
 		<servlet-name>BidAuction</servlet-name>
 		<url-pattern>/auction</url-pattern>
 	</servlet-mapping>
+
 </web-app>

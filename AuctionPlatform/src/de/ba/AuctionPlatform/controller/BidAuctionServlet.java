@@ -15,6 +15,8 @@ import org.apache.log4j.Logger;
 import de.ba.AuctionPlatform.codegen.Codegenerator;
 import de.ba.AuctionPlatform.codegen.Codevalidator;
 import de.ba.AuctionPlatform.dao.Admin;
+import de.ba.AuctionPlatform.dao.Auction;
+import de.ba.AuctionPlatform.dao.AuctionDAO;
 import de.ba.AuctionPlatform.dao.User;
 import de.ba.AuctionPlatform.dao.UserDAO;
 import de.ba.AuctionPlatform.emailservice.SendMail;
@@ -43,12 +45,19 @@ public class BidAuctionServlet extends HttpServlet {
 		Codegenerator gen = new Codegenerator();
 		UserDAO userd = new UserDAO();
 		User user = new User();
+		Auction auc = new Auction();
+		AuctionDAO aucd = new AuctionDAO();
 
 		Codevalidator valid = new Codevalidator();
 
+		// Auktion wird mithilfe der ID geladen
+		if (requ.getParameter("id") != null) {
+			auc = aucd.getAuction(Integer.parseInt(requ.getParameter("id")));
+			requ.setAttribute("auction", auc);
+		}
+
 		// Angebot mit der Datenbank vergleichen / Email senden /
 		// Sicherkeitscode testen
-
 		if ((requ.getParameter("mail") != null) && (requ.getParameter("bid") != null)) {
 			code = gen.auctionSecurity();
 			System.out.println(code);
@@ -59,7 +68,7 @@ public class BidAuctionServlet extends HttpServlet {
 			}
 			mail = requ.getParameter("mail");
 
-			if (bi.checkBid(1234, bid) == true) {
+			if (bi.checkBid(Integer.parseInt(requ.getParameter("id")), bid) == true) {
 
 				try {
 
