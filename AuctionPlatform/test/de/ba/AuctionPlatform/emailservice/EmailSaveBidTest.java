@@ -1,7 +1,7 @@
 /**
  *  SE-PROJEKT_AuctionPlatform
  * 
- *  team:	Markus Fröhlich, Max Göppert, Matthias Browarski
+ *  team:	Markus Frï¿½hlich, Max Gï¿½ppert, Matthias Browarski
  *
  */
 package de.ba.AuctionPlatform.emailservice;
@@ -11,8 +11,6 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 import org.junit.Test;
-
-import com.sun.xml.internal.ws.api.config.management.policy.ManagementAssertion.Setting;
 
 /**
  * 

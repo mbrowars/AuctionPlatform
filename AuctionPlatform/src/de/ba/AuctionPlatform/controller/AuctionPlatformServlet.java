@@ -8,6 +8,8 @@ package de.ba.AuctionPlatform.controller;
 
 import java.io.*;
 import java.util.List;
+import java.util.Iterator;
+import java.lang.String;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -47,7 +49,6 @@ public class AuctionPlatformServlet extends HttpServlet {
 			HibernateUtil hibernate = HibernateUtil.getInstance();
 			logger.log(Level.INFO, "Initializing Hibernate");
 			List auction = AuctionDAO.getAllAuctions();
-			requ.setAttribute("auctions", auction);
 
 		} catch (HibernateException ex) {
 			logger.log(Level.INFO, ex);
