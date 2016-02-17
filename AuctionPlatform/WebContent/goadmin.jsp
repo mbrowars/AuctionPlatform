@@ -14,8 +14,8 @@
 	<body>
 	
 		<ul id="nav">
-			<a class="navlink" href="index.jsp"><li id="logo"><img src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
-			<a class="navlink" href="index.jsp"><li id="slog">Buy my gramp's stuff</li></a>
+			<a class="navlink" href="/AuctionPlatform/index"><li id="logo"><img src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
+			<a class="navlink" href="/AuctionPlatform/index"><li id="slog">Buy my gramp's stuff</li></a>
 			<li id="login">Admin Login</li>
 		</ul>
 	

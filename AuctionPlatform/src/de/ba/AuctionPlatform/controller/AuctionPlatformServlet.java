@@ -28,6 +28,17 @@ public class AuctionPlatformServlet extends HttpServlet {
 	static final long serialVersionUID = 1L;
 	private static final Logger logger = Logger.getLogger(AuctionPlatformServlet.class);
 
+	public void init() {
+		try {
+
+			HibernateUtil hibernate = HibernateUtil.getInstance();
+			logger.log(Level.INFO, "Initializing Hibernate");
+		} catch (HibernateException ex) {
+			logger.log(Level.INFO, ex);
+			System.exit(5);
+		}
+	}
+
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
 

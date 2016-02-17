@@ -17,8 +17,6 @@ import de.ba.AuctionPlatform.dbmock.UserMock;
 public class BidHandler {
 
 	private Auction auc = new Auction();
-	private User us = new User();
-	private UserDAO usd = new UserDAO();
 	private AuctionDAO aucd = new AuctionDAO();
 	private static final Logger logger = Logger.getLogger(BidHandler.class);
 
@@ -27,14 +25,13 @@ public class BidHandler {
 	 *            Auction-ID
 	 * @param bid
 	 *            Bid/Auction
-	 * @param mail
-	 *            Mail/User
 	 * @return true = bid is valid
 	 */
 	public synchronized boolean checkBid(int id, Double bid) {
-	//	auc=aucd.getAuction();
+		auc=aucd.getAuction(id);
 		// TODO GEBOT von view übergeben
 		Double userBid = auc.getGebot();
+		userBid=10.00;
 		if (userBid < bid) {
 			return true;
 		} else {
