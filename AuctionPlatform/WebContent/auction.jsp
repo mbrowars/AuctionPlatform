@@ -16,8 +16,8 @@ Name, Gebot und Ende der ausgewählten Auktion
 </head>
 <body>
 	<ul id="nav">
-		<a class="navlink" href="index.jsp"><li id="logo"><img src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
-		<a class="navlink" href="index.jsp"><li id="slog">Buy my gramp's stuff</li></a>
+		<a class="navlink" href="/AuctionPlatform/index"><li id="logo"><img src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
+		<a class="navlink" href="/AuctionPlatform/index"><li id="slog">Buy my gramp's stuff</li></a>
 		<% if( session.getAttribute("admin") != null) { %><a class="navlink" href="listing.jsp"><li id="login">+Neue Auktion</li></a><% } %>
 	</ul>
 

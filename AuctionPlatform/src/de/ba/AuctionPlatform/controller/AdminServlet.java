@@ -41,9 +41,9 @@ public class AdminServlet extends HttpServlet {
 			session.setAttribute("admin", admin);
 			requ.setAttribute("admin", admin);
 			logger.log(Level.INFO, "Anmeldung durch User: " + admin.getUsername());
-			requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
+			requ.getRequestDispatcher("index.jsp").forward(requ, resp);
 		} else {
-			resp.sendRedirect("goadmin.jsp");
+			resp.sendRedirect("/AuctionPlatform/goadmin.jsp");
 			logger.log(Level.WARN, "Fehlversuch bei Anmeldung, User: " + admin.getUsername());
 
 		}

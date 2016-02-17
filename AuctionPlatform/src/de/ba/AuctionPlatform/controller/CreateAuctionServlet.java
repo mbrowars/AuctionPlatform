@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -42,6 +43,8 @@ public class CreateAuctionServlet extends HttpServlet {
 	 * web application directory.
 	 */
 	private static final String SAVE_DIR = "uploadFiles";
+	private Auction auc = new Auction();
+	private AuctionDAO aucd = new AuctionDAO();
 
 	/**
 	 * 
@@ -53,35 +56,33 @@ public class CreateAuctionServlet extends HttpServlet {
 		HttpSession session = requ.getSession(true);
 
 		if (session.getAttribute("admin") != null) {
+			if (requ.getParameter("picture") != null) {
+				// gets absolute path of the web application
+				String appPath = requ.getServletContext().getRealPath("");
+				// constructs path of the directory to save uploaded file
+				String savePath = appPath + File.separator + SAVE_DIR;
 
-			Auction auc = new Auction();
-			AuctionDAO aucd = new AuctionDAO();
+				// creates the save directory if it does not exists
+				File fileSaveDir = new File(savePath);
+				if (!fileSaveDir.exists()) {
+					fileSaveDir.mkdir();
+				}
 
-			// gets absolute path of the web application
-			String appPath = requ.getServletContext().getRealPath("");
-			// constructs path of the directory to save uploaded file
-			String savePath = appPath + File.separator + SAVE_DIR;
+				for (Part part : requ.getParts()) {
+					String fileName = extractFileName(part);
+					// part.write(savePath + File.separator + fileName);
+					part.write("C://auctionplatform/pictures/" + fileName);
 
-			// creates the save directory if it does not exists
-			File fileSaveDir = new File(savePath);
-			if (!fileSaveDir.exists()) {
-				fileSaveDir.mkdir();
+				}
 			}
-
-			for (Part part : requ.getParts()) {
-				String fileName = extractFileName(part);
-				// part.write(savePath + File.separator + fileName);
-				part.write("C://auctionplatform/pictures/"+fileName);
-				
-			}
-
-			// auc.setPicture(blob);
-			logger.log(Level.INFO, auc.getPicture());
 			auc.setTitel(requ.getParameter("title"));
 			auc.setBeschreibung(requ.getParameter("desc"));
 
 			// TODO Ablaufdatum setzen (String Date Konvertierung)
-			// auc.setEnddatum(requ.getParameter("end"));
+			Date date = new Date();
+			long sec = date.getTime();
+			long time = Long.parseLong(requ.getParameter("end"));
+			auc.setLaufzeit(sec + time);
 
 			String gebot = requ.getParameter("bid");
 			auc.setGebot(Double.parseDouble(gebot));
@@ -91,7 +92,7 @@ public class CreateAuctionServlet extends HttpServlet {
 			if (save != 0) {
 				resp.getWriter().write(0);
 				logger.log(Level.INFO, "Auktion :" + auc.getId() + "," + auc.getTitel() + " Wurde angelegt.");
-				requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
+				requ.getRequestDispatcher("index.jsp").forward(requ, resp);
 			} else {
 				resp.getWriter().write("Auktion " + auc.getTitel() + " konnte nicht angelegt werden.");
 			}

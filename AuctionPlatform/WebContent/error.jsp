@@ -11,8 +11,7 @@
 </head>
 <body>
 	<ul id="nav">
-		<a class="navlink" href="index.jsp"><li id="logo"><img src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
-		<a class="navlink" href="index.jsp"><li id="slog">Buy my gramp's stuff</li></a>
+		<a class="navlink" href="/AuctionPlatform/index"><li id="logo"><img src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
 		<li id="login">War wohl nix.</li>
 	</ul>
 	<p style="margin-top: 30px; text-align: center; color: red; font: 28px 'Arial-Black';">Error 420: Lel, nice try, faget!</p>

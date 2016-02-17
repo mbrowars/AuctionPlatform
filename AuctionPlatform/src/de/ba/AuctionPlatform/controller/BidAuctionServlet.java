@@ -98,6 +98,8 @@ public class BidAuctionServlet extends HttpServlet {
 			if (rightcode) {
 				// Angebot speichern und status und code an view uebergeben
 				if (bi.saveBid(user.getId(), bid) == true) {
+					auc.setGebot(bid);
+					aucd.updateAuction(auc);
 					resp.getWriter().write("null");
 				} else {
 					resp.getWriter().write("Gebot konnte nicht gespeichert werden!");
