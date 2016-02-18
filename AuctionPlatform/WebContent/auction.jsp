@@ -4,8 +4,6 @@ Name, Gebot und Ende der ausgewählten Auktion
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="de.ba.AuctionPlatform.dao.Auction"; %>
-<% Auction auc = (Auction)request.getParameter("auction"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,12 +26,12 @@ Name, Gebot und Ende der ausgewählten Auktion
 			<div id="placeholder"></div>
 		</div>
 		<div id="auctionbid">
-			<p><%= auc.getTitel() %></p>
-			<p><%= auc.getGebot() %></p>
-			<p><%= auc.getLaufzeit() %></p>
+			<p>${auction.getTitel()}</p>
+			<p>${auction.getGebot()}</p>
+			<p>${auction.getLaufzeit()}</p>
 			<div>
 				<input name="bid" id="bid" placeholder="Gebot">
-				<input type="hidden" id="id" value="<%= auc.getId() %>">
+				<input type="hidden" id="id" value="">
 				<button type="button" id="showModal" class="ourButton">Bieten</button>
 			</div>
 		</div>
