@@ -76,7 +76,7 @@ Arraylist mit den Auktionen
 	<div id="sep"></div>
 	<div id="listings">
 		<div class="listing"
-			ng-repeat="auction in auctions | filter: query | filter: lessThan('price', (price) || 1) | orderBy:sort"">
+			ng-repeat="auction in auctions | filter: query | filter: lessThan('price', (price) || 1000000) | orderBy:sort"">
 			<p class="title">{{ auction.name |
 				limitTo:16}}{{auction.name.length > 16 ? '&hellip;' : ''}}</p>
 			<a class="listlink"
