@@ -91,7 +91,7 @@ public class CreateAuctionServlet extends HttpServlet {
 			// Auktion in DB Speichern und Fehlerbehandlung
 			if (save != 0) {
 				resp.getWriter().write(0);
-				logger.log(Level.INFO, "Auktion :" + auc.getId() + "," + auc.getTitel() + " Wurde angelegt.");
+				logger.log(Level.INFO, "Auktion :" + auc.getAuctionid() + "," + auc.getTitel() + " Wurde angelegt.");
 				requ.getRequestDispatcher("index.jsp").forward(requ, resp);
 			} else {
 				resp.getWriter().write("Auktion " + auc.getTitel() + " konnte nicht angelegt werden.");

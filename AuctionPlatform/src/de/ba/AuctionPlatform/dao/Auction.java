@@ -33,11 +33,11 @@ public class Auction {
 		this.picture = picture;
 	}
 
-	public int getId() {
+	public int getAuctionid() {
 		return auctionid;
 	}
 
-	public void setId(int auctionid) {
+	public void setAuctionid(int auctionid) {
 		this.auctionid = auctionid;
 	}
 

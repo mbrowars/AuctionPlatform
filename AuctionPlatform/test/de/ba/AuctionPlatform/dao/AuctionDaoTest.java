@@ -12,7 +12,7 @@ import java.sql.*;
 public class AuctionDaoTest {
 	//TODO Testfall erstellen
 	Auction auction1 = new Auction("titel", 24.50, (long) 1234235, "beschreibung", 12, null);
-	Auction auction2 = new Auction("SNES", 123.45, (long) 32546, "Old Stuff", 4, null);
+	Auction auction2 = new Auction("SNES", 123.45, (long) 32546, "Old Stuff with style (new Update)", 4, null);
 	
 	
 	
@@ -26,9 +26,14 @@ public class AuctionDaoTest {
 		AuctionDAO.getAuction(3);
 	}
 	
-	@Test
+	
 	public void removeAuction() {
 		AuctionDAO.removeAuction(16);
 		AuctionDAO.removeAuction(17);
+	}
+	
+	@Test
+	public void updateAuction() {
+		AuctionDAO.updateAuction(auction2);
 	}
 }

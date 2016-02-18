@@ -46,17 +46,17 @@ public class AuctionDAO {
 			
 			session.save(auction);
 			tx.commit();
-			logger.log(Level.INFO, "Auktion: " + auction.getId() + "," + auction.getTitel() + " wurde angelegt.");
+			logger.log(Level.INFO, "Auktion: " + auction.getAuctionid() + "," + auction.getTitel() + " wurde angelegt.");
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
 			logger.log(Level.ERROR,
-					"Auktion: " + auction.getId() + "," + auction.getTitel() + " konnte nicht angelegt werden " + e);
+					"Auktion: " + auction.getAuctionid() + "," + auction.getTitel() + " konnte nicht angelegt werden " + e);
 		} finally {
 			session.close();
 
 		}
-		return auction.getId();
+		return auction.getAuctionid();
 	}
 
 	/* Auktion löschen */
@@ -94,11 +94,22 @@ public class AuctionDAO {
 
 		try {
 			tx = session.beginTransaction();
-			session.update(auction);
+			session.get(Auction.class, auction.getAuctionid());
+		 	
+			auction.setTitel(auction.getTitel());
+		 	auction.setGebot(auction.getGebot());
+		 	auction.setLaufzeit(auction.getLaufzeit());
+		 	auction.setBeschreibung(auction.getBeschreibung());
+		 	auction.setHoechstbietenderid(auction.getHoechstbietenderid());
+		 	auction.setPicture(auction.getPicture());
+		 	
+			session.update(auction); 
+			
+			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
-			logger.log(Level.ERROR, "Auktion: " + auction + " konnte nicht aktualisiert werden." + e);
+			logger.log(Level.ERROR, "Auktion: " + auction.getAuctionid() + " konnte nicht aktualisiert werden." + e);
 		} finally {
 			session.close();
 		}
@@ -115,6 +126,7 @@ public class AuctionDAO {
 			wantedauction.setInteger("auctionid", auctionid);
 			Object queryResult = wantedauction.uniqueResult();
 			auction = (Auction) queryResult;
+			tx.commit();
 		}catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();

@@ -25,7 +25,7 @@ public class EndAuctionHandler {
 		user = usd.getUser(auction.getHoechstbietenderid());
 		mail.send(user.getEmail(), "Auktion " + auction.getTitel() + " wurde beendet",
 				"Sie haben die Auktion für den Artikel " + auction.getTitel() + " gewonnen");
-		da.removeAuction(auction.getId());
+		da.removeAuction(auction.getAuctionid());
 	}
 
 }
