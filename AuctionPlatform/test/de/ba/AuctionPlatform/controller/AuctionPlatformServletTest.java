@@ -32,7 +32,7 @@ public class AuctionPlatformServletTest extends HttpServlet {
 	public void listTest(List<Auction> auction) {
 
 		for (Auction auc : auction) {
-			System.out.println(auc.getId() + " , " + auc.getTitel() + "," + auc.getGebot());
+			System.out.println(auc.getId() + " , " + auc.getTitel() + " , " + auc.getGebot());
 		}
 	}
 }

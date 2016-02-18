@@ -81,8 +81,8 @@ public class CreateAuctionServlet extends HttpServlet {
 			// TODO Ablaufdatum setzen (String Date Konvertierung)
 			Date date = new Date();
 			long sec = date.getTime();
-			long time = Long.parseLong(requ.getParameter("end"));
-			auc.setLaufzeit(sec + time);
+		//	long time = Integer.parseInt(requ.getParameter("end"));
+		//	auc.setLaufzeit(sec + time);
 
 			String gebot = requ.getParameter("bid");
 			auc.setGebot(Double.parseDouble(gebot));

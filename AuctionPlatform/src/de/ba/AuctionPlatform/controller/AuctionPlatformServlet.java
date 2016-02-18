@@ -17,6 +17,8 @@ import javax.servlet.http.*;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+
+import de.ba.AuctionPlatform.dao.Auction;
 import de.ba.AuctionPlatform.dao.AuctionDAO;
 import de.ba.AuctionPlatform.dao.HibernateUtil;
 
@@ -48,10 +50,17 @@ public class AuctionPlatformServlet extends HttpServlet {
 
 			HibernateUtil hibernate = HibernateUtil.getInstance();
 			logger.log(Level.INFO, "Initializing Hibernate");
-			List auction = AuctionDAO.getAllAuctions();
+			List<Auction> auction = AuctionDAO.getAllAuctions();
 			session.setAttribute("auctions", auction);
 			AuctionPlatformServletTest t = new AuctionPlatformServletTest();
 			t.listTest(auction);
+			AuctionHelper ah = new AuctionHelper();
+
+			String json = ah.json(auction);
+			ah.saveJson(json, requ.getServletContext().getRealPath(""));
+
+			session.setAttribute("auc", json);
+			logger.log(Level.INFO, json);
 
 		} catch (HibernateException ex) {
 			logger.log(Level.INFO, ex);

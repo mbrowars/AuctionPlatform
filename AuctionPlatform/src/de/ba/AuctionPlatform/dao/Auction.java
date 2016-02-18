@@ -9,6 +9,7 @@ package de.ba.AuctionPlatform.dao;
 import java.sql.Blob;
 
 public class Auction {
+	static final long serialVersionUID = 1L;
 	private int auctionid;
 	private String titel;
 	private Double gebot;
@@ -21,9 +22,9 @@ public class Auction {
 
 	}
 
-	public Auction(String titel, Double gebot, Long laufzeit, String beschreibung,
-			int hoechstbietenderid, Blob picture) {
-		
+	public Auction(String titel, Double gebot, Long laufzeit, String beschreibung, int hoechstbietenderid,
+			Blob picture) {
+
 		this.titel = titel;
 		this.gebot = gebot;
 		this.laufzeit = laufzeit;
