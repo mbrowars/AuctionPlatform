@@ -40,23 +40,7 @@ Name, Gebot und Ende der ausgewählten Auktion
 	<div id="sep"></div>
 	
 	<p id="desc">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-		Maecenas vel semper massa. Ut at interdum tortor. Etiam 
-		sit amet convallis odio. Sed fermentum velit lorem, non 
-		viverra sapien aliquet et. Nunc at mattis mi. Etiam erat 
-		purus, mattis in cursus a, tincidunt porta nisl. Class 
-		aptent taciti sociosqu ad litora torquent per conubia 
-		nostra, per inceptos himenaeos. Integer lacinia pretium 
-		eros quis elementum.
-		<br/>
-		Vestibulum sed augue in turpis dignissim tincidunt ut quis 
-		diam. Phasellus venenatis vel augue quis laoreet. Cras nulla 
-		lectus, faucibus sed tortor in, finibus convallis metus. 
-		Class aptent taciti sociosqu ad litora torquent per conubia 
-		nostra, per inceptos himenaeos. Nunc eu libero eget justo 
-		aliquam mattis non eget dui. Morbi ac feugiat lorem, eu 
-		tincidunt erat. Sed fermentum ex a pellentesque lacinia. 
-		Fusce quis tincidunt velit.
+		${auction.getBeschreibung()}
 	</p>
 	
 	
