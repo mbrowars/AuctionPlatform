@@ -7,7 +7,8 @@ $(function() {
 			  type: "POST",
 			  url: "/AuctionPlatform/auction/bid",
 			  data: { 'mail': $("#mail").val(),
-				  	  'bid' : $("#bid").val()},
+				  	  'bid' : $("#bid").val(),
+				  	  'id'  : $('#id').html()},
 
 			  beforeSend: function(){
 				$(".modal-body span").html('<img src="img/spinner.gif">'); 
