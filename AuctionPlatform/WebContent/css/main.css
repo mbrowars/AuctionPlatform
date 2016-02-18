@@ -103,7 +103,7 @@ a.listlink, a.listlink:visited, a.listlink:active, a.listlink:hover {
 }
 
 .listing:hover{
-	margin-top:-5px;
+	margin-top:10px;
 }
 
 .container {
