@@ -68,12 +68,12 @@ public class CreateAuctionServlet extends HttpServlet {
 					fileSaveDir.mkdir();
 				}
 
-				for (Part part : requ.getParts()) {
-					String fileName = extractFileName(part);
-					// part.write(savePath + File.separator + fileName);
-					part.write("C://auctionplatform/pictures/" + fileName);
-
-				}
+				// TODO: Bild hinzufügen probleme mit Multipart
+				// for (Part part : requ.getParts()) {
+				// String fileName = extractFileName(part);
+				// part.write(savePath + File.separator + fileName);
+				// part.write("C://auctionplatform/pictures/" + fileName);
+				// }
 			}
 			auc.setTitel(requ.getParameter("title"));
 			auc.setBeschreibung(requ.getParameter("desc"));
@@ -81,8 +81,8 @@ public class CreateAuctionServlet extends HttpServlet {
 			// TODO Ablaufdatum setzen (String Date Konvertierung)
 			Date date = new Date();
 			long sec = date.getTime();
-		//	long time = Integer.parseInt(requ.getParameter("end"));
-		//	auc.setLaufzeit(sec + time);
+			long time = Integer.parseInt(requ.getParameter("end"));
+			auc.setLaufzeit(sec + time);
 
 			String gebot = requ.getParameter("bid");
 			auc.setGebot(Double.parseDouble(gebot));
@@ -99,9 +99,12 @@ public class CreateAuctionServlet extends HttpServlet {
 
 		}
 
-		else {
+		else
+
+		{
 			requ.getRequestDispatcher("/error.jsp").forward(requ, resp);
 		}
+
 	}
 
 	public void doPost(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {

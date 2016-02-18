@@ -58,6 +58,7 @@ public class AuctionPlatformServlet extends HttpServlet {
 
 			String json = ah.json(auction);
 			ah.saveJson(json, requ.getServletContext().getRealPath(""));
+			logger.log(Level.INFO, requ.getServletContext().getRealPath("") + ", " + json + ", wurde gespeichert.");
 
 			session.setAttribute("auc", json);
 			logger.log(Level.INFO, json);

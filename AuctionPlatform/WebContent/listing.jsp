@@ -4,19 +4,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/main.css" type="text/css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <title>My inheritance</title>
 </head>
 <body>
 	<ul id="nav">
-		<a class="navlink" href="/AuctionPlatform/index"><li id="logo"><img src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
-		<a class="navlink" href="/AuctionPlatform/index"><li id="slog">Buy my gramp's stuff</li></a>
+		<a class="navlink" href="/AuctionPlatform/index"><li id="logo"><img
+				src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
+		<a class="navlink" href="/AuctionPlatform/index"><li id="slog">Buy
+				my gramp's stuff</li></a>
 		<li id="login">Neue Auktion erstellen</li>
 	</ul>
-	
+
 	<!-- 
 		picture -> Bild
 		title -> Titel
@@ -26,22 +30,31 @@
 		id -> AuktionsID (leer wenn neue Auktion, enthält ID wenn 
 							vorhandene Auktion bearbeitet wird)
 	 -->
-	<% if( session.getAttribute("admin") != null) { %>
+	<%
+		if (session.getAttribute("admin") != null) {
+	%>
 	<div class="container">
-		<form action="createAuction" method="post" enctype="multipart/form-data">
-			<input type="file" name="picture" />
-			<input placeholder="Titel" name="title" />
-			<input placeholder="Startgebot" name="bid" />
-			<input placeholder="Auktionsende" name="end" />
-			<input placeholder="Beschreibung" name="desc" />
-			<input placeholder="AuktionsID" name="id" />
+		<form action="createAuction" method="post">
+			<input type="file" name="picture" /> <input placeholder="Titel"
+				name="title" type="text" /> <input placeholder="Startgebot"
+				name="bid" type="text" /> <input placeholder="Auktionsende"
+				name="end" type="text" /> <input placeholder="Beschreibung"
+				name="desc" type="text" /> <input placeholder="AuktionsID"
+				name="id" type="text" />
 			<button type="submit">Bestätigen</button>
 		</form>
 	</div>
-	
-	<script src="${pageContext.request.contextPath}/js/custom-file-input.js"></script>
-	<% } else { %>
-	<p style="margin-top: 30px; text-align: center; color: red; font: 28px 'Arial-Black';">Sie sind nicht berechtigt diese Seite anzuzeigen!</p>
-	<% } %>
+
+	<script
+		src="${pageContext.request.contextPath}/js/custom-file-input.js"></script>
+	<%
+		} else {
+	%>
+	<p
+		style="margin-top: 30px; text-align: center; color: red; font: 28px 'Arial-Black';">Sie
+		sind nicht berechtigt diese Seite anzuzeigen!</p>
+	<%
+		}
+	%>
 </body>
 </html>
