@@ -39,7 +39,7 @@ public class BidAuctionServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
-
+		HttpSession session = requ.getSession(true);
 		SendMail em = new SendMail();
 		BidHandler bi = new BidHandler();
 		Codegenerator gen = new Codegenerator();
@@ -47,14 +47,9 @@ public class BidAuctionServlet extends HttpServlet {
 		User user = new User();
 		Auction auc = new Auction();
 		AuctionDAO aucd = new AuctionDAO();
+		int saved = 0;
 
 		Codevalidator valid = new Codevalidator();
-
-		// Auktion wird mithilfe der ID geladen
-		if (requ.getParameter("id") != null) {
-			auc = aucd.getAuction(Integer.parseInt(requ.getParameter("id")));
-			requ.setAttribute("auction", auc);
-		}
 
 		// Angebot mit der Datenbank vergleichen / Email senden /
 		// Sicherkeitscode testen
@@ -67,8 +62,8 @@ public class BidAuctionServlet extends HttpServlet {
 				logger.log(Level.WARN, "Negatives Gebot wurde eingetragen.");
 			}
 			mail = requ.getParameter("mail");
-
-			if (bi.checkBid(Integer.parseInt(requ.getParameter("id")), bid) == true) {
+			int id = Integer.parseInt(requ.getParameter("id"));
+			if (bi.checkBid(id, bid) == true) {
 
 				try {
 
@@ -77,7 +72,8 @@ public class BidAuctionServlet extends HttpServlet {
 					user.setEmail(mail);
 					user.setCode(code);
 					userd.addUser(user);
-					int saved = user.getId();
+					session.setAttribute("user", user);
+					saved = user.getId();
 					resp.getWriter().write("null");
 
 				} catch (MessagingException e) {
@@ -97,7 +93,8 @@ public class BidAuctionServlet extends HttpServlet {
 
 			if (rightcode) {
 				// Angebot speichern und status und code an view uebergeben
-				if (bi.saveBid(user.getId(), bid) == true) {
+				User user1 = (User) session.getAttribute("user");
+				if (bi.saveBid(user1.getId(), bid) == true) {
 					auc.setGebot(bid);
 					aucd.updateAuction(auc);
 					resp.getWriter().write("null");

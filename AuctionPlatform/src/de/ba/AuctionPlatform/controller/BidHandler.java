@@ -28,10 +28,10 @@ public class BidHandler {
 	 * @return true = bid is valid
 	 */
 	public synchronized boolean checkBid(int id, Double bid) {
-		auc=aucd.getAuction(id);
+		auc = aucd.getAuction(id);
 		// TODO GEBOT von view übergeben
 		Double userBid = auc.getGebot();
-		userBid=10.00;
+
 		if (userBid < bid) {
 			return true;
 		} else {
@@ -46,15 +46,13 @@ public class BidHandler {
 	 * @return true = bid is saved
 	 */
 	public synchronized boolean saveBid(int id, Double bid) {
-		if (checkBid(id, bid) == true) {
-			auc.setGebot(bid);
-			// TODO: Get Id by email!
-			auc.setHoechstbietenderid(id);
-			return true;
-		} else {
-			logger.log(Level.WARN, "Gebot für " + id + " konnte nicht gespeichert werden.");
-			return false;
-		}
 
+		auc.setGebot(bid);
+		// TODO: Get Id by email!
+		auc.setHoechstbietenderid(id);
+		aucd.updateAuction(auc);
+
+		return true;
 	}
+
 }
