@@ -20,6 +20,12 @@
 	</servlet>
 
 	<servlet>
+		<servlet-name>Auction-Servlet</servlet-name>
+		<servlet-class>de.ba.AuctionPlatform.controller.AuctionServlet
+		</servlet-class>
+	</servlet>
+
+	<servlet>
 		<servlet-name>Admin-Login</servlet-name>
 		<servlet-class>de.ba.AuctionPlatform.controller.AdminServlet
 		</servlet-class>
@@ -67,13 +73,18 @@
 
 	<servlet-mapping>
 		<servlet-name>BidAuction</servlet-name>
-		<url-pattern>/auction</url-pattern>
+		<url-pattern>/auction/bid</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>DeleteAuction
 		</servlet-name>
 		<url-pattern>/auction/delete</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Auction-Servlet</servlet-name>
+		<url-pattern>/auction</url-pattern>
 	</servlet-mapping>
 
 </web-app>

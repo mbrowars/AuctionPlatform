@@ -5,7 +5,7 @@ $(function() {
 
 		$.ajax({
 			  type: "POST",
-			  url: "/AuctionPlatform/auction",
+			  url: "/AuctionPlatform/auction/bid",
 			  data: { 'mail': $("#mail").val(),
 				  	  'bid' : $("#bid").val()},
 
@@ -46,7 +46,7 @@ $(function() {
 $('body').on('click','#testCode',function(){
 	$.ajax({
 		  method: "POST",
-		  url: "/AuctionPlatform/auction",
+		  url: "/AuctionPlatform/auction/bid",
 		  data: { code: $("#code").val() },
 		
 		  beforeSend: function(){
