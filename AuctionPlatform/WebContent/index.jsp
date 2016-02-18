@@ -51,7 +51,7 @@ Arraylist mit den Auktionen
 		<input class="ourText" placeholder="Suche" ng-model="query"> <input
 			type="range" min="1" max="{{maxPrice+1}}" value="{{maxPrice}}"
 			id="price" ng-model="price" oninput="updateRangeVal(this);" />
-		<div id="rangeVal">{{(price) || 1}}€</div>
+		<div id="rangeVal">{{(price) || maxPrice+1}}€</div>
 		<select id="sort" class="turnintodropdown" ng-model="sort">
 			<option value="">Sortierung</option>
 			<option value="price">Preis</option>
@@ -80,7 +80,7 @@ Arraylist mit den Auktionen
 			<p class="title">{{ auction.name |
 				limitTo:16}}{{auction.name.length > 16 ? '&hellip;' : ''}}</p>
 			<a class="listlink"
-				href="${pageContext.request.contextPath}/auction.jsp">
+				href="${pageContext.request.contextPath}/auction?id={{auction.Id}}">
 				<div id="placeholder"></div>
 			</a>
 			<p class="price">
