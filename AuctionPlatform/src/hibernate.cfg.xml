@@ -6,7 +6,7 @@
 
 
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://db4free.net:3306/auction?useSSL=false</property>
+		<property name="hibernate.connection.url">jdbc:mysql://db4free.net:3306/auction</property>
 		<property name="hibernate.connection.username">kauft_mein_erbe</property>
 		<property name="hibernate.connection.password">auctionplatform1</property>
 		<property name="show_sql">true</property>

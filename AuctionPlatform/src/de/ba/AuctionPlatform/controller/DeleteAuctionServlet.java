@@ -18,7 +18,7 @@ public class DeleteAuctionServlet extends HttpServlet {
 			Auction auc = new Auction();
 			AuctionDAO aucd = new AuctionDAO();
 			auc = aucd.getAuction(Integer.parseInt(requ.getParameter("id")));
-			aucd.removeAuction(auc);
+			aucd.removeAuction(Integer.parseInt(requ.getParameter("id")));
 			resp.getWriter().write("Auktion " + requ.getParameter("id") + " wurde gelöscht.");
 		} else {
 			resp.getWriter().write("Fehler bein Löschen der Auktion.");

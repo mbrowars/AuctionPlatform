@@ -23,9 +23,9 @@ public class EndAuctionHandler {
 		// TODO Neue Datenbanktabelle mit alten Auktionen
 		// expiredAuction.addAuction(auction);
 		user = usd.getUser(auction.getHoechstbietenderid());
-		mail.send(user.getEmail(), "Aukion " + auction.getTitel() + " wurde beendet",
+		mail.send(user.getEmail(), "Auktion " + auction.getTitel() + " wurde beendet",
 				"Sie haben die Auktion für den Artikel " + auction.getTitel() + " gewonnen");
-		da.removeAuction(auction);
+		da.removeAuction(auction.getId());
 	}
 
 }

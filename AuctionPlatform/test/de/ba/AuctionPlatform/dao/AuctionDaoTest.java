@@ -15,14 +15,20 @@ public class AuctionDaoTest {
 	Auction auction2 = new Auction("SNES", 123.45, (long) 32546, "Old Stuff", 4, null);
 	
 	
-	@Test
+	
 	public void addAuction() {
 		AuctionDAO.addAuction(auction1);
 		AuctionDAO.addAuction(auction2);
 	}
 	
-	@Test
+	
 	public void getAuction() {
 		AuctionDAO.getAuction(3);
+	}
+	
+	@Test
+	public void removeAuction() {
+		AuctionDAO.removeAuction(16);
+		AuctionDAO.removeAuction(17);
 	}
 }

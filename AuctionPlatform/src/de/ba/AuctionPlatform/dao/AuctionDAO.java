@@ -63,20 +63,22 @@ public class AuctionDAO {
 	/**
 	 * @param auction
 	 */
-	public void removeAuction(Auction auction) {
+	public static void removeAuction(int auctionid) {
 		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
 			tx = session.beginTransaction();
-			session.delete(auction);
+			Query remove = session.createQuery("DELETE Auction where AUCTIONID= " + auctionid);
+			
+			remove.executeUpdate();
 			tx.commit();
-			logger.log(Level.INFO, "Auktion: " + auction + " wurde angelöscht.");
+			logger.log(Level.INFO, "Auktion: " + auctionid + " wurde gelöscht.");
 
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
-			logger.log(Level.ERROR, "Auktion: " + auction + " konnte nicht gelöscht werden." + e);
+			logger.log(Level.ERROR, "Auktion: " + auctionid + " konnte nicht gelöscht werden." + e);
 		} finally {
 			session.close();
 		}
