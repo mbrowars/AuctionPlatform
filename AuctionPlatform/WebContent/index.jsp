@@ -22,6 +22,7 @@ Arraylist mit den Auktionen
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
 <script src="js/controller.js"></script>
 <script src="js/select.js"></script>
+<script src="js/index.js"></script>
 <title>My inheritance</title>
 </head>
 <%-- session.invalidate(); --%>
@@ -67,7 +68,6 @@ Arraylist mit den Auktionen
 					<li><a href="#">name</a></li>
 				</ul>
 			</div>
-			​
 		</div>
 		</section>
 
@@ -90,7 +90,7 @@ Arraylist mit den Auktionen
 				if (session.getAttribute("admin") != null) {
 			%>
 			<button class="ourButton">Ändern</button>
-			<button class="ourButton">Löschen</button>
+			<button id="{{'del' + auction.Id}}" class="ourButton" onclick="delAuction(this);">Löschen</button>
 			<%
 				}
 			%>
