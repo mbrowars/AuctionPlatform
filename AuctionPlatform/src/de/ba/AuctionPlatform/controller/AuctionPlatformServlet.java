@@ -60,4 +60,8 @@ public class AuctionPlatformServlet extends HttpServlet {
 		requ.getRequestDispatcher("/index.jsp").forward(requ, resp);
 
 	}
+
+	public void doPost(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(requ, resp);
+	}
 }
