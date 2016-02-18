@@ -47,8 +47,9 @@ $('body').on('click','#testCode',function(){
 	$.ajax({
 		  method: "POST",
 		  url: "/AuctionPlatform/auction/bid",
-		  data: { code: $("#code").val() },
-		
+		  data: { 'code': $("#code").val(),
+			  	  'bid' : $("#bid").val(),
+			  	  'id'  : $('#id').val()},		
 		  beforeSend: function(){
 			$(".modal-body p").html('<img src="img/spinner.gif">');  
 		  },
