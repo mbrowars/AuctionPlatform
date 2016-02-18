@@ -31,7 +31,7 @@ Name, Gebot und Ende der ausgewählten Auktion
 			<p>${auction.getLaufzeit()}</p>
 			<div>
 				<input name="bid" id="bid" placeholder="Gebot">
-				<input type="hidden" id="id" value="">
+				<div style="display: none;" id="id">${auction.getId()}</div>
 				<button type="button" id="showModal" class="ourButton">Bieten</button>
 			</div>
 		</div>

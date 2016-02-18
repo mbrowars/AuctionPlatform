@@ -49,7 +49,7 @@ $('body').on('click','#testCode',function(){
 		  url: "/AuctionPlatform/auction/bid",
 		  data: { 'code': $("#code").val(),
 			  	  'bid' : $("#bid").val(),
-			  	  'id'  : $('#id').val()},		
+			  	  'id'  : $('#id').html()},		
 		  beforeSend: function(){
 			$(".modal-body p").html('<img src="img/spinner.gif">');  
 		  },
