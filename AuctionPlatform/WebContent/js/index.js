@@ -1,12 +1,12 @@
 function delAuction(elem) {
-	alert($(elem).prop("id").substr(3));
 	$.ajax({
 	  type: "POST",
-	  url: "/AuctionPlatform/auction",
+	  url: "/AuctionPlatform/auction/delete",
 	  data: { 'id': $(elem).prop("id").substr(3) },
 	  success: function() {
-		  $(elem).parent().parent().animate({opacity: 0}, 250);
-		  $(elem).parent().parent().hide();
+		  $(elem).parent().animate({opacity: 0}, 500, function() {
+			  $(elem).parent().hide();
+		  });
 	  }
 	});
 
