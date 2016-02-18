@@ -11,7 +11,6 @@ $(function() {
 
 			  beforeSend: function(){
 				$(".modal-body span").html('<img src="img/spinner.gif">'); 
-				alert($('#id').html());
 			  },
 			  success: function(resp) {
 				  if(resp=="null") {
