@@ -23,7 +23,7 @@
 		<property name="hoechstbietenderid" type="int">
 			<column name="HOECHSTBIETENDERID" />
 		</property>
-		<property name="picture" type="blob">
+		<property name="picture" type="text">
 			<column name="PICTURE" />
 		</property>
 	</class>
