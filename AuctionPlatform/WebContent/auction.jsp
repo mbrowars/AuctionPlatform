@@ -5,44 +5,49 @@ Name, Gebot und Ende der ausgewählten Auktion
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html ng-app="auctionApp">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/controller.js"></script>
+<script src="${pageContext.request.contextPath}/js/auction.js"></script>
 <title>My inheritance</title>
 </head>
-<body>
+<body ng-controller="auctionCtrl">
 	<ul id="nav">
 		<a class="navlink" href="/AuctionPlatform/index"><li id="logo"><img src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
 		<a class="navlink" href="/AuctionPlatform/index"><li id="slog">Buy my gramp's stuff</li></a>
 		<% if( session.getAttribute("admin") != null) { %><a class="navlink" href="listing.jsp"><li id="login">+Neue Auktion</li></a><% } %>
 	</ul>
-
-	<div id="auctiontop">
-		<div id="auctionpic">
-			<div id="placeholder"></div>
-		</div>
-		<div id="auctionbid">
-			<p>${auction.getTitel()}</p>
-			<p>${auction.getGebot()}</p>
-			<p>${auction.getLaufzeit()}</p>
-			<div>
-				<input name="bid" id="bid" placeholder="Gebot">
-				<div style="display: none;" id="id">${auction.getId()}</div>
-				<button type="button" id="showModal" class="ourButton">Bieten</button>
+	
+	<span ng-repeat="auction in auctions | filter:{Id: ${auction.getAuctionid()}} | limitTo: 1">
+		<div id="auctiontop">
+			<div id="auctionpic">
+				<div id="placeholder"></div>
+			</div>
+			<div id="auctionbid">
+				<p>{{auction.name}}</p>
+				<p>{{auction.price}}</p>
+				<p>{{auction.Laufzeit}}</p>
+				<div>
+					<input name="bid" id="bid" placeholder="Gebot">
+					<div style="display: none;" id="id">${auction.getAuctionid()}</div>
+					<button type="button" onclick="showMyModal();" id="showModal" class="ourButton">Bieten</button>
+				</div>
 			</div>
 		</div>
-	</div>
-	
-	<div id="sep"></div>
-	
-	<p id="desc">
-		${auction.getBeschreibung()}
-	</p>
-	
+		
+		<div id="sep"></div>
+		
+		<p id="desc">
+			{{auction.Beschreibung}}
+		</p>
+	</span>
 	
 	
 	<div class="modal fade" id="BidModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -64,8 +69,6 @@ Name, Gebot und Ende der ausgewählten Auktion
 	    </div>
 	  </div>
 	</div>
-	
-	<script src="${pageContext.request.contextPath}/js/auction.js"></script>
 	
 </body>
 </html>

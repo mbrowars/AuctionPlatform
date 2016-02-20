@@ -68,7 +68,7 @@ public class CreateAuctionServlet extends HttpServlet {
 					fileSaveDir.mkdir();
 				}
 
-				// TODO: Bild hinzufügen probleme mit Multipart
+				// TODO: Bild hinzufï¿½gen probleme mit Multipart
 				// for (Part part : requ.getParts()) {
 				// String fileName = extractFileName(part);
 				// part.write(savePath + File.separator + fileName);
@@ -92,7 +92,7 @@ public class CreateAuctionServlet extends HttpServlet {
 			if (save != 0) {
 				resp.getWriter().write(0);
 				logger.log(Level.INFO, "Auktion :" + auc.getAuctionid() + "," + auc.getTitel() + " Wurde angelegt.");
-				requ.getRequestDispatcher("index.jsp").forward(requ, resp);
+				requ.getRequestDispatcher("/").forward(requ, resp);
 			} else {
 				resp.getWriter().write("Auktion " + auc.getTitel() + " konnte nicht angelegt werden.");
 			}

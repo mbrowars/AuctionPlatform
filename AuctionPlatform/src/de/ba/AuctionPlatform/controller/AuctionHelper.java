@@ -20,13 +20,13 @@ public class AuctionHelper {
 	public String json(List<Auction> auction) {
 		String json = "[";
 
-		// Json String zur übergabe an angular-js
+		// Json String zur ï¿½bergabe an angular-js
 		for (Auction auc : auction) {
 			json += "{";
 			json += "\"Id\": " + auc.getAuctionid() + ", " + "\"name\": \"" + auc.getTitel() + "\", " + "\"price\": "
 					+ auc.getGebot() + ", " + "\"Laufzeit\": " + auc.getLaufzeit() + ", " + "\"Beschreibung\": \""
 					+ auc.getBeschreibung() + "\", " + "\"HoechstbietenderId\": " + auc.getHoechstbietenderid() + ", "
-					+ "\"Picture\": \"" + auc.getPicture() + "\", " + "\"Id\": " + auc.getAuctionid() + "}";
+					+ "\"Picture\": \"" + auc.getPicture() + "\"}";
 			if (auction.listIterator().hasNext())
 				json += ",";
 		}

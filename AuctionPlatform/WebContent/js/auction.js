@@ -16,7 +16,7 @@ $(function() {
 			  success: function(resp) {
 				  if(resp=="null") {
 					$(".modal-body span").html("<span style='color: green;'>E-Mail wurde erfolgreich versendet!</span>");
-					$(".modal-body p").html('<label>Code</label><input placeholder="Bestätigungscode" id="code"><button id="testCode" class="ourButton">Senden</button>');
+					$(".modal-body p").html('<label>Code</label><input placeholder="Bestätigungscode" id="code"><button id="testCode" class="ourButton" onclick="checkMyCode();">Senden</button>');
 					$("#bid").val("");
 				  } else {
 					  $(".modal-body span").html("<span style='color: red;'>"+resp+"</span>");
@@ -30,21 +30,20 @@ $(function() {
 			$(".modal-body span").html("<span style='color: red;'>Bitte eine valide E-Mail Adresse eingeben!</span>");
 		}
 	}); //click end
-	
-	$("#showModal").click(function(){
-		var zahl = parseFloat($("#bid").val());
-		if( !isNaN(zahl) ) {
-			$('#bid').val(zahl);
-			$("span#bidtext").html($("#bid").val() + "€");
-			$("#BidModal").modal("show");
-		} else {
-			$('#bid').css('border', '1px solid red');
-		}
-	});
-	
 }); //load ready end
 
-$('body').on('click','#testCode',function(){
+function showMyModal() {
+	var zahl = parseFloat($("#bid").val());
+	if( !isNaN(zahl) ) {
+		$('#bid').val(zahl);
+		$("span#bidtext").html($("#bid").val() + "€");
+		$("#BidModal").modal("show");
+	} else {
+		$('#bid').css('border', '1px solid red');
+	}
+}
+
+function checkMyCode(){
 	$.ajax({
 		  method: "POST",
 		  url: "/AuctionPlatform/auction/bid",
@@ -66,4 +65,4 @@ $('body').on('click','#testCode',function(){
 		    $(".modal-body p").html("<span style='color: red;'>Fehler: Gebot kann derzeit nicht valididert werden.</span>");
 		  }
 	});
-});
+}
