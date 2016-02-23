@@ -9,6 +9,7 @@ package de.ba.AuctionPlatform.controller;
 import java.io.*;
 import java.util.List;
 import java.util.Iterator;
+import java.util.Date;
 import java.lang.String;
 
 import javax.servlet.*;
@@ -62,6 +63,8 @@ public class AuctionPlatformServlet extends HttpServlet {
 
 			session.setAttribute("auc", json);
 			logger.log(Level.INFO, json);
+			
+			requ.setAttribute("date", (new Date()).getTime());
 
 		} catch (HibernateException ex) {
 			logger.log(Level.INFO, ex);

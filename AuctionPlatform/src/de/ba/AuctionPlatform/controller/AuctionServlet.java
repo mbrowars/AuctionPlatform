@@ -1,6 +1,7 @@
 package de.ba.AuctionPlatform.controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +20,7 @@ public class AuctionServlet extends HttpServlet {
 			AuctionDAO aucd = new AuctionDAO();
 			auc = aucd.getAuction(Integer.parseInt(requ.getParameter("id")));
 			requ.setAttribute("auction", auc);
+			requ.setAttribute("date", new Date().getTime());
 			requ.getRequestDispatcher("/auction.jsp").forward(requ, resp);
 		}
 	}
