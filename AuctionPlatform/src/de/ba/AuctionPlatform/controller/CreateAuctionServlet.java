@@ -82,7 +82,7 @@ public class CreateAuctionServlet extends HttpServlet {
 			Date date = new Date();
 			long sec = date.getTime();
 			long time = Integer.parseInt(requ.getParameter("end"));
-			auc.setLaufzeit(sec + time);
+			auc.setLaufzeit(sec + time*1000);
 
 			String gebot = requ.getParameter("bid");
 			auc.setGebot(Double.parseDouble(gebot));
