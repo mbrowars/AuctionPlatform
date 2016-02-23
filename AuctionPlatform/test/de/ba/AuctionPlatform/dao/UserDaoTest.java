@@ -18,8 +18,8 @@ public class UserDaoTest {
 	// TODO Testfall erstellen
 	User user1 = new User("max.mustermann@muster.de", 59129301, "192.168.0.4");
 	User user2 = new User("test", 12345678, "325234");
-	
-	@Test	
+
+	@Test
 	public void addUser() {
 		UserDAO.addUser(user2);
 		UserDAO.addUser(user1);
@@ -28,9 +28,9 @@ public class UserDaoTest {
 
 	@Test
 	public void removeUser() {
-		UserDAO.removeUser(user1);
+		UserDAO.removeUser(user1.getId());
 	}
-	
+
 	@Test
 	public void getUser() {
 		UserDAO.getUser(2);
