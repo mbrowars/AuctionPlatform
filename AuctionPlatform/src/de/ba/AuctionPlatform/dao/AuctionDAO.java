@@ -114,6 +114,7 @@ public class AuctionDAO {
 			session.close();
 		}
 	}
+	
 	/* Auktion auslesen */
 	public static Auction getAuction(int auctionid) {
 		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
