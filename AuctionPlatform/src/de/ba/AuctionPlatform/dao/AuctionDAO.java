@@ -94,16 +94,16 @@ public class AuctionDAO {
 
 		try {
 			tx = session.beginTransaction();
-			session.get(Auction.class, auction.getAuctionid());
+			Auction auctionUpdate = session.get(Auction.class, auction.getAuctionid());
 		 	
-			auction.setTitel(auction.getTitel());
-		 	auction.setGebot(auction.getGebot());
-		 	auction.setLaufzeit(auction.getLaufzeit());
-		 	auction.setBeschreibung(auction.getBeschreibung());
-		 	auction.setHoechstbietenderid(auction.getHoechstbietenderid());
-		 	auction.setPicture(auction.getPicture());
+			auctionUpdate.setTitel(auction.getTitel());
+		 	auctionUpdate.setGebot(auction.getGebot());
+		 	auctionUpdate.setLaufzeit(auction.getLaufzeit());
+		 	auctionUpdate.setBeschreibung(auction.getBeschreibung());
+		 	auctionUpdate.setHoechstbietenderid(auction.getHoechstbietenderid());
+		 	auctionUpdate.setPicture(auction.getPicture());
 		 	
-			session.update(auction); 
+			session.update(auctionUpdate); 
 			
 			tx.commit();
 		} catch (HibernateException e) {
