@@ -60,20 +60,21 @@ public class UserDAO {
 	/**
 	 * @param user
 	 */
-	public static void removeUser(User user) {
+	public static void removeUser(int userid) {
 		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 
 		try {
 			tx = session.beginTransaction();
-			session.delete(user);
+			Query remove = session.createQuery("Delete User where USERID= " + userid);
+			remove.executeUpdate();
 			tx.commit();
-			logger.log(Level.INFO, "User: " + user + " wurde gelöscht.");
+			logger.log(Level.INFO, "User: " + userid + " wurde gelöscht.");
 
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
-			logger.log(Level.ERROR, "User: " + user + " konnte nicht gelöscht werden." + e);
+			logger.log(Level.ERROR, "User: " + userid + " konnte nicht gelöscht werden." + e);
 		} finally {
 			session.close();
 		}

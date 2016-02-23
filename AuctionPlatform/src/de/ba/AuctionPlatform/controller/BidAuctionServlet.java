@@ -47,10 +47,9 @@ public class BidAuctionServlet extends HttpServlet {
 		User user = new User();
 		Auction auc = new Auction();
 		AuctionDAO aucd = new AuctionDAO();
-		int saved = 0;
-
 		Codevalidator valid = new Codevalidator();
-
+		int userid = 0;
+		int aucid;
 		// Angebot mit der Datenbank vergleichen / Email senden /
 		// Sicherkeitscode testen
 		if ((requ.getParameter("mail") != null) && (requ.getParameter("bid") != null)) {
@@ -61,6 +60,8 @@ public class BidAuctionServlet extends HttpServlet {
 				resp.getWriter().write("Bitte geben Sie ein positives Gebot ein.");
 				logger.log(Level.WARN, "Negatives Gebot wurde eingetragen.");
 			}
+
+			// mail versenden
 			mail = requ.getParameter("mail");
 			int id = Integer.parseInt(requ.getParameter("id"));
 			if (bi.checkBid(id, bid) == true) {
@@ -71,8 +72,9 @@ public class BidAuctionServlet extends HttpServlet {
 							"Bitte geben Sie diesen Code auf der Website ein: " + code);
 					user.setEmail(mail);
 					user.setCode(code);
-					userd.addUser(user);
-					session.setAttribute("user", user);
+					userid = userd.addUser(user);
+					session.setAttribute("userid", user.getId());
+					session.setAttribute("aucid", id);
 					saved = user.getId();
 					resp.getWriter().write("null");
 
@@ -80,12 +82,14 @@ public class BidAuctionServlet extends HttpServlet {
 
 					// TODO Auto-generated catch block
 					resp.getWriter().write("Fehler bei Emailuebertragung");
-					userd.removeUser(user);
+					userd.removeUser(userid);
 				}
 			} else {
 				resp.getWriter().write("Biete mehr als den aktuellen Preis");
 			}
 		}
+
+		// übergebener emailcode
 		if (requ.getParameter("code") != null) {
 			String usercode = requ.getParameter("code");
 
@@ -93,12 +97,13 @@ public class BidAuctionServlet extends HttpServlet {
 
 			if (rightcode) {
 				// Angebot speichern und status und code an view uebergeben
-				User user1 = (User) session.getAttribute("user");
-				if (bi.saveBid(user1.getId(), bid) == true) {
-					auc.setGebot(bid);
-					aucd.updateAuction(auc);
+				userid = (int) session.getAttribute("userid");
+				aucid = (int) session.getAttribute("aucid");
+				if (bi.saveBid(aucid, bid) == true) {
+
 					resp.getWriter().write("null");
 				} else {
+					// userd.removeUser(userid);
 					resp.getWriter().write("Gebot konnte nicht gespeichert werden!");
 				}
 			} else {
