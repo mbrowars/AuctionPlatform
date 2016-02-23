@@ -47,6 +47,7 @@ public class BidHandler {
 	 */
 	public synchronized boolean saveBid(int id, Double bid) {
 
+		auc = aucd.getAuction(id);
 		auc.setGebot(bid);
 		// TODO: Get Id by email!
 		auc.setHoechstbietenderid(id);

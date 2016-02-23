@@ -47,8 +47,6 @@ public class BidAuctionServlet extends HttpServlet {
 		User user = new User();
 		Auction auc = new Auction();
 		AuctionDAO aucd = new AuctionDAO();
-		int saved = 0;
-
 		Codevalidator valid = new Codevalidator();
 
 		// Angebot mit der Datenbank vergleichen / Email senden /
@@ -61,6 +59,8 @@ public class BidAuctionServlet extends HttpServlet {
 				resp.getWriter().write("Bitte geben Sie ein positives Gebot ein.");
 				logger.log(Level.WARN, "Negatives Gebot wurde eingetragen.");
 			}
+
+			// mail versenden
 			mail = requ.getParameter("mail");
 			int id = Integer.parseInt(requ.getParameter("id"));
 			if (bi.checkBid(id, bid) == true) {
@@ -86,6 +86,8 @@ public class BidAuctionServlet extends HttpServlet {
 				resp.getWriter().write("Biete mehr als den aktuellen Preis");
 			}
 		}
+
+		// übergebener emailcode
 		if (requ.getParameter("code") != null) {
 			String usercode = requ.getParameter("code");
 
