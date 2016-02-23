@@ -48,7 +48,8 @@ public class BidAuctionServlet extends HttpServlet {
 		Auction auc = new Auction();
 		AuctionDAO aucd = new AuctionDAO();
 		Codevalidator valid = new Codevalidator();
-
+		int userid = 0;
+		int aucid;
 		// Angebot mit der Datenbank vergleichen / Email senden /
 		// Sicherkeitscode testen
 		if ((requ.getParameter("mail") != null) && (requ.getParameter("bid") != null)) {
@@ -71,7 +72,7 @@ public class BidAuctionServlet extends HttpServlet {
 							"Bitte geben Sie diesen Code auf der Website ein: " + code);
 					user.setEmail(mail);
 					user.setCode(code);
-					userd.addUser(user);
+					userid = userd.addUser(user);
 					session.setAttribute("userid", user.getId());
 					session.setAttribute("aucid", id);
 					saved = user.getId();
@@ -81,7 +82,7 @@ public class BidAuctionServlet extends HttpServlet {
 
 					// TODO Auto-generated catch block
 					resp.getWriter().write("Fehler bei Emailuebertragung");
-					userd.removeUser(user);
+					userd.removeUser(userid);
 				}
 			} else {
 				resp.getWriter().write("Biete mehr als den aktuellen Preis");
@@ -96,8 +97,8 @@ public class BidAuctionServlet extends HttpServlet {
 
 			if (rightcode) {
 				// Angebot speichern und status und code an view uebergeben
-				int userid = (int) session.getAttribute("userid");
-				int aucid = (int) session.getAttribute("aucid");
+				userid = (int) session.getAttribute("userid");
+				aucid = (int) session.getAttribute("aucid");
 				if (bi.saveBid(aucid, bid) == true) {
 
 					resp.getWriter().write("null");
