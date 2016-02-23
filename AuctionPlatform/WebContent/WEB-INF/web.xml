@@ -49,6 +49,12 @@
 		</servlet-class>
 	</servlet>
 
+	<servlet>
+		<servlet-name>EndAuction</servlet-name>
+		<servlet-class>de.ba.AuctionPlatform.controller.EndAuctionServlet
+		</servlet-class>
+	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>Auction-Platform</servlet-name>
 		<url-pattern>/index</url-pattern>
@@ -87,4 +93,8 @@
 		<url-pattern>/auction</url-pattern>
 	</servlet-mapping>
 
+	<servlet-mapping>
+		<servlet-name>EndAuction</servlet-name>
+		<url-pattern>/auction/end</url-pattern>
+	</servlet-mapping>
 </web-app>

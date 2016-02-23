@@ -82,10 +82,14 @@ public class CreateAuctionServlet extends HttpServlet {
 			Date date = new Date();
 			long sec = date.getTime();
 			long time = Integer.parseInt(requ.getParameter("end"));
-			auc.setLaufzeit(sec + time*1000);
+			auc.setLaufzeit(sec + time * 1000);
 
 			String gebot = requ.getParameter("bid");
 			auc.setGebot(Double.parseDouble(gebot));
+
+			// höchstbietenderid standard auf null um auktionen für die nicht
+			// geboten wurde löschen zu können
+			auc.setHoechstbietenderid(0);
 			int save = aucd.addAuction(auc);
 
 			// Auktion in DB Speichern und Fehlerbehandlung
