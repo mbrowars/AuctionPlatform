@@ -45,7 +45,8 @@ public class CreateAuctionServlet extends HttpServlet {
 	private static final String SAVE_DIR = "uploadFiles";
 	private Auction auc = new Auction();
 	private AuctionDAO aucd = new AuctionDAO();
-	String fileName ;
+	String fileName;
+
 	/**
 	 * 
 	 */
@@ -68,16 +69,15 @@ public class CreateAuctionServlet extends HttpServlet {
 					fileSaveDir.mkdir();
 				}
 
-		
-				 Part part = requ.getPart("picture"); 
-				 String fileName = extractFileName(part);
-				 // Variabler Filepart für Webanwendung kommt am 25.02
+				Part part = requ.getPart("picture");
+				String fileName = extractFileName(part);
+				// Variabler Filepart für Webanwendung kommt am 25.02
 				// part.write(savePath + File.separator + fileName);
-				 part.write("C://auctionplatform/pictures/" + fileName);
-				 auc.setPicture(fileName);
-				 }
-			
-			
+				part.write("/pictures/" + fileName);
+				auc.setPicture("/pictures/" + fileName);
+				logger.log(Level.INFO, "img saved :" + savePath + File.separator + fileName);
+			}
+
 			auc.setTitel(requ.getParameter("title"));
 			auc.setBeschreibung(requ.getParameter("desc"));
 
