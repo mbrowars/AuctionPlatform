@@ -75,6 +75,8 @@ public class BidAuctionServlet extends HttpServlet {
 					userid = userd.addUser(user);
 					session.setAttribute("userid", user.getId());
 					session.setAttribute("aucid", id);
+					session.setAttribute("bid", bid);
+
 					saved = user.getId();
 					resp.getWriter().write("null");
 
@@ -99,7 +101,9 @@ public class BidAuctionServlet extends HttpServlet {
 				// Angebot speichern und status und code an view uebergeben
 				userid = (int) session.getAttribute("userid");
 				aucid = (int) session.getAttribute("aucid");
-				if (bi.saveBid(aucid, bid) == true) {
+				bid = (double) session.getAttribute("bid");
+
+				if (bi.saveBid(aucid, bid, userid) == true) {
 
 					resp.getWriter().write("null");
 				} else {

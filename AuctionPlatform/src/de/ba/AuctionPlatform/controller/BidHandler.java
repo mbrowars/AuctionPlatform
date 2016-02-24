@@ -45,10 +45,10 @@ public class BidHandler {
 	 * @param mail
 	 * @return true = bid is saved
 	 */
-	public synchronized boolean saveBid(int id, Double bid) {
+	public synchronized boolean saveBid(int id, Double bid, int userid) {
 		auc = aucd.getAuction(id);
 		auc.setGebot(bid);
-		auc.setHoechstbietenderid(id);
+		auc.setHoechstbietenderid(userid);
 		aucd.updateAuction(auc);
 
 		return true;

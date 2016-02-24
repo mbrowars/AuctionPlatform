@@ -14,10 +14,10 @@ public class AuctionDaoTest {
 	// TODO Testfall erstellen
 	Auction auction1 = new Auction("titel", 24.50, (long) 1234235, "beschreibung", 12, null);
 	Auction auction2 = new Auction("SNES", 123.45, (long) 32546, "Old Stuff with style (new Update)", 4, null);
+	AuctionDAO ad = new AuctionDAO();
 
 	public void addAuction() {
 		AuctionDAO.addAuction(auction1);
-		auction2.setAuctionid(2);
 		AuctionDAO.addAuction(auction2);
 	}
 
@@ -32,7 +32,10 @@ public class AuctionDaoTest {
 
 	@Test
 	public void updateAuction() {
+
 		auction2.setAuctionid(2);
-		AuctionDAO.updateAuction(auction2);
+		auction2.setBeschreibung("neue beschreibung");
+		auction2.setGebot(100.00);
+		ad.updateAuction(auction2);
 	}
 }

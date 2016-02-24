@@ -43,15 +43,16 @@ public class AuctionDAO {
 
 		try {
 			tx = session.beginTransaction();
-			
+
 			session.save(auction);
 			tx.commit();
-			logger.log(Level.INFO, "Auktion: " + auction.getAuctionid() + "," + auction.getTitel() + " wurde angelegt.");
+			logger.log(Level.INFO,
+					"Auktion: " + auction.getAuctionid() + "," + auction.getTitel() + " wurde angelegt.");
 		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
-			logger.log(Level.ERROR,
-					"Auktion: " + auction.getAuctionid() + "," + auction.getTitel() + " konnte nicht angelegt werden " + e);
+			logger.log(Level.ERROR, "Auktion: " + auction.getAuctionid() + "," + auction.getTitel()
+					+ " konnte nicht angelegt werden " + e);
 		} finally {
 			session.close();
 
@@ -70,7 +71,7 @@ public class AuctionDAO {
 		try {
 			tx = session.beginTransaction();
 			Query remove = session.createQuery("DELETE Auction where AUCTIONID= " + auctionid);
-			
+
 			remove.executeUpdate();
 			tx.commit();
 			logger.log(Level.INFO, "Auktion: " + auctionid + " wurde gelöscht.");
@@ -95,16 +96,27 @@ public class AuctionDAO {
 		try {
 			tx = session.beginTransaction();
 			Auction auctionUpdate = session.get(Auction.class, auction.getAuctionid());
-		 	
-			auctionUpdate.setTitel(auction.getTitel());
-		 	auctionUpdate.setGebot(auction.getGebot());
-		 	auctionUpdate.setLaufzeit(auction.getLaufzeit());
-		 	auctionUpdate.setBeschreibung(auction.getBeschreibung());
-		 	auctionUpdate.setHoechstbietenderid(auction.getHoechstbietenderid());
-		 	auctionUpdate.setPicture(auction.getPicture());
-		 	
-			session.update(auctionUpdate); 
-			
+
+			if (auction.getTitel() != null) {
+				auctionUpdate.setTitel(auction.getTitel());
+			}
+			if (auction.getGebot() != null) {
+				auctionUpdate.setGebot(auction.getGebot());
+			}
+			if (auction.getLaufzeit() != null) {
+				auctionUpdate.setLaufzeit(auction.getLaufzeit());
+			}
+			if (auction.getBeschreibung() != null) {
+				auctionUpdate.setBeschreibung(auction.getBeschreibung());
+			}
+			if (auction.getHoechstbietenderid() != 0) {
+				auctionUpdate.setHoechstbietenderid(auction.getHoechstbietenderid());
+			}
+			if (auction.getPicture() != null) {
+				auctionUpdate.setPicture(auction.getPicture());
+			}
+			session.update(auctionUpdate);
+
 			tx.commit();
 		} catch (HibernateException e) {
 			if (tx != null)
@@ -114,13 +126,13 @@ public class AuctionDAO {
 			session.close();
 		}
 	}
-	
+
 	/* Auktion auslesen */
 	public static Auction getAuction(int auctionid) {
 		Session session = HibernateUtil.getInstance().getSessionFactory().openSession();
 		Transaction tx = null;
 		Auction auction = new Auction();
-		
+
 		try {
 			tx = session.beginTransaction();
 			Query wantedauction = session.createQuery("FROM Auction WHERE auctionid= :auctionid");
@@ -128,17 +140,16 @@ public class AuctionDAO {
 			Object queryResult = wantedauction.uniqueResult();
 			auction = (Auction) queryResult;
 			tx.commit();
-		}catch (HibernateException e) {
+		} catch (HibernateException e) {
 			if (tx != null)
 				tx.rollback();
 			e.printStackTrace();
 			logger.log(Level.ERROR, "Auktion konnte nicht ausgelesen werden." + e);
 			session.close();
 		}
-		
+
 		return auction;
 	}
-	
 
 	/**
 	 * @return
