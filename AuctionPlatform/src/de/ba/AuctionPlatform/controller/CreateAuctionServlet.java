@@ -29,7 +29,7 @@ import de.ba.AuctionPlatform.dao.AuctionDAO;
  * @author mbrowars
  *
  */
-@MultipartConfig(location = "/tmp", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024
+@MultipartConfig(location = "/uploadFiles", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024
 		* 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class CreateAuctionServlet extends HttpServlet {
 	/**
@@ -45,7 +45,7 @@ public class CreateAuctionServlet extends HttpServlet {
 	private static final String SAVE_DIR = "uploadFiles";
 	private Auction auc = new Auction();
 	private AuctionDAO aucd = new AuctionDAO();
-
+	String fileName ;
 	/**
 	 * 
 	 */
@@ -56,7 +56,7 @@ public class CreateAuctionServlet extends HttpServlet {
 		HttpSession session = requ.getSession(true);
 
 		if (session.getAttribute("admin") != null) {
-			if (requ.getParameter("picture") != null) {
+			if (requ.getPart("picture") != null) {
 				// gets absolute path of the web application
 				String appPath = requ.getServletContext().getRealPath("");
 				// constructs path of the directory to save uploaded file
@@ -68,13 +68,16 @@ public class CreateAuctionServlet extends HttpServlet {
 					fileSaveDir.mkdir();
 				}
 
-				// TODO: Bild hinzufï¿½gen probleme mit Multipart
-				// for (Part part : requ.getParts()) {
-				// String fileName = extractFileName(part);
+		
+				 Part part = requ.getPart("picture"); 
+				 String fileName = extractFileName(part);
+				 // Variabler Filepart für Webanwendung kommt am 25.02
 				// part.write(savePath + File.separator + fileName);
-				// part.write("C://auctionplatform/pictures/" + fileName);
-				// }
-			}
+				 part.write("C://auctionplatform/pictures/" + fileName);
+				 auc.setPicture(fileName);
+				 }
+			
+			
 			auc.setTitel(requ.getParameter("title"));
 			auc.setBeschreibung(requ.getParameter("desc"));
 

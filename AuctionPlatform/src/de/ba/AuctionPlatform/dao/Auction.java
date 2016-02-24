@@ -16,14 +16,14 @@ public class Auction {
 	private Long laufzeit;
 	private String beschreibung;
 	private int hoechstbietenderid;
-	private Blob picture;
+	private String picture;
 
 	public Auction() {
 
 	}
 
 	public Auction(String titel, Double gebot, Long laufzeit, String beschreibung, int hoechstbietenderid,
-			Blob picture) {
+			String picture) {
 
 		this.titel = titel;
 		this.gebot = gebot;
@@ -81,11 +81,11 @@ public class Auction {
 		this.hoechstbietenderid = hoechstbietenderid;
 	}
 
-	public Blob getPicture() {
+	public String getPicture() {
 		return picture;
 	}
 
-	public void setPicture(Blob picture) {
+	public void setPicture(String picture) {
 		this.picture = picture;
 	}
 
