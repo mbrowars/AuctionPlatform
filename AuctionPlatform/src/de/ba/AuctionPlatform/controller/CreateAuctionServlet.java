@@ -75,7 +75,7 @@ public class CreateAuctionServlet extends HttpServlet {
 				// part.write(savePath + File.separator + fileName);
 				part.write("/pictures/" + fileName);
 				auc.setPicture("/pictures/" + fileName);
-				logger.log(Level.INFO, "img saved :" + savePath + File.separator + fileName);
+				logger.log(Level.INFO, "img saved :" + "/pictures/" + fileName);
 			}
 
 			auc.setTitel(requ.getParameter("title"));
