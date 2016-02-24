@@ -24,15 +24,22 @@ public class EndAuctionServlet extends HttpServlet {
 	SendMail mail = new SendMail();
 	User user = new User();
 	UserDAO usd = new UserDAO();
+	Auction auc = new Auction();
 
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
-		Auction auc = new Auction();
+
 		auc = da.getAuction(Integer.parseInt(requ.getParameter("id")));
-		if (auc.getHoechstbietenderid() == 0) {
-			endWithoutWinner(auc);
+		if (auc == null) {
+
 		} else {
-			user = usd.getUser(auc.getHoechstbietenderid());
-			end(auc, user);
+			if (auc.getHoechstbietenderid() == 0) {
+				endWithoutWinner(auc);
+
+			} else {
+				user = usd.getUser(auc.getHoechstbietenderid());
+				end(auc, user);
+
+			}
 		}
 		requ.getRequestDispatcher("/").forward(requ, resp);
 	}
