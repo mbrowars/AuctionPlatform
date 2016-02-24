@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html ng-app="auctionApp">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
@@ -14,10 +14,12 @@
 	rel='stylesheet' type='text/css'>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="js/controller.js"></script>
 <script src="${pageContext.request.contextPath}/js/fileinput.js"></script>
 <title>My inheritance</title>
 </head>
-<body>
+<body ng-controller="auctionCtrl">
 	<ul id="nav">
 		<a class="navlink" href="/AuctionPlatform/index"><li id="logo"><img
 				src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
@@ -40,19 +42,19 @@
 	%>
 
 	<br />
-	<div class="login-block">
+	<div class="login-block" ng-repeat="auction in auctions | filter:{Id: ${param.id}} | limitTo: 1">
 		<h1>Neue Auktion</h1>
-		<form action="createAuction" method="post"
+		<form action="editAuction" method="post"
 			enctype="multipart/form-data">
 			<input type="file" id="file" name="picture"
 				onchange="updateFName(this);" />
 			<div id="filereplace" onclick="simulFile();">Datei auswählen
 				...</div>
-			<input placeholder="Titel" name="title" type="text" /> <input
-				placeholder="Startgebot" name="bid" type="text" /> <input
-				placeholder="Auktionsende" name="end" type="text" /> <input
-				placeholder="Beschreibung" name="desc" type="text" /> <input
-				placeholder="AuktionsID" name="id" type="text" />
+			<input placeholder="Titel" name="title" type="text" value="{{auction.name}}"/> <input
+				placeholder="Startgebot" name="bid" type="text" value="{{auction.price}}"/> <input
+				placeholder="Auktionsende" name="end" type="text" value="{{auction.Laufzeit}}" /> <input
+				placeholder="Beschreibung" name="desc" type="text" value="{{auction.Beschreibung}}" /> <input
+				placeholder="AuktionsID" name="id" type="text" value="{{auction.Id}}" />
 			<button>Submit</button>
 			
 		</form>

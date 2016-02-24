@@ -20,7 +20,7 @@ function endAuction(elem) {
 	  data: { 'id': $(elem).attr('data-id') },
 	  success: function() {
 		  $(elem).parent().animate({opacity: 0}, 500, function() {
-			  $(elem).parent().hide();
+			  $(elem).parent().remove();
 		  });
 	  }
 	});
@@ -45,7 +45,9 @@ function getTimeRemaining(endtime, timeOffset) {
 
 function initializeClock(offset) {
   
-  function updateClock(items) {
+  function updateClock() {
+	  items = document.getElementsByClassName('timer');
+	  
 	  for( var i = 0; i < items.length; i++) {
 		  var t = getTimeRemaining(items.item(i).dataset.time, offset);
 		  items.item(i).innerHTML = t.vorzeichen * t.days + "d " + t.hours + "h " + t.minutes + "min " + t.seconds + "s";
@@ -56,7 +58,7 @@ function initializeClock(offset) {
 	  }
   }
   
-  setInterval(updateClock, 1000, document.getElementsByClassName('timer'));
+  setInterval(updateClock, 1000);
 }
 
 setTimeout(function(){

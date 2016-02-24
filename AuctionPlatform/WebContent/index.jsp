@@ -25,7 +25,7 @@ Arraylist mit den Auktionen
 <script src="js/index.js"></script>
 <title>My inheritance</title>
 </head>
-<%-- session.invalidate(); --%>
+
 <body ng-controller="auctionCtrl">
 	<ul id="nav">
 		<a class="navlink" href="/AuctionPlatform/index"><li id="logo"><img
@@ -91,7 +91,7 @@ Arraylist mit den Auktionen
 			<%
 				if (session.getAttribute("admin") != null) {
 			%>
-			<button class="ourButton">Ändern</button>
+			<a href="${pageContext.request.contextPath}/edit.jsp?id={{auction.Id}}"><button class="ourButton">Ändern</button></a>
 			<button id="{{'del' + auction.Id}}" class="ourButton" onclick="delAuction(this);">Löschen</button>
 			<%
 				}

@@ -4,6 +4,10 @@ body {
 	min-width: 768px;
 }
 
+a button {
+	color: black;
+}
+
 select {
 	display: none;
 }
