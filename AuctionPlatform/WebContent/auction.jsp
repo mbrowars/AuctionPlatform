@@ -30,7 +30,7 @@ Name, Gebot und Ende der ausgewählten Auktion
 			<div id="auctionpic">
 				<img
 				src="${pageContext.request.contextPath}/pictures/{{auction.Picture}}"
-				style="max-height: 250px; max-width: 250px;"></img>
+				style="height: 250px; width: 250px;"></img>
 			</div>
 			<div id="auctionbid">
 				<p>{{auction.name}}</p>
