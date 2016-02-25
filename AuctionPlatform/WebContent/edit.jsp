@@ -44,7 +44,7 @@
 	<br />
 	<div class="login-block" ng-repeat="auction in auctions | filter:{Id: ${param.id}} | limitTo: 1">
 		<h1>Neue Auktion</h1>
-		<form action="editAuction" method="post"
+		<form action="${pageContext.request.contextPath}/auction/edit" method="post"
 			enctype="multipart/form-data">
 			<input type="file" id="file" name="picture"
 				onchange="updateFName(this);" />

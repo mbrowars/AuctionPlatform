@@ -20,8 +20,8 @@
 	</servlet>
 
 	<servlet>
-		<servlet-name>ChanceAuction</servlet-name>
-		<servlet-class>de.ba.AuctionPlatoform.controller.ChangeAuctionServlet
+		<servlet-name>ChangeAuction</servlet-name>
+		<servlet-class>de.ba.AuctionPlatform.controller.ChangeAuctionServlet
 		</servlet-class>
 	</servlet>
 
@@ -106,6 +106,6 @@
 	<servlet-mapping>
 		<servlet-name>ChangeAuction
 		</servlet-name>
-		<url-pattern>/auction/change</url-pattern>
+		<url-pattern>/auction/edit</url-pattern>
 	</servlet-mapping>
 </web-app>

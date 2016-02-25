@@ -6,6 +6,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -81,11 +86,18 @@ public class CreateAuctionServlet extends HttpServlet {
 			auc.setTitel(requ.getParameter("title"));
 			auc.setBeschreibung(requ.getParameter("desc"));
 
-			// TODO Ablaufdatum setzen (String Date Konvertierung)
+			SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 			Date date = new Date();
+			String da = requ.getParameter("end");
+			try {
+				date = formatter.parse(da);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			long sec = date.getTime();
-			long time = Integer.parseInt(requ.getParameter("end"));
-			auc.setLaufzeit(sec + time * 1000);
+			// long time = Integer.parseInt(requ.getParameter("end"));
+			auc.setLaufzeit(sec);
 
 			String gebot = requ.getParameter("bid");
 			auc.setGebot(Double.parseDouble(gebot));
