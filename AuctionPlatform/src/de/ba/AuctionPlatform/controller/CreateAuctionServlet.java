@@ -57,7 +57,7 @@ public class CreateAuctionServlet extends HttpServlet {
 		HttpSession session = requ.getSession(true);
 
 		if (session.getAttribute("admin") != null) {
-			if (requ.getPart("picture") != null) {
+			if (requ.getPart("picture").getSize() != 0) {
 				// gets absolute path of the web application
 				String appPath = requ.getServletContext().getRealPath("");
 				// constructs path of the directory to save uploaded file
@@ -90,7 +90,8 @@ public class CreateAuctionServlet extends HttpServlet {
 			String gebot = requ.getParameter("bid");
 			auc.setGebot(Double.parseDouble(gebot));
 
-			// h�chstbietenderid standard auf null um auktionen f�r die nicht
+			// h�chstbietenderid standard auf null um auktionen f�r die
+			// nicht
 			// geboten wurde l�schen zu k�nnen
 			auc.setHoechstbietenderid(0);
 			int save = aucd.addAuction(auc);
