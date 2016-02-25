@@ -29,7 +29,7 @@ import de.ba.AuctionPlatform.dao.AuctionDAO;
  * @author mbrowars
  *
  */
-@MultipartConfig(location = "/uploadFiles", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024
+@MultipartConfig(location = "/pictures", fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024
 		* 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class CreateAuctionServlet extends HttpServlet {
 	/**
@@ -42,7 +42,7 @@ public class CreateAuctionServlet extends HttpServlet {
 	 * Name of the directory where uploaded files will be saved, relative to the
 	 * web application directory.
 	 */
-	private static final String SAVE_DIR = "uploadFiles";
+	private static final String SAVE_DIR = "pictures/";
 	private Auction auc = new Auction();
 	private AuctionDAO aucd = new AuctionDAO();
 	String fileName;
@@ -73,9 +73,9 @@ public class CreateAuctionServlet extends HttpServlet {
 				String fileName = extractFileName(part);
 				// Variabler Filepart für Webanwendung kommt am 25.02
 				// part.write(savePath + File.separator + fileName);
-				part.write("/pictures/" + fileName);
-				auc.setPicture("/pictures/" + fileName);
-				logger.log(Level.INFO, "img saved :" + "/pictures/" + fileName);
+				part.write(savePath + fileName);
+				auc.setPicture(fileName);
+				logger.log(Level.INFO, "img saved :" + savePath + fileName);
 			}
 
 			auc.setTitel(requ.getParameter("title"));
@@ -98,7 +98,7 @@ public class CreateAuctionServlet extends HttpServlet {
 			// Auktion in DB Speichern und Fehlerbehandlung
 			if (save != 0) {
 				resp.getWriter().write(0);
-				logger.log(Level.INFO, "Auktion :" + auc.getAuctionid() + "," + auc.getTitel() + " Wurde angelegt.");
+
 				requ.getRequestDispatcher("/").forward(requ, resp);
 			} else {
 				resp.getWriter().write("Auktion " + auc.getTitel() + " konnte nicht angelegt werden.");
