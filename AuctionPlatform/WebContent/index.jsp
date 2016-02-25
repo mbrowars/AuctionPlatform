@@ -86,7 +86,7 @@ Arraylist mit den Auktionen
 				href="pictures/auction?id={{auction.Id}}">
 				<img
 				src="${pageContext.request.contextPath}/pictures/{{auction.Picture}}"
-				style="max-height: 200px; max-width: 200px;"></img>
+				style="max-height: 250px; max-width: 250px;"></img>
 			</a>
 			<p class="price">
 				Currently at <span>{{auction.price | number:2}}€</span>
