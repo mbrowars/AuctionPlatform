@@ -4,6 +4,7 @@ body {
 	min-width: 768px;
 }
 
+
 a button {
 	color: black;
 }
@@ -184,8 +185,7 @@ a.listlink, a.listlink:visited, a.listlink:active, a.listlink:hover {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	margin-top: 5%;
-	margin-bottom: 5%;
+	margin: 5%;
 }
 
 #auctionpic {
