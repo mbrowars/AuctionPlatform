@@ -20,6 +20,12 @@
 	</servlet>
 
 	<servlet>
+		<servlet-name>ChanceAuction</servlet-name>
+		<servlet-class>de.ba.AuctionPlatoform.controller.ChangeAuctionServlet
+		</servlet-class>
+	</servlet>
+
+	<servlet>
 		<servlet-name>Auction-Servlet</servlet-name>
 		<servlet-class>de.ba.AuctionPlatform.controller.AuctionServlet
 		</servlet-class>
@@ -96,5 +102,10 @@
 	<servlet-mapping>
 		<servlet-name>EndAuction</servlet-name>
 		<url-pattern>/auction/end</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ChangeAuction
+		</servlet-name>
+		<url-pattern>/auction/change</url-pattern>
 	</servlet-mapping>
 </web-app>
