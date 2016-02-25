@@ -71,7 +71,7 @@ public class CreateAuctionServlet extends HttpServlet {
 
 				Part part = requ.getPart("picture");
 				String fileName = extractFileName(part);
-				// Variabler Filepart für Webanwendung kommt am 25.02
+				// Variabler Filepart fï¿½r Webanwendung kommt am 25.02
 				// part.write(savePath + File.separator + fileName);
 				part.write(savePath + fileName);
 				auc.setPicture(fileName);
@@ -90,8 +90,8 @@ public class CreateAuctionServlet extends HttpServlet {
 			String gebot = requ.getParameter("bid");
 			auc.setGebot(Double.parseDouble(gebot));
 
-			// höchstbietenderid standard auf null um auktionen für die nicht
-			// geboten wurde löschen zu können
+			// hï¿½chstbietenderid standard auf null um auktionen fï¿½r die nicht
+			// geboten wurde lï¿½schen zu kï¿½nnen
 			auc.setHoechstbietenderid(0);
 			int save = aucd.addAuction(auc);
 

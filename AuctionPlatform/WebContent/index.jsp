@@ -83,7 +83,7 @@ Arraylist mit den Auktionen
 			<p class="timer" data-time="{{auction.Laufzeit}}" data-id="{{auction.Id}}">--</p>
 			<a class="listlink"
 				href="${pageContext.request.contextPath}/auction?id={{auction.Id}}">
-				<div id="placeholder"></div>
+				<img src="${pageContext.request.contextPath}{{auction.Picture}}" style="max-height: 200px; max-width: 200px;"></img>
 			</a>
 			<p class="price">
 				Currently at <span>{{auction.price | number:2}}€</span>

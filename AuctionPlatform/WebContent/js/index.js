@@ -53,7 +53,7 @@ function initializeClock(offset) {
 		  items.item(i).innerHTML = t.vorzeichen * t.days + "d " + t.hours + "h " + t.minutes + "min " + t.seconds + "s";
 		  
 		  if (t.total < 0) {
-			  endAuction(items.item(i));
+			  endAuction(items.item(i));			  
 		  }
 	  }
   }
