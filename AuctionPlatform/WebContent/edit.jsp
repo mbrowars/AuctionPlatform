@@ -51,10 +51,10 @@
 			<div id="filereplace" onclick="simulFile();">Datei auswählen
 				...</div>
 			<input placeholder="Titel" name="title" type="text" value="{{auction.name}}"/> <input
-				placeholder="Startgebot" disabled name="bid" type="text" value="{{auction.price}}"/> <input
-				placeholder="Auktionsende" disabled name="end" type="hidden" value="{{auction.Laufzeit}}" /> <input
+				placeholder="Startgebot" readonly name="bid" type="text" value="{{auction.price}}"/> <input
+				placeholder="Auktionsende" readonly name="end" type="hidden" value="{{auction.Laufzeit}}" /> <input
 				placeholder="Beschreibung" name="desc" type="text" value="{{auction.Beschreibung}}" /> <input
-				placeholder="AuktionsID" disabled name="id" type="hidden" value="{{auction.Id}}" />
+				placeholder="AuktionsID" readonly name="id" type="hidden" value="{{auction.Id}}" />
 			<button>Submit</button>
 			
 		</form>
