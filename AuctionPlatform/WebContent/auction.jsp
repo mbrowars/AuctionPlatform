@@ -34,7 +34,7 @@ Name, Gebot und Ende der ausgewählten Auktion
 			</div>
 			<div id="auctionbid">
 				<p>{{auction.name}}</p>
-				<p>{{auction.price}}</p>
+				<p id="gebot">{{auction.price}}€</p>
 				<p class="timer" data-time="{{auction.Laufzeit}}" data-servertime="<%= request.getAttribute("date") %>">--</p>
 				<div>
 					<input name="bid" id="bid" placeholder="Gebot">

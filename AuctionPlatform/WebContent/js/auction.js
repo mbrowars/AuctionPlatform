@@ -17,7 +17,6 @@ $(function() {
 				  if(resp=="null") {
 					$(".modal-body span").html("<span style='color: green;'>E-Mail wurde erfolgreich versendet!</span>");
 					$(".modal-body p").html('<label>Code</label><input placeholder="Bestätigungscode" id="code"><button id="testCode" class="ourButton" onclick="checkMyCode();">Senden</button>');
-					$("#bid").val("");
 				  } else {
 					  $(".modal-body span").html("<span style='color: red;'>"+resp+"</span>");
 				  }
@@ -56,6 +55,11 @@ function checkMyCode(){
 		  success: function(resp) {
 			  if(resp=="null") {
 				$(".modal-body p").html("<span style='color: green;'>Gebot wurde erfolgreich bestätigt.</span>");
+				$("#gebot").html($("#bid").val() + "€");
+				$("#bid").val("");
+				setTimeout(function(){
+					$("#BidModal").modal("hide");
+				}, 1000);
 			  } else {
 				$(".modal-body span").html("<span style='color: red;'>"+resp+"</span>");
 				$(".modal-body p").html('<label>Code</label><input placeholder="Bestätigungscode" id="code"><button id="testCode" class="ourButton">Senden</button>');
