@@ -54,15 +54,7 @@ public class ChangeAuctionServlet extends HttpServlet {
 
 			auc.setTitel(requ.getParameter("title"));
 			auc.setBeschreibung(requ.getParameter("desc"));
-
-			Date date = new Date();
-			long sec = date.getTime();
-			long time = Integer.parseInt(requ.getParameter("end"));
-			auc.setLaufzeit(sec + time * 1000);
-
-			String gebot = requ.getParameter("bid");
-			auc.setGebot(Double.parseDouble(gebot));
-
+			auc.setAuctionid(Integer.parseInt(requ.getParameter("id")));
 			// h�chstbietenderid standard auf null um auktionen f�r die
 			// nicht
 			// geboten wurde l�schen zu k�nnen
