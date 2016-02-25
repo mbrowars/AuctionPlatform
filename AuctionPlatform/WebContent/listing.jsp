@@ -51,8 +51,7 @@
 			<input placeholder="Titel" name="title" type="text" /> <input
 				placeholder="Startgebot" name="bid" type="text" /> <input
 				placeholder="Auktionsende" name="end" type="text" /> <input
-				placeholder="Beschreibung" name="desc" type="text" /> <input
-				placeholder="AuktionsID" name="id" type="text" />
+				placeholder="Beschreibung" name="desc" type="text" /> 
 			<button>Submit</button>
 			
 		</form>
