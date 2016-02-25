@@ -28,7 +28,9 @@ Name, Gebot und Ende der ausgewählten Auktion
 	<span ng-repeat="auction in auctions | filter:{Id: ${auction.getAuctionid()}} | limitTo: 1">
 		<div id="auctiontop">
 			<div id="auctionpic">
-				<div id="placeholder"></div>
+				<img
+				src="${pageContext.request.contextPath}/pictures/{{auction.Picture}}"
+				style="max-height: 250px; max-width: 250px;"></img>
 			</div>
 			<div id="auctionbid">
 				<p>{{auction.name}}</p>
