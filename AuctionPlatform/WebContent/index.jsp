@@ -73,17 +73,20 @@ Arraylist mit den Auktionen
 
 	</div>
 
-	<div id="sep" data-servertime="<%= request.getAttribute("date") %>"></div>
-	
+	<div id="sep" data-servertime="<%=request.getAttribute("date")%>"></div>
+
 	<div id="listings">
 		<div class="listing"
 			ng-repeat="auction in auctions | filter:{name: query} | filter: lessThan('price', (price) || 1000000) | orderBy:sort">
 			<p class="title">{{ auction.name |
 				limitTo:16}}{{auction.name.length > 16 ? '&hellip;' : ''}}</p>
-			<p class="timer" data-time="{{auction.Laufzeit}}" data-id="{{auction.Id}}">--</p>
+			<p class="timer" data-time="{{auction.Laufzeit}}"
+				data-id="{{auction.Id}}">--</p>
 			<a class="listlink"
-				href="${pageContext.request.contextPath}/auction?id={{auction.Id}}">
-				<img src="${pageContext.request.contextPath}/pictures/{{auction.Picture}}" style="max-height: 200px; max-width: 200px;"></img>
+				href="pictures/auction?id={{auction.Id}}">
+				<img
+				src="${pageContext.request.contextPath}/pictures/{{auction.Picture}}"
+				style="max-height: 200px; max-width: 200px;"></img>
 			</a>
 			<p class="price">
 				Currently at <span>{{auction.price | number:2}}€</span>
@@ -91,8 +94,11 @@ Arraylist mit den Auktionen
 			<%
 				if (session.getAttribute("admin") != null) {
 			%>
-			<a href="${pageContext.request.contextPath}/edit.jsp?id={{auction.Id}}"><button class="ourButton">Ändern</button></a>
-			<button id="{{'del' + auction.Id}}" class="ourButton" onclick="delAuction(this);">Löschen</button>
+			<a
+				href="${pageContext.request.contextPath}/edit.jsp?id={{auction.Id}}"><button
+					class="ourButton">Ändern</button></a>
+			<button id="{{'del' + auction.Id}}" class="ourButton"
+				onclick="delAuction(this);">Löschen</button>
 			<%
 				}
 			%>
