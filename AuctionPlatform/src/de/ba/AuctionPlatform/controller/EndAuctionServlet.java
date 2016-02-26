@@ -1,6 +1,7 @@
 package de.ba.AuctionPlatform.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -25,6 +26,7 @@ public class EndAuctionServlet extends HttpServlet {
 	User user = new User();
 	UserDAO usd = new UserDAO();
 	Auction auc = new Auction();
+	AuctionHelper ah = new AuctionHelper();
 
 	public void doGet(HttpServletRequest requ, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -41,6 +43,9 @@ public class EndAuctionServlet extends HttpServlet {
 
 			}
 		}
+		List<Auction> auction = AuctionDAO.getAllAuctions();
+		String json = ah.json(auction);
+		ah.saveJson(json, requ.getServletContext().getRealPath(""));
 		requ.getRequestDispatcher("/").forward(requ, resp);
 	}
 

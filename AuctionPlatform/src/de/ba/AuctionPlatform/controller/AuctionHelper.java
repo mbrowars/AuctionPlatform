@@ -35,7 +35,7 @@ public class AuctionHelper {
 
 	}
 
-	public void saveJson(String json, String appPath) throws IOException {
+	public synchronized void saveJson(String json, String appPath) throws IOException {
 
 		FileOutputStream writer = new FileOutputStream(appPath + File.separator + SAVE_DIR);
 		for (int i = 0; i < json.length(); i++) {
