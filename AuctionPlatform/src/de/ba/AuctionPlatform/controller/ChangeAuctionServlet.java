@@ -60,13 +60,13 @@ public class ChangeAuctionServlet extends HttpServlet {
 			// geboten wurde l�schen zu k�nnen
 			aucd.updateAuction(auc);
 
-			requ.getRequestDispatcher("/").forward(requ, resp);
+			resp.sendRedirect("/AuctionPlatform/");
 		}
 
 		else
 
 		{
-			requ.getRequestDispatcher("/error.jsp").forward(requ, resp);
+			resp.sendRedirect("/");
 		}
 
 	}

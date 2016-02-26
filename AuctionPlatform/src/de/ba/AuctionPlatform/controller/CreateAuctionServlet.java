@@ -112,7 +112,7 @@ public class CreateAuctionServlet extends HttpServlet {
 			if (save != 0) {
 				resp.getWriter().write(0);
 
-				requ.getRequestDispatcher("/").forward(requ, resp);
+				resp.sendRedirect("/AuctionPlatform/");
 			} else {
 				resp.getWriter().write("Auktion " + auc.getTitel() + " konnte nicht angelegt werden.");
 			}
