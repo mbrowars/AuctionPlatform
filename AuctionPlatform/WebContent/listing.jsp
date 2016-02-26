@@ -42,17 +42,14 @@
 	<br />
 	<div class="login-block">
 		<h1>Neue Auktion</h1>
-		<form action="createAuction" method="post"
-			enctype="multipart/form-data">
-			<input type="file" id="file" name="picture"
-				onchange="updateFName(this);" />
-			<div id="filereplace" onclick="simulFile();">Datei auswählen
-				...</div>
-			<input placeholder="Titel" name="title" type="text" /> <input
-				placeholder="Startgebot" name="bid" type="text" /> <input
-				placeholder="Auktionsende" name="end" type="text" /> <input
-				placeholder="Beschreibung" name="desc" type="text" /> 
-			<button>Submit</button>
+		<form action="createAuction" method="post" enctype="multipart/form-data">
+			<input type="file" id="file" name="picture"	onchange="updateFName(this);" />
+			<div id="filereplace" onclick="simulFile();">Datei auswählen ...</div>
+			<input placeholder="Titel" name="title" type="text" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" /> 
+			<input placeholder="Startgebot" name="bid" type="text" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" /> 
+			<input placeholder="Auktionsende z.B. 02.04.2016 21:00" name="end" type="text" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" /> 
+			<input placeholder="Beschreibung" name="desc" type="text" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" /> 
+			<button disabled onhover="checkall(false);" >Submit</button>
 			
 		</form>
 	</div>

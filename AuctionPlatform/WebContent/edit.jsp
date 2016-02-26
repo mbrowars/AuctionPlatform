@@ -50,12 +50,12 @@
 				onchange="updateFName(this);" />
 			<div id="filereplace" onclick="simulFile();">Datei auswählen
 				...</div>
-			<input placeholder="Titel" name="title" type="text" value="{{auction.name}}"/> <input
+			<input placeholder="Titel" name="title" type="text" value="{{auction.name}}" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" /> <input
 				placeholder="Startgebot" readonly name="bid" type="text" value="{{auction.price}}"/> <input
 				placeholder="Auktionsende" readonly name="end" type="hidden" value="{{auction.Laufzeit}}" /> <input
-				placeholder="Beschreibung" name="desc" type="text" value="{{auction.Beschreibung}}" /> <input
+				placeholder="Beschreibung" name="desc" type="text" value="{{auction.Beschreibung}}" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" /> <input
 				placeholder="AuktionsID" readonly name="id" type="hidden" value="{{auction.Id}}" />
-			<button>Submit</button>
+			<button onhover="checkall(false);" >Submit</button>
 			
 		</form>
 	</div>
