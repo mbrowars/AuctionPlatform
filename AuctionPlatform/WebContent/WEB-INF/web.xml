@@ -20,6 +20,12 @@
 	</servlet>
 
 	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>de.ba.AuctionPlatform.controller.LogoutServlet
+		</servlet-class>
+	</servlet>
+
+	<servlet>
 		<servlet-name>ChangeAuction</servlet-name>
 		<servlet-class>de.ba.AuctionPlatform.controller.ChangeAuctionServlet
 		</servlet-class>
@@ -107,5 +113,10 @@
 		<servlet-name>ChangeAuction
 		</servlet-name>
 		<url-pattern>/auction/edit</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
 </web-app>
