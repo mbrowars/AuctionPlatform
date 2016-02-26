@@ -28,8 +28,14 @@ Arraylist mit den Auktionen
 
 <body ng-controller="auctionCtrl">
 	<ul id="nav">
+		<%	if (session.getAttribute("admin") != null) { %>
+		<a class="navlink" href="/AuctionPlatform/logout"><li id="logo"><img
+				src="${pageContext.request.contextPath}/img/logout.png" class="wiggle-me"></li></a>
+		<% } else { %>
 		<a class="navlink" href="/AuctionPlatform/index"><li id="logo"><img
 				src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
+		<% } %>
+		
 		<a class="navlink" href="/AuctionPlatform/index"><li id="slog">Buy
 				my gramp's stuff</li></a>
 		<%
