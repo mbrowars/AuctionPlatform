@@ -28,8 +28,13 @@ function check(elem, bool) {
 			}
 			break;
 		case 'bid':
-			if(match = /[^\-]?[1-9][0-9]*/.exec($(elem).val())) {
-				$(elem).val(match);
+			if(match = /[^\-]?[0-9]+(\.[0-9]{2})?/.exec($(elem).val())) {
+				if(($('#bidinput').val().substr(-1) != '.') && ($('#bidinput').val().substr(-2, 1) != '.')) {
+					$(elem).val(match[0]);
+				} else {
+					$(elem).css("border-color", "red");
+					return false;
+				}
 				$(elem).css("border-color", "black");
 				return true;
 			} else {
