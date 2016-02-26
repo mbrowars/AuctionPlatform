@@ -86,7 +86,7 @@ public class CreateAuctionServlet extends HttpServlet {
 			auc.setTitel(requ.getParameter("title"));
 			auc.setBeschreibung(requ.getParameter("desc"));
 
-			SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+			SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
 			Date date = new Date();
 			String da = requ.getParameter("end");
 			try {
