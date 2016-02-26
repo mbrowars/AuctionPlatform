@@ -53,8 +53,8 @@ public class AuctionPlatformServlet extends HttpServlet {
 			logger.log(Level.INFO, "Initializing Hibernate");
 			List<Auction> auction = AuctionDAO.getAllAuctions();
 			session.setAttribute("auctions", auction);
-			AuctionPlatformServletTest t = new AuctionPlatformServletTest();
-			t.listTest(auction);
+			// AuctionPlatformServletTest t = new AuctionPlatformServletTest();
+			// t.listTest(auction);
 			AuctionHelper ah = new AuctionHelper();
 
 			String json = ah.json(auction);
