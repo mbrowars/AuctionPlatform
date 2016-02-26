@@ -61,7 +61,7 @@ Arraylist mit den Auktionen
 		<select id="sort" class="turnintodropdown" ng-model="sort">
 			<option value="">Sortierung</option>
 			<option value="price">Preis</option>
-			<option value="age">Datum</option>
+			<option value="Laufzeit">Datum</option>
 			<option value="name">Name</option>
 		</select>
 		<section class="main">
@@ -69,9 +69,9 @@ Arraylist mit den Auktionen
 			<div id="dd" class="wrapper-dropdown-3">
 				<span>Sortierung</span>
 				<ul class="dropdown">
-					<li><a href="#">price</a></li>
-					<li><a href="#">age</a></li>
-					<li><a href="#">name</a></li>
+					<li><a href="#">Preis</a></li>
+					<li><a href="#">Restlaufzeit</a></li>
+					<li><a href="#">Titel</a></li>
 				</ul>
 			</div>
 		</div>

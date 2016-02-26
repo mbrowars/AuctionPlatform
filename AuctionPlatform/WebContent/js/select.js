@@ -18,7 +18,11 @@ DropDown.prototype = {
 		obj.opts.on('click',function(){
 			var opt = $(this);
 			obj.val = opt.text();
-			angular.element(document.getElementById('sort')).val(opt.text());
+			var text = '';
+			if (opt.text()=='Restlaufzeit') text = 'Laufzeit';
+			if (opt.text()=='Titel') text = 'name';
+			if (opt.text()=='Preis') text = 'price';
+			angular.element(document.getElementById('sort')).val(text);
 			angular.element(document.getElementById('sort')).triggerHandler('change');;
 			obj.index = opt.index();
 			obj.placeholder.text(obj.val);
