@@ -48,7 +48,7 @@
 			<input placeholder="Titel" name="title" type="text" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" /> 
 			<input id="bidinput" placeholder="Startgebot" name="bid" type="text" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" /> 
 			<input placeholder="Auktionsende z.B. 02.04.2016 21:00" name="end" type="text" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" /> 
-			<input placeholder="Beschreibung" name="desc" type="text" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" /> 
+			<textarea placeholder="Beschreibung" name="desc" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" ></textarea>
 			<button disabled onhover="checkall(false);" >Submit</button>
 			
 		</form>

@@ -25,7 +25,7 @@
 				src="${pageContext.request.contextPath}/img/logo2.png"></li></a>
 		<a class="navlink" href="/AuctionPlatform/index"><li id="slog">Buy
 				my gramp's stuff</li></a>
-		<li id="login">Neue Auktion erstellen</li>
+		<li id="login">Auktion editieren</li>
 	</ul>
 
 	<!-- 
@@ -43,19 +43,19 @@
 
 	<br />
 	<div class="login-block" ng-repeat="auction in auctions | filter:{Id: ${param.id}} | limitTo: 1">
-		<h1>Neue Auktion</h1>
+		<h1>Auktion ändern</h1>
 		<form action="${pageContext.request.contextPath}/auction/edit" method="post"
 			enctype="multipart/form-data">
 			<input type="file" id="file" name="picture"
 				onchange="updateFName(this);" />
 			<div id="filereplace" onclick="simulFile();">Datei auswählen
 				...</div>
-			<input placeholder="Titel" name="title" type="text" value="{{auction.name}}" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" /> <input
-				placeholder="Startgebot" readonly name="bid" type="text" value="{{auction.price}}"/> <input
-				placeholder="Auktionsende" readonly name="end" type="hidden" value="{{auction.Laufzeit}}" /> <input
-				placeholder="Beschreibung" name="desc" type="text" value="{{auction.Beschreibung}}" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" /> <input
-				placeholder="AuktionsID" readonly name="id" type="hidden" value="{{auction.Id}}" />
-			<button onhover="checkall(false);" >Submit</button>
+			<input placeholder="Titel" name="title" type="text" value="{{auction.name}}" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" /> 
+			<input placeholder="Startgebot" id="bidinput" readonly name="bid" type="text" value="{{auction.price}}"/> 
+			<input placeholder="Auktionsende" readonly name="end" type="hidden" value="{{auction.Laufzeit}}" /> 
+			<textarea placeholder="Beschreibung" name="desc" oninput="check(this, true);" autocomplete="off" autocapitalize="off" autocorrect="off" >{{auction.Beschreibung}}</textarea> 
+			<input placeholder="AuktionsID" readonly name="id" type="hidden" value="{{auction.Id}}" />
+			<button onhover="checkall(false);" disabled="false">Submit</button>
 			
 		</form>
 	</div>

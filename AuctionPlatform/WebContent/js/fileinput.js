@@ -1,5 +1,7 @@
 $(function() {
-	$('form button').disabled = !checkall(false);
+	setTimeout(function(){
+		$('form button').disabled = !checkall(false);
+	}, 500);
 });
 
 function simulFile() {
@@ -15,6 +17,7 @@ function check(elem, bool) {
 	if(bool) {
 		$(elem).siblings('button').disabled = checkall(false);		
 	}
+	
 
 	switch(elem.name) {
 		case 'title':
@@ -74,7 +77,11 @@ function checkall(bool) {
 		}
 	});
 	
-	console.log($('form button').prop('disabled'));
+	if(!check($('textarea')[0], bool)) {
+		failed = true;
+	}
+	
+	
 	$('form button').prop('disabled', failed);
 	return !failed;
 }
