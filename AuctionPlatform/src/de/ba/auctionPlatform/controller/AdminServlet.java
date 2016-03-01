@@ -1,3 +1,9 @@
+/**
+ *  SE-PROJEKT_AuctionPlatform
+ * 
+ *  team:	Markus Fröhlich, Max Göppert, Matthias Browarski
+ *
+ */
 package de.ba.auctionPlatform.controller;
 
 import java.io.IOException;
@@ -16,7 +22,7 @@ import de.ba.auctionPlatform.servletHandler.AdminHandler;
 /**
  * Servlet fuer Adminlogin 
  * path: "/goadmin"
- * @author mbrowars
+ * @author Matthias Browarski
  *
  */
 public class AdminServlet extends HttpServlet {

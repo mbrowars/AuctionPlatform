@@ -1,3 +1,9 @@
+/**
+ *  SE-PROJEKT_AuctionPlatform
+ * 
+ *  team:	Markus Fröhlich, Max Göppert, Matthias Browarski
+ *
+ */
 package de.ba.auctionPlatform.controller;
 
 import java.io.File;

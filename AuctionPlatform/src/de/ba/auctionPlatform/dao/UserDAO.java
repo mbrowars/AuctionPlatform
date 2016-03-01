@@ -1,3 +1,9 @@
+/**
+ *  SE-PROJEKT_AuctionPlatform
+ * 
+ *  team:	Markus Fröhlich, Max Göppert, Matthias Browarski
+ *
+ */
 package de.ba.auctionPlatform.dao;
 
 import java.util.ArrayList;

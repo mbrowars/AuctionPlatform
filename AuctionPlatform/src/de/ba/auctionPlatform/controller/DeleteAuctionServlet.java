@@ -1,3 +1,9 @@
+/**
+ *  SE-PROJEKT_AuctionPlatform
+ * 
+ *  team:	Markus Fröhlich, Max Göppert, Matthias Browarski
+ *
+ */
 package de.ba.auctionPlatform.controller;
 
 import java.io.IOException;
@@ -9,6 +15,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import de.ba.auctionPlatform.dao.AuctionDAO;
 
+/**
+ * Servlet um Auktionen zu loeschen
+ * path: "/auction/delete"
+ * @author Matthias Browarski
+ *
+ */
 public class DeleteAuctionServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 5653752108107841912L;

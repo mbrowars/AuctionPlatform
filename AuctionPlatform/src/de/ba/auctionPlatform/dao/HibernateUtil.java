@@ -1,3 +1,9 @@
+/**
+ *  SE-PROJEKT_AuctionPlatform
+ * 
+ *  team:	Markus Fröhlich, Max Göppert, Matthias Browarski
+ *
+ */
 package de.ba.auctionPlatform.dao;
 
 import org.apache.log4j.Level;
@@ -6,7 +12,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 /**
- * @author mbrowars
+ * @author Matthias Browarski
  *
  */
 public class HibernateUtil {
