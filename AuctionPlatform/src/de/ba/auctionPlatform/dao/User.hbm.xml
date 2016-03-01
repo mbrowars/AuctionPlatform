@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.01.2016 17:55:20 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="de.ba.auctionPlatform.dao.User" table="USER">
+		<id name="userid" type="int" access="field">
+			<column name="USERID" />
+			<generator class="increment" />
+		</id>
+		<property name="email" type="text" not-null="true">
+			<column name="EMAIL" />
+		</property>
+		<property name="code" type="int">
+			<column name="CODE" />
+		</property>
+	</class>
+</hibernate-mapping>

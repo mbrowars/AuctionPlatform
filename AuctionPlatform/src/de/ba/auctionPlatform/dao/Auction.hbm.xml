@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27.01.2016 17:55:20 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="de.ba.auctionPlatform.dao.Auction" table="AUCTION">
+		<id name="auctionid" type="int" access="field">
+			<column name="AUCTIONID" />
+			<generator class="increment" />
+		</id>
+		<property name="titel" type="text" not-null="true">
+			<column name="TITEL" />
+		</property>
+		<property name="gebot" type="double" not-null="true">
+			<column name="GEBOT" />
+		</property>
+		<property name="laufzeit" type="long" not-null="true">
+			<column name="LAUFZEIT" />
+		</property>
+		<property name="beschreibung" type="text">
+			<column name="BESCHREIBUNG" />
+		</property>
+		<property name="hoechstbietenderid" type="int">
+			<column name="HOECHSTBIETENDERID" />
+		</property>
+		<property name="picture" type="text">
+			<column name="PICTURE" />
+		</property>
+	</class>
+</hibernate-mapping>
