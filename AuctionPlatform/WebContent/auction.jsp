@@ -36,7 +36,7 @@ Name, Gebot und Ende der ausgewählten Auktion
 			<div id="auctionpic">
 				<img
 				src="${pageContext.request.contextPath}/pictures/{{auction.Picture}}"
-				style="height: 250px; width: 250px;"></img>
+				style="height: 250px; width: 250px;" alt="{{auction.name}}"></img>
 			</div>
 			<div id="auctionbid">
 				<p>{{auction.name}}</p>
@@ -45,7 +45,11 @@ Name, Gebot und Ende der ausgewählten Auktion
 				<div>
 					<input name="bid" id="bid" placeholder="Gebot">
 					<div style="display: none;" id="id">${auction.getAuctionid()}</div>
-					<button type="button" onclick="showMyModal();" id="showModal" class="ourButton">Bieten</button>
+					<%	if (session.getAttribute("admin") == null) { %>
+						<button type="button" onclick="showMyModal();" id="showModal" class="ourButton">Bieten</button>
+					<% } else { %>
+						<button type="button" disabled onclick="showMyModal();" id="showModal" class="ourButton">Bieten</button>
+					<% } %>
 				</div>
 			</div>
 		</div>
