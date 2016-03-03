@@ -39,7 +39,7 @@ public class SendMail {
 	 * @throws AddressException
 	 * @throws MessagingException
 	 */
-	public void send(String recipient, String subject, String text) throws AddressException, MessagingException {
+	public Boolean send(String recipient, String subject, String text) throws AddressException, MessagingException {
 
 		MailAuthenticator auth = new MailAuthenticator("kauft-mein-erbe@gmx.de", "auctionplatform1");
 
@@ -64,11 +64,13 @@ public class SendMail {
 			msg.setSentDate(new Date());
 			Transport.send(msg);
 			logger.log(Level.INFO, "Email wurde an " + recipient + " versandt.");
-
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.log(Level.ERROR, "Email konnte nicht an " + recipient + " versandt werden.");
+			return false;
 		}
+		
 	}
 
 }

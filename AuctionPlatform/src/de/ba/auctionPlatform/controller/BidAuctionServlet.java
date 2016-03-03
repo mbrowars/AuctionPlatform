@@ -70,7 +70,7 @@ public class BidAuctionServlet extends HttpServlet {
 
 				try {
 
-					em.send(mail, "Auktionsbestaetigung fuer Artikel (plus id)",
+					Boolean message = em.send(mail, "Auktionsbestaetigung fuer Artikel (plus id)",
 							"Bitte geben Sie diesen Code auf der Website ein: " + code);
 					user.setEmail(mail);
 					user.setCode(code);
@@ -80,12 +80,13 @@ public class BidAuctionServlet extends HttpServlet {
 					session.setAttribute("bid", bid);
 
 					saved = user.getId();
-					resp.getWriter().write("null");
-
+					if (message == true) {
+						resp.getWriter().write("null");
+					} else {
+						resp.getWriter().write("Email konnte nicht erfolgreich zugestellt werden.");
+					}
 				} catch (MessagingException e) {
 
-					// TODO Auto-generated catch block
-					resp.getWriter().write("Fehler bei Emailuebertragung");
 					UserDAO.removeUser(userid);
 				}
 			} else {
