@@ -18,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
+import de.ba.auctionPlatform.dao.AuctionDAO;
 import de.ba.auctionPlatform.dao.User;
 import de.ba.auctionPlatform.dao.UserDAO;
 import de.ba.auctionPlatform.emailservice.SendMail;
@@ -70,8 +71,9 @@ public class BidAuctionServlet extends HttpServlet {
 
 				try {
 
-					Boolean message = em.send(mail, "Auktionsbestaetigung fuer Artikel (plus id)",
-							"Bitte geben Sie diesen Code auf der Website ein: " + code);
+					Boolean message = em.send(mail,
+							"Auktionsbestaetigung fuer Artikel " + AuctionDAO.getAuction(id).getTitel(),
+							". Bitte geben Sie diesen Code auf der Website ein: " + code);
 					user.setEmail(mail);
 					user.setCode(code);
 					userid = UserDAO.addUser(user);

@@ -91,7 +91,13 @@ public class EndAuctionServlet extends HttpServlet {
 	 *            zu loeschende Auktion
 	 */
 	private void endWithoutWinner(Auction auc) {
-
+		try {
+			mail.send("kauft-mein-erbe@gmx.de", "Auktion " + auc.getTitel() + " wurde beendet",
+					"Es wurde kein Angebot abgegeben für:  " + auc.getTitel());
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		AuctionDAO.removeAuction(auc.getAuctionid());
 
 	}
