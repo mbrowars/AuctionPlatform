@@ -53,10 +53,8 @@ public class AuctionPlatformServlet extends HttpServlet {
 			logger.log(Level.INFO, requ.getServletContext().getRealPath("") + ", json wurde gespeichert.");
 
 			session.setAttribute("auc", json);
-			logger.log(Level.INFO, json);
-			
 			requ.setAttribute("date", (new Date()).getTime());
-
+			
 		} catch (HibernateException ex) {
 			logger.log(Level.INFO, ex);
 			System.exit(5);

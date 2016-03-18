@@ -57,7 +57,6 @@ public class BidAuctionServlet extends HttpServlet {
 		// Sicherkeitscode testen
 		if ((requ.getParameter("mail") != null) && (requ.getParameter("bid") != null)) {
 			code = gen.securityCode();
-			System.out.println(code);
 			bid = Double.parseDouble(requ.getParameter("bid"));
 			if (bid < 0) {
 				resp.getWriter().write("Bitte geben Sie ein positives Gebot ein.");

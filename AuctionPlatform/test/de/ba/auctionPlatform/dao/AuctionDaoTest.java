@@ -39,14 +39,4 @@ public class AuctionDaoTest {
 		Assert.assertEquals(AuctionDAO.getAuction(id1), null);
 
 	}
-
-//	@Test
-//	public void updateAuction() {
-//
-//		int id = AuctionDAO.addAuction(auction1);
-//		Auction auc= new Auction();
-//		auc.setBeschreibung("neue beschreibung");
-//		AuctionDAO.updateAuction(auc);
-//		Assert.assertEquals(AuctionDAO.getAuction(id).getBeschreibung(), auction1.getBeschreibung());
-//	}
 }

@@ -64,7 +64,6 @@ Arraylist mit den Auktionen
 			<option value="Laufzeit">Datum</option>
 			<option value="name">Name</option>
 		</select>
-		<section class="main">
 		<div class="wrapper-demo">
 			<div id="dd" class="wrapper-dropdown-3">
 				<span>Sortierung</span>
@@ -75,7 +74,6 @@ Arraylist mit den Auktionen
 				</ul>
 			</div>
 		</div>
-		</section>
 
 	</div>
 

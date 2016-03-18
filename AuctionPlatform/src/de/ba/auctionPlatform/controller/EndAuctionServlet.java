@@ -7,6 +7,7 @@
 package de.ba.auctionPlatform.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -46,13 +47,15 @@ public class EndAuctionServlet extends HttpServlet {
 		if (auc == null) {
 
 		} else {
-			if (auc.getHoechstbietenderid() == 0) {
-				endWithoutWinner(auc);
+			if (auc.getLaufzeit() < System.currentTimeMillis()) {
+				if (auc.getHoechstbietenderid() == 0) {
+					endWithoutWinner(auc);
 
-			} else {
-				user = UserDAO.getUser(auc.getHoechstbietenderid());
-				end(auc, user);
+				} else {
+					user = UserDAO.getUser(auc.getHoechstbietenderid());
+					end(auc, user);
 
+				}
 			}
 		}
 		List<Auction> auction = AuctionDAO.getAllAuctions();

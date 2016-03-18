@@ -164,6 +164,10 @@ a.listlink, a.listlink:visited, a.listlink:active, a.listlink:hover {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #logo, #slog {
